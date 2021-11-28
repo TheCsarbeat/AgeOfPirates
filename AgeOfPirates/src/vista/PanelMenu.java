@@ -5,19 +5,30 @@
  */
 package vista;
 
+import javax.swing.JPanel;
+
 /**
  *
  * @author ytces
  */
 public class PanelMenu extends javax.swing.JPanel {
-
+    public JPanel contentPanel;
+    public PanelJuego panelJuego;
     /**
      * Creates new form PanelMenu
      */
-    public PanelMenu() {
+    public PanelMenu(JPanel contentPanel, PanelJuego panelJuego) {
         initComponents();
+        this.contentPanel = contentPanel;
+        this.panelJuego = panelJuego;
     }
 
+    public void cargarPanel(JPanel panel) {
+        contentPanel.removeAll();
+        contentPanel.add(panel);
+        contentPanel.repaint();
+        contentPanel.revalidate();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,6 +42,7 @@ public class PanelMenu extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(102, 102, 102));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 72)); // NOI18N
@@ -38,14 +50,14 @@ public class PanelMenu extends javax.swing.JPanel {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Age of Pirates");
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 620, 140));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 240, 620, 140));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 72)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Quit");
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 360, 250, 140));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 560, 250, 140));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 72)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -57,11 +69,11 @@ public class PanelMenu extends javax.swing.JPanel {
                 jLabel3MouseClicked(evt);
             }
         });
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 210, 250, 140));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 400, 250, 140));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        
+        cargarPanel(panelJuego);
     }//GEN-LAST:event_jLabel3MouseClicked
 
 
