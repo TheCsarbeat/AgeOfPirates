@@ -9,6 +9,8 @@ package modelo;
  *
  * @author ytces
  */
-public class Armeria extends Estructura {
-    
+public class Armeria extends Estructura {    
+    public Armeria(String id) {
+        super.id = id;
+    }
 }

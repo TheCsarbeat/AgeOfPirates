@@ -11,4 +11,7 @@ package modelo;
  */
 public class Conector extends Estructura{
     
+    public Conector(String id) {
+        super.id = id;
+    }
 }

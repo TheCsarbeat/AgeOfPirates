@@ -5,13 +5,17 @@
  */
 package modelo;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author ytces
  */
 public  abstract class  Estructura {
-    protected int precio;
+    protected ArrayList<Punto> cellsBusy;
     protected String id; //Estandar: armeria-> "ARM-0", "ARM-1" | mina-> "MIN-0", "MIN-1", es decir tres letras y un numero
-    
-    
+
+    public Estructura() {
+        this.cellsBusy = new ArrayList();
+    }
 }

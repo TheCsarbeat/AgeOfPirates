@@ -5,6 +5,7 @@
  */
 package vista;
 
+import control.ControlTienda;
 import javax.swing.JPanel;
 
 /**
@@ -13,22 +14,28 @@ import javax.swing.JPanel;
  */
 public class PanelJuego extends javax.swing.JPanel {
     public PanelMar panelMar1, panelMar2;
+    public ControlTienda controlTienda;
+    public JPanel contentPanel;
+    public PanelTienda panelTienda;
     /**
      * Creates new form PanelJuego
      */
-    public PanelJuego() {
+    public PanelJuego(JPanel contentPanel) {
         initComponents();
+        controlTienda = new ControlTienda();
         panelMar1 = new PanelMar();
         panelMar2 = new PanelMar();
+        panelTienda = new PanelTienda();
+        this.contentPanel = contentPanel;
         cargarPanel(myPanel, panelMar1);
         cargarPanel(enemyPanel, panelMar2);
     }
     
-    public void cargarPanel(JPanel contentPanel, JPanel panel) {
-        contentPanel.removeAll();
-        contentPanel.add(panel);
-        contentPanel.repaint();
-        contentPanel.revalidate();
+    public void cargarPanel(JPanel unPanel, JPanel panel) {
+        unPanel.removeAll();
+        unPanel.add(panel);
+        unPanel.repaint();
+        unPanel.revalidate();
     }
     
     
@@ -43,6 +50,7 @@ public class PanelJuego extends javax.swing.JPanel {
 
         myPanel = new javax.swing.JPanel();
         enemyPanel = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -51,11 +59,25 @@ public class PanelJuego extends javax.swing.JPanel {
 
         enemyPanel.setLayout(new java.awt.CardLayout());
         add(enemyPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 40, 720, 720));
+
+        jButton1.setText("Tienda");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 820, 140, 50));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        cargarPanel(contentPanel,panelTienda);
+    }//GEN-LAST:event_jButton1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel enemyPanel;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel myPanel;
     // End of variables declaration//GEN-END:variables
 }

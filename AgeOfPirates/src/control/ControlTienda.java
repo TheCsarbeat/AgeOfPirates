@@ -5,17 +5,25 @@
  */
 package control;
 
+import modelo.Armeria;
+import modelo.Conector;
+import modelo.Fuente;
+import modelo.Mercado;
+import modelo.Mina;
+import modelo.Player;
+import modelo.Templo;
+
 /**
  *
  * @author ytces
  */
 public class ControlTienda {
-    private int minaPrice;
-    private int conectorPrice;
-    private int mercadoPrice;
-    private int temploPrice;
-    private int armeriaPrice;
-    private int fuentePrice;
+    public static int minaPrice;
+    public static int conectorPrice;
+    public static int mercadoPrice;
+    public static int temploPrice;
+    public static int armeriaPrice;
+    public static int fuentePrice;
 
     public ControlTienda(){
         minaPrice = 1000;
@@ -27,13 +35,35 @@ public class ControlTienda {
     }
     
     public ControlTienda(int minaPrice, int conectorPrice, int mercadoPrice, int temploPrice, int armeriaPrice, int fuentePrice) {
-        this.minaPrice = minaPrice;
-        this.conectorPrice = conectorPrice;
-        this.mercadoPrice = mercadoPrice;
-        this.temploPrice = temploPrice;
-        this.armeriaPrice = armeriaPrice;
-        this.fuentePrice = fuentePrice;
+        ControlTienda.minaPrice = minaPrice;
+        ControlTienda.conectorPrice = conectorPrice;
+        ControlTienda.mercadoPrice = mercadoPrice;
+        ControlTienda.temploPrice = temploPrice;
+        ControlTienda.armeriaPrice = armeriaPrice;
+        ControlTienda.fuentePrice = fuentePrice;
     }
     
-    
+    //fuente=0, conector=1, mercado=2, mina=3, templo=4, armeria=5
+    public void comprarEdificio(Player p, int tipo){
+        switch(tipo){
+            case 0:
+                p.grafo.agregarVertice(new Fuente(p.getNextValidName(tipo)));
+                break;
+            case 1:
+                p.grafo.agregarVertice(new Conector(p.getNextValidName(tipo)));
+                break;
+            case 2:
+                p.grafo.agregarVertice(new Mercado(p.getNextValidName(tipo)));
+                break;
+            case 3:
+                p.grafo.agregarVertice(new Mina(p.getNextValidName(tipo)));
+                break;
+            case 4:
+                p.grafo.agregarVertice(new Templo(p.getNextValidName(tipo)));
+                break;
+            case 5:
+                p.grafo.agregarVertice(new Armeria(p.getNextValidName(tipo)));
+                break;
+        }
+    }
 }

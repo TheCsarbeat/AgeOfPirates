@@ -10,5 +10,9 @@ package modelo;
  * @author ytces
  */
 public class Templo extends Estructura{
+
+    public Templo(String id) {
+        super.id = id;
+    }
     
 }

@@ -11,4 +11,7 @@ package modelo;
  */
 public class Mercado extends Estructura{
     
+    public Mercado(String id) {
+        super.id = id;
+    }
 }

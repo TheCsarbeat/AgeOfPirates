@@ -9,6 +9,9 @@ package modelo;
  *
  * @author ytces
  */
-public class FuenteEnergia {
+public class Fuente extends Estructura{
     
+    public Fuente(String id) {
+        super.id = id;
+    }
 }

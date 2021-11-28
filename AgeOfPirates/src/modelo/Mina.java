@@ -11,4 +11,7 @@ package modelo;
  */
 public class Mina extends Estructura{
     
+    public Mina(String id) {
+        super.id = id;
+    }
 }
