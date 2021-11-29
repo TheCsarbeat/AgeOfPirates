@@ -41,12 +41,16 @@ public class PanelTienda extends javax.swing.JPanel {
         otroPanel = new javax.swing.JPanel();
         btnArmas = new javax.swing.JButton();
         btnEdificios = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        lbDineroActual = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        otroPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         otroPanel.setLayout(new java.awt.CardLayout());
-        add(otroPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, 1300, 580));
+        add(otroPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, 1300, 580));
 
+        btnArmas.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         btnArmas.setText("Armas");
         btnArmas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -55,6 +59,7 @@ public class PanelTienda extends javax.swing.JPanel {
         });
         add(btnArmas, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 40, 220, 50));
 
+        btnEdificios.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         btnEdificios.setText("Edificios");
         btnEdificios.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -62,6 +67,14 @@ public class PanelTienda extends javax.swing.JPanel {
             }
         });
         add(btnEdificios, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 40, 220, 50));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setText("Dinero: ");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 100, 40));
+
+        lbDineroActual.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lbDineroActual.setText("4000");
+        add(lbDineroActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 140, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnArmasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArmasActionPerformed
@@ -76,6 +89,8 @@ public class PanelTienda extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnArmas;
     private javax.swing.JButton btnEdificios;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lbDineroActual;
     private javax.swing.JPanel otroPanel;
     // End of variables declaration//GEN-END:variables
 }

@@ -18,16 +18,9 @@ public class PanelEdificios extends javax.swing.JPanel {
      */
     public PanelEdificios() {
         initComponents();
-        generateEdificios();
     }
     
-    public void generateEdificios(){
-        String precio = "$"+ControlTienda.armeriaPrice;
-        //PanelEdificioComprar panel = new PanelEdificioComprar(precio, "src\\images\\energySource.png");
-        for(int i=0;i<6;i++){
-            this.add(new PanelEdificioComprar(precio, "src\\images\\energySource.png"));  //no sirve esta verga
-        }
-    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -38,11 +31,210 @@ public class PanelEdificios extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        itemPanel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        lbPrecioMina = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        itemPanel1 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        lbPrecioTemplo = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        itemPanel2 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        lbPrecioArmeria = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        itemPanel3 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        lbPrecioMercado = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        itemPanel4 = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        lbPrecioFuente = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        itemPanel5 = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        lbPrecioConector = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+
         setPreferredSize(new java.awt.Dimension(800, 800));
-        setLayout(new java.awt.GridLayout(1, 0));
+        setLayout(new java.awt.GridLayout(2, 3));
+
+        itemPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
+        itemPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setText("x0");
+        itemPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, -1, -1));
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/mine.png"))); // NOI18N
+        itemPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 140, 90));
+
+        lbPrecioMina.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lbPrecioMina.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbPrecioMina.setText("Precio: ");
+        itemPanel.add(lbPrecioMina, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 70, 200, -1));
+
+        jLabel20.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel20.setText("Mina");
+        itemPanel.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 80, -1));
+
+        add(itemPanel);
+
+        itemPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
+        itemPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel4.setText("x0");
+        itemPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, -1, -1));
+
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/temple.png"))); // NOI18N
+        itemPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 140, 90));
+
+        lbPrecioTemplo.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lbPrecioTemplo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbPrecioTemplo.setText("Precio: ");
+        itemPanel1.add(lbPrecioTemplo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 70, 200, -1));
+
+        jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel21.setText("Templo de bruja");
+        itemPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 250, -1));
+
+        add(itemPanel1);
+
+        itemPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
+        itemPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel7.setText("x0");
+        itemPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, -1, -1));
+
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/armeria.png"))); // NOI18N
+        itemPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 140, 90));
+
+        lbPrecioArmeria.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lbPrecioArmeria.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbPrecioArmeria.setText("Precio: ");
+        itemPanel2.add(lbPrecioArmeria, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 220, -1));
+
+        jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel22.setText("Armería");
+        itemPanel2.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, 120, -1));
+
+        add(itemPanel2);
+
+        itemPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
+        itemPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel10.setText("x0");
+        itemPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, -1, -1));
+
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/market.png"))); // NOI18N
+        itemPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 140, 80));
+
+        lbPrecioMercado.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lbPrecioMercado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbPrecioMercado.setText("Precio: ");
+        itemPanel3.add(lbPrecioMercado, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 200, -1));
+
+        jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel23.setText("Mercado");
+        itemPanel3.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, 120, -1));
+
+        add(itemPanel3);
+
+        itemPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
+        itemPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel13.setText("x0");
+        itemPanel4.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, -1, -1));
+
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/campfire.png"))); // NOI18N
+        itemPanel4.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 140, 90));
+
+        lbPrecioFuente.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lbPrecioFuente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbPrecioFuente.setText("Precio: ");
+        itemPanel4.add(lbPrecioFuente, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 220, -1));
+
+        jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel24.setText("Fuente de poder");
+        itemPanel4.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 200, -1));
+
+        add(itemPanel4);
+
+        itemPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
+        itemPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel16.setText("x0");
+        itemPanel5.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, -1, -1));
+
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/node.png"))); // NOI18N
+        itemPanel5.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 140, 90));
+
+        lbPrecioConector.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lbPrecioConector.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbPrecioConector.setText("Precio: ");
+        itemPanel5.add(lbPrecioConector, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 210, -1));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Conector");
+        itemPanel5.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, 120, -1));
+
+        add(itemPanel5);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel itemPanel;
+    private javax.swing.JPanel itemPanel1;
+    private javax.swing.JPanel itemPanel2;
+    private javax.swing.JPanel itemPanel3;
+    private javax.swing.JPanel itemPanel4;
+    private javax.swing.JPanel itemPanel5;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel lbPrecioArmeria;
+    private javax.swing.JLabel lbPrecioConector;
+    private javax.swing.JLabel lbPrecioFuente;
+    private javax.swing.JLabel lbPrecioMercado;
+    private javax.swing.JLabel lbPrecioMina;
+    private javax.swing.JLabel lbPrecioTemplo;
     // End of variables declaration//GEN-END:variables
 }
