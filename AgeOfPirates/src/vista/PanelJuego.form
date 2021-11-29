@@ -21,7 +21,7 @@
     <Container class="javax.swing.JPanel" name="myPanel">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="60" y="40" width="720" height="720"/>
+          <AbsoluteConstraints x="110" y="40" width="720" height="720"/>
         </Constraint>
       </Constraints>
 
@@ -30,7 +30,7 @@
     <Container class="javax.swing.JPanel" name="enemyPanel">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="820" y="40" width="720" height="720"/>
+          <AbsoluteConstraints x="880" y="40" width="720" height="720"/>
         </Constraint>
       </Constraints>
 

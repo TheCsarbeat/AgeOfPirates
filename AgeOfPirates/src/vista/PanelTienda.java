@@ -44,18 +44,8 @@ public class PanelTienda extends javax.swing.JPanel {
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout otroPanelLayout = new javax.swing.GroupLayout(otroPanel);
-        otroPanel.setLayout(otroPanelLayout);
-        otroPanelLayout.setHorizontalGroup(
-            otroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1300, Short.MAX_VALUE)
-        );
-        otroPanelLayout.setVerticalGroup(
-            otroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 580, Short.MAX_VALUE)
-        );
-
-        add(otroPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 1300, 580));
+        otroPanel.setLayout(new java.awt.CardLayout());
+        add(otroPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, 1300, 580));
 
         btnArmas.setText("Armas");
         btnArmas.addActionListener(new java.awt.event.ActionListener() {
@@ -63,7 +53,7 @@ public class PanelTienda extends javax.swing.JPanel {
                 btnArmasActionPerformed(evt);
             }
         });
-        add(btnArmas, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 40, 220, 50));
+        add(btnArmas, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 40, 220, 50));
 
         btnEdificios.setText("Edificios");
         btnEdificios.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -71,7 +61,7 @@ public class PanelTienda extends javax.swing.JPanel {
                 btnEdificiosMouseClicked(evt);
             }
         });
-        add(btnEdificios, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 40, 220, 50));
+        add(btnEdificios, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 40, 220, 50));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnArmasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArmasActionPerformed

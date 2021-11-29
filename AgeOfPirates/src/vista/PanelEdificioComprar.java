@@ -46,10 +46,11 @@ public class PanelEdificioComprar extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbPrecio.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lbPrecio.setForeground(new java.awt.Color(0, 0, 0));
         lbPrecio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbPrecio.setText("Precio: ");
+        lbPrecio.setText("Precio");
         add(lbPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 170, 34));
-        add(lbIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 190, 160));
+        add(lbIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 190, 160));
     }// </editor-fold>//GEN-END:initComponents
 
 

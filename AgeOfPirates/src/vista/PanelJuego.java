@@ -55,10 +55,10 @@ public class PanelJuego extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         myPanel.setLayout(new java.awt.CardLayout());
-        add(myPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 720, 720));
+        add(myPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 720, 720));
 
         enemyPanel.setLayout(new java.awt.CardLayout());
-        add(enemyPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 40, 720, 720));
+        add(enemyPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 40, 720, 720));
 
         jButton1.setText("Tienda");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
