@@ -5,6 +5,8 @@
  */
 package control;
 
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 /**
@@ -19,5 +21,17 @@ public class Utilities {
         contentPanel.add(panel);
         contentPanel.repaint();
         contentPanel.revalidate();
+    }
+    
+    public static ImageIcon loadResizeIcon(String name, int newHeigth){
+        ImageIcon icon = new ImageIcon(name);
+        Image image  = icon.getImage();
+        
+        int height = icon.getIconHeight(),  width = icon.getIconWidth();
+        int newHeight = (newHeigth*height)/width;
+        
+        Image modifiedImage = image.getScaledInstance(newHeigth, newHeight, java.awt.Image.SCALE_SMOOTH);
+        icon = new ImageIcon(modifiedImage);
+        return icon;
     }
 }

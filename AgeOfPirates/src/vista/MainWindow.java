@@ -9,9 +9,10 @@ import control.ControlTienda;
 import control.TipoAccion;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.text.Utilities;
-import modelo.Peticion;
 import control.Utilities;
+import modelo.Peticion;
+
+
 
 /**
  *
