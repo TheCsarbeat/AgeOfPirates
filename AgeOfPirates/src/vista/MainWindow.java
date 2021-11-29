@@ -6,7 +6,11 @@
 package vista;
 
 import control.ControlTienda;
+import control.TipoAccion;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.text.Utilities;
+import modelo.Peticion;
 
 /**
  *
@@ -18,12 +22,15 @@ public class MainWindow extends javax.swing.JFrame {
     private PanelJuego panelJuego;
     private PanelTienda panelTienda;
     
+    public static int id; 
+    
     public MainWindow() {
         initComponents();
         panelJuego = new PanelJuego(contentPanel);
         panelMenu = new PanelMenu(contentPanel, panelJuego);
         panelTienda = new PanelTienda();
         cargarPanel(panelMenu);
+        obtenerId();
     }
     
     public void cargarPanel(JPanel panel) {
@@ -31,6 +38,20 @@ public class MainWindow extends javax.swing.JFrame {
         contentPanel.add(panel);
         contentPanel.repaint();
         contentPanel.revalidate();
+        
+    }
+    
+    public void obtenerId(){
+        Peticion peticionIngresar = new Peticion(TipoAccion.CONECTARSE, "");
+        
+        Client conexion = new Client(peticionIngresar);
+
+        Object respuesta = conexion.getRespuestaServer();
+        if(respuesta != null){
+            System.out.println((String)respuesta);
+        }else{
+            JOptionPane.showMessageDialog(null, "Los datos no coinciden!", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     /**
@@ -55,11 +76,11 @@ public class MainWindow extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1894, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
         );
 
         pack();

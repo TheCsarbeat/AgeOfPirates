@@ -9,6 +9,14 @@ package control;
  *
  * @author erksm
  */
-public enum TipoAccion {
-    CONECTARSE,SEND_MSG, ACTUALIZAR_CHAT
+public class MainServer {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+        new Server();
+    }
+    
 }

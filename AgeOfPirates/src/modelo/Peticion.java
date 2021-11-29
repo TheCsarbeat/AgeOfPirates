@@ -6,13 +6,14 @@
 package modelo;
 
 import control.TipoAccion;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author erksm
  */
-public class Peticion {
+public class Peticion implements Serializable{
     private TipoAccion accion;
     private Object datosEntrada;
     private Object datosSalida;    
@@ -40,7 +41,10 @@ public class Peticion {
     public void setDatosSalida(Object datosSalida) {
         this.datosSalida = datosSalida;
     }
-
+    public Peticion(TipoAccion accion, Object datosEntrada) {
+        this.accion = accion;
+        this.datosEntrada = datosEntrada;
+    }
     public Peticion(TipoAccion accion, Object datosEntrada, Object datosSalida) {
         this.accion = accion;
         this.datosEntrada = datosEntrada;

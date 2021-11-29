@@ -5,10 +5,13 @@
  */
 package control;
 
+import java.util.ArrayList;
+import modelo.Message;
+
 /**
  *
  * @author erksm
  */
-public enum TipoAccion {
-    CONECTARSE,SEND_MSG, ACTUALIZAR_CHAT
+public class AdminChat {
+    
 }

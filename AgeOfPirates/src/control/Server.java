@@ -17,12 +17,12 @@ import modelo.Peticion;
  *
  * @author erksm
  */
-public class Sever {
+public class Server {
     
     private Controlador accesoApp = new Controlador();
     private int numCli = 0;
 
-    public Sever() {
+    public Server() {
         try {
 
             ServerSocket skServidor = new ServerSocket(IConstantes.PUERTO);
@@ -48,7 +48,8 @@ public class Sever {
 
                 // transfiere la petición a la logica de aplicación y esta le devuelve la respuesta en la misma peticion
                 peticionRecibida = accesoApp.procesarPeticion(peticionRecibida);
-
+                
+                
                 // servidor envia respuesta al cliente
                 flujoSalida.writeObject(peticionRecibida);
 
