@@ -6,6 +6,9 @@
 package vista;
 
 import control.ControlTienda;
+import java.awt.Image;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -29,7 +32,17 @@ public class PanelJuego extends javax.swing.JPanel {
         this.contentPanel = contentPanel;
         cargarPanel(myPanel, panelMar1);
         cargarPanel(enemyPanel, panelMar2);
+        
+        for(int i=0; i<20; i++ ){
+            JLabel lb = new JLabel();
+            JLabel lb2 = new JLabel();
+            lb.setText(String.valueOf(i));
+            lb2.setText(String.valueOf(i));
+            panelNumero2.add(lb);
+            PanelNumeros1.add(lb2);
+        }
     }
+    
     
     public void cargarPanel(JPanel unPanel, JPanel panel) {
         unPanel.removeAll();
@@ -37,6 +50,7 @@ public class PanelJuego extends javax.swing.JPanel {
         unPanel.repaint();
         unPanel.revalidate();
     }
+    
     
     
     /**
@@ -50,34 +64,406 @@ public class PanelJuego extends javax.swing.JPanel {
 
         myPanel = new javax.swing.JPanel();
         enemyPanel = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        panelArmas = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        btnCañon = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        lbCañonBarbaRoja = new javax.swing.JLabel();
+        lbCañon = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        btnBarbaRoja = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        lbCantidadCañon = new javax.swing.JLabel();
+        lbcantidadCañonMultiple = new javax.swing.JLabel();
+        lbCañonMultiple = new javax.swing.JLabel();
+        btnCañonMultiple = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        lbBomba = new javax.swing.JLabel();
+        lbCantidadBarbaRojas = new javax.swing.JLabel();
+        btnBomba = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        lbBomba1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        panelBotones = new javax.swing.JPanel();
+        btnMercado = new javax.swing.JButton();
+        btnFire = new javax.swing.JButton();
+        lbCoordenada = new javax.swing.JLabel();
+        txtCoordenadaX = new javax.swing.JTextField();
+        lbCoordenada2 = new javax.swing.JLabel();
+        txtCoordenadaY = new javax.swing.JTextField();
+        lbCoordenada3 = new javax.swing.JLabel();
+        lbSombrero = new javax.swing.JLabel();
+        lbBandera = new javax.swing.JLabel();
+        lbBarco = new javax.swing.JLabel();
+        lbCoordenada4 = new javax.swing.JLabel();
+        btnTienda3 = new javax.swing.JButton();
+        panelNumero2 = new javax.swing.JPanel();
+        PanelNumeros1 = new javax.swing.JPanel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        myPanel.setBackground(new java.awt.Color(255, 0, 0));
         myPanel.setLayout(new java.awt.CardLayout());
-        add(myPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 720, 720));
+        add(myPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 40, 550, 530));
 
+        enemyPanel.setBackground(new java.awt.Color(255, 0, 0));
         enemyPanel.setLayout(new java.awt.CardLayout());
-        add(enemyPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 40, 720, 720));
+        add(enemyPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 40, 550, 530));
 
-        jButton1.setText("Tienda");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel1.setText("0       1       2       3       4       5       6       7       8       9     10    11    12    13    14    15     16     17     18     19");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 20, 580, -1));
+
+        panelArmas.setBackground(new java.awt.Color(165, 173, 167));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Armas");
+
+        btnCañon.setBackground(new java.awt.Color(212, 212, 212));
+        btnCañon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                btnCañonMouseClicked(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 820, 140, 50));
+        btnCañon.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/canon.png"))); // NOI18N
+        btnCañon.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 140, 140));
+
+        lbCañonBarbaRoja.setBackground(new java.awt.Color(0, 0, 0));
+        lbCañonBarbaRoja.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
+        lbCañonBarbaRoja.setForeground(new java.awt.Color(0, 0, 0));
+        lbCañonBarbaRoja.setText("Cañon barba roja");
+        lbCañonBarbaRoja.setToolTipText("");
+
+        lbCañon.setBackground(new java.awt.Color(0, 0, 0));
+        lbCañon.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
+        lbCañon.setForeground(new java.awt.Color(0, 0, 0));
+        lbCañon.setText("Cañón");
+        lbCañon.setToolTipText("");
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+
+        btnBarbaRoja.setBackground(new java.awt.Color(212, 212, 212));
+        btnBarbaRoja.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBarbaRojaMouseClicked(evt);
+            }
+        });
+        btnBarbaRoja.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cañonBarbaRoja.png"))); // NOI18N
+        btnBarbaRoja.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 140, 120));
+
+        lbCantidadCañon.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbCantidadCañon.setForeground(new java.awt.Color(0, 0, 0));
+        lbCantidadCañon.setText("Cantidad");
+
+        lbcantidadCañonMultiple.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbcantidadCañonMultiple.setForeground(new java.awt.Color(0, 0, 0));
+        lbcantidadCañonMultiple.setText("Cantidad");
+
+        lbCañonMultiple.setBackground(new java.awt.Color(0, 0, 0));
+        lbCañonMultiple.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
+        lbCañonMultiple.setForeground(new java.awt.Color(0, 0, 0));
+        lbCañonMultiple.setText("Cañón múltiple");
+        lbCañonMultiple.setToolTipText("");
+
+        btnCañonMultiple.setBackground(new java.awt.Color(212, 212, 212));
+        btnCañonMultiple.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCañonMultipleMouseClicked(evt);
+            }
+        });
+        btnCañonMultiple.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/canonMultiple.png"))); // NOI18N
+        btnCañonMultiple.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 140, 140));
+
+        lbBomba.setBackground(new java.awt.Color(0, 0, 0));
+        lbBomba.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
+        lbBomba.setForeground(new java.awt.Color(0, 0, 0));
+        lbBomba.setText("Bomba");
+        lbBomba.setToolTipText("");
+
+        lbCantidadBarbaRojas.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbCantidadBarbaRojas.setForeground(new java.awt.Color(0, 0, 0));
+        lbCantidadBarbaRojas.setText("Cantidad");
+
+        btnBomba.setBackground(new java.awt.Color(212, 212, 212));
+        btnBomba.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBombaMouseClicked(evt);
+            }
+        });
+        btnBomba.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bomba.png"))); // NOI18N
+        btnBomba.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 140, 140));
+
+        lbBomba1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbBomba1.setForeground(new java.awt.Color(0, 0, 0));
+        lbBomba1.setText("Cantidad");
+
+        javax.swing.GroupLayout panelArmasLayout = new javax.swing.GroupLayout(panelArmas);
+        panelArmas.setLayout(panelArmasLayout);
+        panelArmasLayout.setHorizontalGroup(
+            panelArmasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelArmasLayout.createSequentialGroup()
+                .addGroup(panelArmasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelArmasLayout.createSequentialGroup()
+                        .addGap(117, 117, 117)
+                        .addComponent(lbCantidadCañon)
+                        .addGap(9, 9, 9)
+                        .addComponent(jLabel4))
+                    .addGroup(panelArmasLayout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addGroup(panelArmasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelArmasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(btnBarbaRoja, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(panelArmasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(panelArmasLayout.createSequentialGroup()
+                                        .addGap(76, 76, 76)
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btnCañon, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lbCañonMultiple)
+                                    .addComponent(btnCañonMultiple, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lbCañon, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnBomba, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panelArmasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(lbBomba1)
+                                .addComponent(lbCañonBarbaRoja, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lbBomba)))
+                    .addGroup(panelArmasLayout.createSequentialGroup()
+                        .addGap(108, 108, 108)
+                        .addComponent(lbCantidadBarbaRojas)))
+                .addContainerGap(20, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelArmasLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lbcantidadCañonMultiple)
+                .addGap(100, 100, 100))
+        );
+        panelArmasLayout.setVerticalGroup(
+            panelArmasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelArmasLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addComponent(lbCañon, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnCañon, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelArmasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addGroup(panelArmasLayout.createSequentialGroup()
+                        .addComponent(lbCantidadCañon)
+                        .addGap(25, 25, 25)
+                        .addComponent(lbCañonMultiple, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnCañonMultiple, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbcantidadCañonMultiple)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbBomba, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnBomba, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lbBomba1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lbCañonBarbaRoja, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnBarbaRoja, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lbCantidadBarbaRojas)
+                .addGap(28, 28, 28))
+        );
+
+        add(panelArmas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 290, 1080));
+
+        jLabel3.setText("0       1       2       3       4       5       6       7       8       9     10    11    12    13    14    15     16     17     18     19");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, 580, -1));
+
+        panelBotones.setBackground(new java.awt.Color(165, 173, 167));
+        panelBotones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnMercado.setText("Mercado");
+        btnMercado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMercadoMouseClicked(evt);
+            }
+        });
+        btnMercado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMercadoActionPerformed(evt);
+            }
+        });
+        panelBotones.add(btnMercado, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 80, 140, 50));
+
+        btnFire.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnFire.setText("Disparar");
+        btnFire.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnFireMouseClicked(evt);
+            }
+        });
+        btnFire.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFireActionPerformed(evt);
+            }
+        });
+        panelBotones.add(btnFire, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, 160, 30));
+
+        lbCoordenada.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbCoordenada.setForeground(new java.awt.Color(0, 0, 0));
+        lbCoordenada.setText("Coordenada en X:");
+        panelBotones.add(lbCoordenada, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
+
+        txtCoordenadaX.setBackground(new java.awt.Color(212, 212, 212));
+        txtCoordenadaX.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
+        txtCoordenadaX.setForeground(new java.awt.Color(99, 99, 99));
+        txtCoordenadaX.setBorder(null);
+        panelBotones.add(txtCoordenadaX, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 340, 30));
+
+        lbCoordenada2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbCoordenada2.setForeground(new java.awt.Color(0, 0, 0));
+        lbCoordenada2.setText("Coordenada en Y:");
+        panelBotones.add(lbCoordenada2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
+
+        txtCoordenadaY.setBackground(new java.awt.Color(212, 212, 212));
+        txtCoordenadaY.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
+        txtCoordenadaY.setForeground(new java.awt.Color(99, 99, 99));
+        txtCoordenadaY.setBorder(null);
+        panelBotones.add(txtCoordenadaY, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 340, 30));
+
+        lbCoordenada3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbCoordenada3.setForeground(new java.awt.Color(0, 0, 0));
+        lbCoordenada3.setText("Opciones");
+        panelBotones.add(lbCoordenada3, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 20, 90, -1));
+
+        lbSombrero.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbSombrero.setForeground(new java.awt.Color(0, 0, 0));
+        lbSombrero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/sombrero.png"))); // NOI18N
+        panelBotones.add(lbSombrero, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 20, 140, 140));
+
+        lbBandera.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbBandera.setForeground(new java.awt.Color(0, 0, 0));
+        lbBandera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bandera.png"))); // NOI18N
+        panelBotones.add(lbBandera, new org.netbeans.lib.awtextra.AbsoluteConstraints(1480, 20, 140, 140));
+
+        lbBarco.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbBarco.setForeground(new java.awt.Color(0, 0, 0));
+        lbBarco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/barco.png"))); // NOI18N
+        panelBotones.add(lbBarco, new org.netbeans.lib.awtextra.AbsoluteConstraints(1350, 150, 140, 140));
+
+        lbCoordenada4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbCoordenada4.setForeground(new java.awt.Color(0, 0, 0));
+        lbCoordenada4.setText("Indique las coordenadas");
+        panelBotones.add(lbCoordenada4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
+
+        btnTienda3.setText("Tienda");
+        btnTienda3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnTienda3MouseClicked(evt);
+            }
+        });
+        btnTienda3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTienda3ActionPerformed(evt);
+            }
+        });
+        panelBotones.add(btnTienda3, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 80, 140, 50));
+
+        add(panelBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 780, 1630, 300));
+
+        panelNumero2.setLayout(new java.awt.GridLayout(20, 0));
+        add(panelNumero2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 40, 20, 530));
+
+        PanelNumeros1.setLayout(new java.awt.GridLayout(20, 0));
+        add(PanelNumeros1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, 20, 530));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void btnMercadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMercadoMouseClicked
         // TODO add your handling code here:
         cargarPanel(contentPanel,panelTienda);
-    }//GEN-LAST:event_jButton1MouseClicked
+    }//GEN-LAST:event_btnMercadoMouseClicked
+
+    private void btnCañonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCañonMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCañonMouseClicked
+
+    private void btnBarbaRojaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBarbaRojaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBarbaRojaMouseClicked
+
+    private void btnCañonMultipleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCañonMultipleMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCañonMultipleMouseClicked
+
+    private void btnBombaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBombaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBombaMouseClicked
+
+    private void btnFireMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFireMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnFireMouseClicked
+
+    private void btnMercadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMercadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMercadoActionPerformed
+
+    private void btnFireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFireActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnFireActionPerformed
+
+    private void btnTienda3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTienda3MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTienda3MouseClicked
+
+    private void btnTienda3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTienda3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTienda3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel PanelNumeros1;
+    private javax.swing.JPanel btnBarbaRoja;
+    private javax.swing.JPanel btnBomba;
+    private javax.swing.JPanel btnCañon;
+    private javax.swing.JPanel btnCañonMultiple;
+    private javax.swing.JButton btnFire;
+    private javax.swing.JButton btnMercado;
+    private javax.swing.JButton btnTienda3;
     private javax.swing.JPanel enemyPanel;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel lbBandera;
+    private javax.swing.JLabel lbBarco;
+    private javax.swing.JLabel lbBomba;
+    private javax.swing.JLabel lbBomba1;
+    private javax.swing.JLabel lbCantidadBarbaRojas;
+    private javax.swing.JLabel lbCantidadCañon;
+    private javax.swing.JLabel lbCañon;
+    private javax.swing.JLabel lbCañonBarbaRoja;
+    private javax.swing.JLabel lbCañonMultiple;
+    private javax.swing.JLabel lbCoordenada;
+    private javax.swing.JLabel lbCoordenada2;
+    private javax.swing.JLabel lbCoordenada3;
+    private javax.swing.JLabel lbCoordenada4;
+    private javax.swing.JLabel lbSombrero;
+    private javax.swing.JLabel lbcantidadCañonMultiple;
     private javax.swing.JPanel myPanel;
+    private javax.swing.JPanel panelArmas;
+    private javax.swing.JPanel panelBotones;
+    private javax.swing.JPanel panelNumero2;
+    private javax.swing.JTextField txtCoordenadaX;
+    private javax.swing.JTextField txtCoordenadaY;
     // End of variables declaration//GEN-END:variables
 }
