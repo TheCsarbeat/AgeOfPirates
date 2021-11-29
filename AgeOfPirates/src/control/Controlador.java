@@ -6,7 +6,6 @@
 package control;
 
 import java.util.ArrayList;
-import java.util.List;
 import modelo.Message;
 import modelo.Peticion;
 

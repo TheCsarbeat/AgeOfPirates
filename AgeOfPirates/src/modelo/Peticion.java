@@ -7,7 +7,6 @@ package modelo;
 
 import control.TipoAccion;
 import java.io.Serializable;
-import java.util.ArrayList;
 
 /**
  *
