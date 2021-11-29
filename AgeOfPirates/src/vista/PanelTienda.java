@@ -5,6 +5,7 @@
  */
 package vista;
 
+import control.Utilities;
 import javax.swing.JPanel;
 
 /**
@@ -13,12 +14,14 @@ import javax.swing.JPanel;
  */
 public class PanelTienda extends javax.swing.JPanel {
     public PanelEdificios panelEdificios;
+    public PanelArmas panelArmas;
     /**
      * Creates new form PanelTienda
      */
     public PanelTienda() {
         initComponents();
         panelEdificios = new PanelEdificios();
+        panelArmas = new PanelArmas();
         cargarPanel(panelEdificios);
     }
 
@@ -41,37 +44,56 @@ public class PanelTienda extends javax.swing.JPanel {
         otroPanel = new javax.swing.JPanel();
         btnArmas = new javax.swing.JButton();
         btnEdificios = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        lbDineroActual = new javax.swing.JLabel();
+        lbBack = new javax.swing.JLabel();
 
+        setPreferredSize(new java.awt.Dimension(1900, 1000));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout otroPanelLayout = new javax.swing.GroupLayout(otroPanel);
-        otroPanel.setLayout(otroPanelLayout);
-        otroPanelLayout.setHorizontalGroup(
-            otroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1300, Short.MAX_VALUE)
-        );
-        otroPanelLayout.setVerticalGroup(
-            otroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 580, Short.MAX_VALUE)
-        );
+        otroPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        otroPanel.setLayout(new java.awt.CardLayout());
+        add(otroPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, 1300, 580));
 
-        add(otroPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 1300, 580));
-
+        btnArmas.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         btnArmas.setText("Armas");
+        btnArmas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnArmasMouseClicked(evt);
+            }
+        });
         btnArmas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnArmasActionPerformed(evt);
             }
         });
-        add(btnArmas, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 40, 220, 50));
+        add(btnArmas, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 40, 220, 50));
 
+        btnEdificios.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         btnEdificios.setText("Edificios");
         btnEdificios.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnEdificiosMouseClicked(evt);
             }
         });
-        add(btnEdificios, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 40, 220, 50));
+        add(btnEdificios, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 40, 220, 50));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setText("Dinero: ");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 100, 40));
+
+        lbDineroActual.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lbDineroActual.setText("4000");
+        add(lbDineroActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 140, 40));
+
+        lbBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back.png"))); // NOI18N
+        lbBack.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lbBack.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbBackMouseClicked(evt);
+            }
+        });
+        add(lbBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 80, 70));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnArmasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArmasActionPerformed
@@ -79,13 +101,24 @@ public class PanelTienda extends javax.swing.JPanel {
     }//GEN-LAST:event_btnArmasActionPerformed
 
     private void btnEdificiosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEdificiosMouseClicked
-        
+        cargarPanel(panelEdificios);
     }//GEN-LAST:event_btnEdificiosMouseClicked
+
+    private void btnArmasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnArmasMouseClicked
+        cargarPanel(panelArmas);
+    }//GEN-LAST:event_btnArmasMouseClicked
+
+    private void lbBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbBackMouseClicked
+        Utilities.cargarPanel(MainWindow.contentPanel, MainWindow.panelJuego);
+    }//GEN-LAST:event_lbBackMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnArmas;
     private javax.swing.JButton btnEdificios;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lbBack;
+    private javax.swing.JLabel lbDineroActual;
     private javax.swing.JPanel otroPanel;
     // End of variables declaration//GEN-END:variables
 }

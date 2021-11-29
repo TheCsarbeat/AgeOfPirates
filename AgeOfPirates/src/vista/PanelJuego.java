@@ -15,6 +15,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import modelo.Message;
 import modelo.Peticion;
+import javax.swing.JLabel;
+import control.Utilities;
 
 /**
  *
@@ -23,20 +25,18 @@ import modelo.Peticion;
 public class PanelJuego extends javax.swing.JPanel {
     public PanelMar panelMar1, panelMar2;
     public ControlTienda controlTienda;
-    public JPanel contentPanel;
     public PanelTienda panelTienda;
     /**
      * Creates new form PanelJuego
      */
-    public PanelJuego(JPanel contentPanel) {
+    public PanelJuego() {
         initComponents();
         controlTienda = new ControlTienda();
         panelMar1 = new PanelMar();
         panelMar2 = new PanelMar();
         panelTienda = new PanelTienda();
-        this.contentPanel = contentPanel;
-        cargarPanel(myPanel, panelMar1);
-        cargarPanel(enemyPanel, panelMar2);
+        Utilities.cargarPanel(myPanel, panelMar1);
+        Utilities.cargarPanel(enemyPanel, panelMar2);
         
         for(int i=0; i<20; i++ ){
             JLabel lb = new JLabel();
@@ -51,14 +51,6 @@ public class PanelJuego extends javax.swing.JPanel {
         imgBomba.setIcon(Utilities.loadResizeIcon("src\\images\\bomba.png", 110));
         imgCannonM.setIcon(Utilities.loadResizeIcon("src\\images\\canonMultiple.png", 110));
         imgCannonB.setIcon(Utilities.loadResizeIcon("src\\images\\cañonBarbaRoja.png", 110));
-    }
-    
-    
-    public void cargarPanel(JPanel unPanel, JPanel panel) {
-        unPanel.removeAll();
-        unPanel.add(panel);
-        unPanel.repaint();
-        unPanel.revalidate();
     }
     
     
@@ -126,6 +118,7 @@ public class PanelJuego extends javax.swing.JPanel {
         lbSombrero = new javax.swing.JLabel();
         lbBandera = new javax.swing.JLabel();
 
+        setPreferredSize(new java.awt.Dimension(1900, 1000));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         myPanel.setBackground(new java.awt.Color(255, 0, 0));
@@ -569,7 +562,7 @@ public class PanelJuego extends javax.swing.JPanel {
 
     private void btnMercadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMercadoMouseClicked
         // TODO add your handling code here:
-        cargarPanel(contentPanel,panelTienda);
+        Utilities.cargarPanel(MainWindow.contentPanel,panelTienda);
     }//GEN-LAST:event_btnMercadoMouseClicked
 
     private void btnCañonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCañonMouseClicked
@@ -656,6 +649,9 @@ public class PanelJuego extends javax.swing.JPanel {
     private void btnCañonMultiple2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCañonMultiple2MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCañonMultiple2MouseClicked
+    private void txtCoordenadaXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCoordenadaXActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCoordenadaXActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
