@@ -6,10 +6,8 @@
 package vista;
 
 import control.ControlTienda;
-import java.awt.Image;
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
+import control.Utilities;
 
 /**
  *
@@ -18,20 +16,18 @@ import javax.swing.JPanel;
 public class PanelJuego extends javax.swing.JPanel {
     public PanelMar panelMar1, panelMar2;
     public ControlTienda controlTienda;
-    public JPanel contentPanel;
     public PanelTienda panelTienda;
     /**
      * Creates new form PanelJuego
      */
-    public PanelJuego(JPanel contentPanel) {
+    public PanelJuego() {
         initComponents();
         controlTienda = new ControlTienda();
         panelMar1 = new PanelMar();
         panelMar2 = new PanelMar();
         panelTienda = new PanelTienda();
-        this.contentPanel = contentPanel;
-        cargarPanel(myPanel, panelMar1);
-        cargarPanel(enemyPanel, panelMar2);
+        Utilities.cargarPanel(myPanel, panelMar1);
+        Utilities.cargarPanel(enemyPanel, panelMar2);
         
         for(int i=0; i<20; i++ ){
             JLabel lb = new JLabel();
@@ -41,14 +37,6 @@ public class PanelJuego extends javax.swing.JPanel {
             panelNumero2.add(lb);
             PanelNumeros1.add(lb2);
         }
-    }
-    
-    
-    public void cargarPanel(JPanel unPanel, JPanel panel) {
-        unPanel.removeAll();
-        unPanel.add(panel);
-        unPanel.repaint();
-        unPanel.revalidate();
     }
     
     
@@ -101,6 +89,7 @@ public class PanelJuego extends javax.swing.JPanel {
         panelNumero2 = new javax.swing.JPanel();
         PanelNumeros1 = new javax.swing.JPanel();
 
+        setPreferredSize(new java.awt.Dimension(1900, 1000));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         myPanel.setBackground(new java.awt.Color(255, 0, 0));
@@ -155,7 +144,7 @@ public class PanelJuego extends javax.swing.JPanel {
         btnBarbaRoja.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cañonBarbaRoja.png"))); // NOI18N
-        btnBarbaRoja.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 140, 120));
+        btnBarbaRoja.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 140, 120));
 
         lbCantidadCañon.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lbCantidadCañon.setForeground(new java.awt.Color(0, 0, 0));
@@ -180,7 +169,7 @@ public class PanelJuego extends javax.swing.JPanel {
         btnCañonMultiple.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/canonMultiple.png"))); // NOI18N
-        btnCañonMultiple.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 140, 140));
+        btnCañonMultiple.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 140, 130));
 
         lbBomba.setBackground(new java.awt.Color(0, 0, 0));
         lbBomba.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
@@ -201,7 +190,7 @@ public class PanelJuego extends javax.swing.JPanel {
         btnBomba.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bomba.png"))); // NOI18N
-        btnBomba.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 140, 140));
+        btnBomba.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 140, 130));
 
         lbBomba1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lbBomba1.setForeground(new java.awt.Color(0, 0, 0));
@@ -324,6 +313,11 @@ public class PanelJuego extends javax.swing.JPanel {
         txtCoordenadaX.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
         txtCoordenadaX.setForeground(new java.awt.Color(99, 99, 99));
         txtCoordenadaX.setBorder(null);
+        txtCoordenadaX.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCoordenadaXActionPerformed(evt);
+            }
+        });
         panelBotones.add(txtCoordenadaX, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 340, 30));
 
         lbCoordenada2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -386,7 +380,7 @@ public class PanelJuego extends javax.swing.JPanel {
 
     private void btnMercadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMercadoMouseClicked
         // TODO add your handling code here:
-        cargarPanel(contentPanel,panelTienda);
+        Utilities.cargarPanel(MainWindow.contentPanel,panelTienda);
     }//GEN-LAST:event_btnMercadoMouseClicked
 
     private void btnCañonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCañonMouseClicked
@@ -424,6 +418,10 @@ public class PanelJuego extends javax.swing.JPanel {
     private void btnTienda3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTienda3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnTienda3ActionPerformed
+
+    private void txtCoordenadaXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCoordenadaXActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCoordenadaXActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

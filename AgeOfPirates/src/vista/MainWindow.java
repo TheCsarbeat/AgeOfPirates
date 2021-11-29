@@ -5,32 +5,23 @@
  */
 package vista;
 
-import control.ControlTienda;
-import javax.swing.JPanel;
+import control.Utilities;
 
 /**
  *
  * @author ytces
  */
 public class MainWindow extends javax.swing.JFrame {
-
-    private PanelMenu panelMenu;
-    private PanelJuego panelJuego;
-    private PanelTienda panelTienda;
+    public static PanelMenu panelMenu;
+    public static PanelJuego panelJuego;
+    public static PanelTienda panelTienda;
     
     public MainWindow() {
         initComponents();
-        panelJuego = new PanelJuego(contentPanel);
-        panelMenu = new PanelMenu(contentPanel, panelJuego);
+        panelJuego = new PanelJuego();
+        panelMenu = new PanelMenu();
         panelTienda = new PanelTienda();
-        cargarPanel(panelMenu);
-    }
-    
-    public void cargarPanel(JPanel panel) {
-        contentPanel.removeAll();
-        contentPanel.add(panel);
-        contentPanel.repaint();
-        contentPanel.revalidate();
+        Utilities.cargarPanel(contentPanel, panelMenu);
     }
 
     /**
@@ -46,7 +37,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        contentPanel.setPreferredSize(new java.awt.Dimension(1920, 1080));
+        contentPanel.setPreferredSize(new java.awt.Dimension(1900, 1000));
         contentPanel.setLayout(new java.awt.CardLayout());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -102,6 +93,6 @@ public class MainWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel contentPanel;
+    public static javax.swing.JPanel contentPanel;
     // End of variables declaration//GEN-END:variables
 }
