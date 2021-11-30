@@ -3,26 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/TEC/II%20SEMESTRE/Estructura%20de%20Datos/Tareas/Progras/Progra%203/AgeOfPirates/AgeOfPirates/src/modelo/Peticion.java</file>
-            <file>file:/D:/TEC/II%20SEMESTRE/Estructura%20de%20Datos/Tareas/Progras/Progra%203/AgeOfPirates/AgeOfPirates/src/vista/PanelMenu.java</file>
-            <file>file:/D:/TEC/II%20SEMESTRE/Estructura%20de%20Datos/Tareas/Progras/Progra%203/AgeOfPirates/AgeOfPirates/src/modelo/Kraken.java</file>
-            <file>file:/D:/TEC/II%20SEMESTRE/Estructura%20de%20Datos/Tareas/Progras/Progra%203/AgeOfPirates/AgeOfPirates/src/modelo/Escudo.java</file>
-            <file>file:/D:/TEC/II%20SEMESTRE/Estructura%20de%20Datos/Tareas/Progras/Progra%203/AgeOfPirates/AgeOfPirates/src/vista/PanelMar.java</file>
-            <file>file:/D:/TEC/II%20SEMESTRE/Estructura%20de%20Datos/Tareas/Progras/Progra%203/AgeOfPirates/AgeOfPirates/src/control/IConstantes.java</file>
-            <file>file:/D:/TEC/II%20SEMESTRE/Estructura%20de%20Datos/Tareas/Progras/Progra%203/AgeOfPirates/AgeOfPirates/src/control/Server.java</file>
-            <file>file:/D:/TEC/II%20SEMESTRE/Estructura%20de%20Datos/Tareas/Progras/Progra%203/AgeOfPirates/AgeOfPirates/src/vista/Tile.java</file>
-            <file>file:/D:/TEC/II%20SEMESTRE/Estructura%20de%20Datos/Tareas/Progras/Progra%203/AgeOfPirates/AgeOfPirates/src/vista/PanelStart.java</file>
-            <file>file:/D:/TEC/II%20SEMESTRE/Estructura%20de%20Datos/Tareas/Progras/Progra%203/AgeOfPirates/AgeOfPirates/src/vista/PanelTienda.java</file>
-            <file>file:/D:/TEC/II%20SEMESTRE/Estructura%20de%20Datos/Tareas/Progras/Progra%203/AgeOfPirates/AgeOfPirates/src/modelo/Estructura.java</file>
-            <file>file:/D:/TEC/II%20SEMESTRE/Estructura%20de%20Datos/Tareas/Progras/Progra%203/AgeOfPirates/AgeOfPirates/src/modelo/Player.java</file>
-            <file>file:/D:/TEC/II%20SEMESTRE/Estructura%20de%20Datos/Tareas/Progras/Progra%203/AgeOfPirates/AgeOfPirates/src/vista/Client.java</file>
-            <file>file:/D:/TEC/II%20SEMESTRE/Estructura%20de%20Datos/Tareas/Progras/Progra%203/AgeOfPirates/AgeOfPirates/src/control/Controlador.java</file>
-            <file>file:/D:/TEC/II%20SEMESTRE/Estructura%20de%20Datos/Tareas/Progras/Progra%203/AgeOfPirates/AgeOfPirates/src/modelo/Templo.java</file>
             <file>file:/D:/TEC/II%20SEMESTRE/Estructura%20de%20Datos/Tareas/Progras/Progra%203/AgeOfPirates/AgeOfPirates/src/vista/PanelJuego.java</file>
             <file>file:/D:/TEC/II%20SEMESTRE/Estructura%20de%20Datos/Tareas/Progras/Progra%203/AgeOfPirates/AgeOfPirates/src/vista/MainWindow.java</file>
-            <file>file:/D:/TEC/II%20SEMESTRE/Estructura%20de%20Datos/Tareas/Progras/Progra%203/AgeOfPirates/AgeOfPirates/src/modelo/Mercado.java</file>
-            <file>file:/D:/TEC/II%20SEMESTRE/Estructura%20de%20Datos/Tareas/Progras/Progra%203/AgeOfPirates/AgeOfPirates/src/modelo/Grafo.java</file>
-            <file>file:/D:/TEC/II%20SEMESTRE/Estructura%20de%20Datos/Tareas/Progras/Progra%203/AgeOfPirates/AgeOfPirates/src/modelo/Comodin.java</file>
+            <file>file:/D:/TEC/II%20SEMESTRE/Estructura%20de%20Datos/Tareas/Progras/Progra%203/AgeOfPirates/AgeOfPirates/src/vista/PanelTiendaMercado.java</file>
         </group>
     </open-files>
 </project-private>

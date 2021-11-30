@@ -549,10 +549,7 @@ public class PanelJuego extends javax.swing.JPanel {
         add(panelCoordinates, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 40, 30, 640));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnMercadoMouseClicked(java.awt.event.MouseEvent evt) {                                        
-        // TODO add your handling code here:
-        Utilities.cargarPanel(MainWindow.contentPanel,MainWindow.panelTiendaMercado);
-    }                                       
+                                        
 
     private void btnCannonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCannonMouseClicked
         // TODO add your handling code here:
