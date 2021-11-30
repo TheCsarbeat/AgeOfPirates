@@ -18,6 +18,7 @@ import modelo.Player;
  * @author ytces
  */
 public class MainWindow extends javax.swing.JFrame {
+    
     public static PanelMenu panelMenu;
     public static PanelJuego panelJuego;
     public static PanelTienda panelTienda;
@@ -25,35 +26,23 @@ public class MainWindow extends javax.swing.JFrame {
     public static PanelVender panelVender;
     public static PanelComprar panelComprar;
     public static PanelMercado panelMercado;
-    
-    public static int id; 
+    public static PanelStart panelStar;
     
     public MainWindow() {
         initComponents();
         panelJuego = new PanelJuego();
         panelMenu = new PanelMenu();
         panelTienda = new PanelTienda();
-        player = new Player();
         panelVender = new PanelVender();
         panelComprar = new PanelComprar();
         panelMercado = new PanelMercado();
         
+        panelStar = new PanelStart();
         Utilities.cargarPanel(contentPanel, panelMenu);
-        obtenerId();
+        
     }
     
-    public void obtenerId(){
-        Peticion peticionIngresar = new Peticion(TipoAccion.CONECTARSE, "");
-        
-        Client conexion = new Client(peticionIngresar);
-
-        Object respuesta = conexion.getRespuestaServer();
-        if(respuesta != null){
-            System.out.println((String)respuesta);
-        }else{
-            JOptionPane.showMessageDialog(null, "Los datos no coinciden!", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

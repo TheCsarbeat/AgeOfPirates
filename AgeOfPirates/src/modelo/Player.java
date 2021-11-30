@@ -2,19 +2,25 @@
 
 
 package modelo;
+
+import java.util.ArrayList;
+
 /**
  *
  * @author ytces
  */
 public class Player {
+    private int id;
     private String name;
     private int turno;
     private int money;
     private int steel;
     private boolean[][] positions = new boolean[20][20];
     public Grafo grafo;
+    private ArrayList<Comodin> comodines = new ArrayList();
     
-    public Player(){
+    public Player(int id){
+        this.id = id;
         name = "";
         turno = 0;
         money = 4000;
@@ -39,6 +45,30 @@ public class Player {
                 positions[row][col] = false;
             }
         }
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public boolean[][] getPositions() {
+        return positions;
+    }
+
+    public void setPositions(boolean[][] positions) {
+        this.positions = positions;
+    }
+
+    public Grafo getGrafo() {
+        return grafo;
+    }
+
+    public void setGrafo(Grafo grafo) {
+        this.grafo = grafo;
     }
 
     public String getName() {

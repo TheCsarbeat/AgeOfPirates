@@ -6,6 +6,7 @@
 package vista;
 
 import control.Utilities;
+import modelo.Templo;
 
 /**
  *
@@ -29,10 +30,11 @@ public class PanelMenu extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lbPlay = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(102, 102, 102));
+        setBackground(new java.awt.Color(120, 120, 120));
         setPreferredSize(new java.awt.Dimension(1900, 1000));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -50,24 +52,40 @@ public class PanelMenu extends javax.swing.JPanel {
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 330, 250, 100));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 72)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Play");
-        jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lbPlay.setFont(new java.awt.Font("Segoe UI", 1, 72)); // NOI18N
+        lbPlay.setForeground(new java.awt.Color(255, 255, 255));
+        lbPlay.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbPlay.setText("Play");
+        lbPlay.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lbPlay.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbPlayMouseClicked(evt);
+            }
+        });
+        add(lbPlay, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 200, 250, -1));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/barcoInicio.png"))); // NOI18N
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 590, 330, 290));
+
+        jLabel3.setText("jLabel3");
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel3MouseClicked(evt);
             }
         });
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 200, 250, -1));
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/barcoInicio.png"))); // NOI18N
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 440, 520, 520));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 550, 340, 230));
     }// </editor-fold>//GEN-END:initComponents
 
+    private void lbPlayMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbPlayMouseClicked
+        Utilities.cargarPanel(MainWindow.contentPanel,MainWindow.panelStar);
+        MainWindow.panelStar.contectarse();
+        
+    }//GEN-LAST:event_lbPlayMouseClicked
+
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        Utilities.cargarPanel(MainWindow.contentPanel,MainWindow.panelJuego);
+        // TODO add your handling code here:
+        Templo templo = new Templo(0, false, false);
+        templo.generarComodin();
     }//GEN-LAST:event_jLabel3MouseClicked
 
 
@@ -76,5 +94,6 @@ public class PanelMenu extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel lbPlay;
     // End of variables declaration//GEN-END:variables
 }
