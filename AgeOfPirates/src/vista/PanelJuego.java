@@ -29,6 +29,7 @@ public class PanelJuego extends javax.swing.JPanel {
     public ControlTienda controlTienda;
     public PanelTienda panelTienda;
     public PanelMercado panelMercado;
+    public PanelTiendaMercado panelTiendaMercado;
     
     public String name;
     /**
@@ -41,6 +42,7 @@ public class PanelJuego extends javax.swing.JPanel {
         panelMar2 = new PanelMar(1);
         panelTienda = new PanelTienda();
         panelMercado = new PanelMercado();
+        panelTiendaMercado = new PanelTiendaMercado();
         Utilities.cargarPanel(myPanel, panelMar1);
         Utilities.cargarPanel(enemyPanel, panelMar2);
         
@@ -97,7 +99,6 @@ public class PanelJuego extends javax.swing.JPanel {
         panelBotones = new javax.swing.JPanel();
         btnMercado = new javax.swing.JButton();
         lbCoordenada3 = new javax.swing.JLabel();
-        btnTienda3 = new javax.swing.JButton();
         chatPanel = new javax.swing.JPanel();
         activatePanel = new javax.swing.JPanel();
         btnActivateChat = new javax.swing.JLabel();
@@ -395,26 +396,23 @@ public class PanelJuego extends javax.swing.JPanel {
         panelBotones.setBackground(new java.awt.Color(165, 173, 167));
         panelBotones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnMercado.setText("Mercado");
+        btnMercado.setText("Opciones de Mercado");
         btnMercado.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnMercadoMouseClicked(evt);
             }
         });
-        panelBotones.add(btnMercado, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, 140, 50));
+        btnMercado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMercadoActionPerformed(evt);
+            }
+        });
+        panelBotones.add(btnMercado, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, 150, 50));
 
         lbCoordenada3.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
         lbCoordenada3.setForeground(new java.awt.Color(0, 0, 0));
         lbCoordenada3.setText("Bitácora");
         panelBotones.add(lbCoordenada3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, -6, 90, 40));
-
-        btnTienda3.setText("Tienda");
-        btnTienda3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnTienda3MouseClicked(evt);
-            }
-        });
-        panelBotones.add(btnTienda3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 110, 140, 50));
 
         chatPanel.setLayout(new java.awt.CardLayout());
 
@@ -547,7 +545,7 @@ public class PanelJuego extends javax.swing.JPanel {
 
     private void btnMercadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMercadoMouseClicked
         // TODO add your handling code here:
-        Utilities.cargarPanel(MainWindow.contentPanel,panelMercado);
+        Utilities.cargarPanel(MainWindow.contentPanel,panelTiendaMercado);
     }//GEN-LAST:event_btnMercadoMouseClicked
 
     private void btnCannonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCannonMouseClicked
@@ -557,10 +555,6 @@ public class PanelJuego extends javax.swing.JPanel {
     private void btnBombaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBombaMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBombaMouseClicked
-
-    private void btnTienda3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTienda3MouseClicked
-        Utilities.cargarPanel(MainWindow.contentPanel,panelTienda);
-    }//GEN-LAST:event_btnTienda3MouseClicked
 
     private void btnTienda3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTienda3ActionPerformed
         // TODO add your handling code here:
@@ -641,6 +635,10 @@ public class PanelJuego extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnFireMouseClicked
 
+    private void btnMercadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMercadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMercadoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel activatePanel;
@@ -652,7 +650,6 @@ public class PanelJuego extends javax.swing.JPanel {
     private javax.swing.JButton btnFire;
     private javax.swing.JButton btnMercado;
     private javax.swing.JLabel btnSendMsg;
-    private javax.swing.JButton btnTienda3;
     private javax.swing.JPanel chatPanel;
     private javax.swing.JPanel enemyPanel;
     private javax.swing.JLabel imgBomba;

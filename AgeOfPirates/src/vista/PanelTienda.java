@@ -112,7 +112,7 @@ public class PanelTienda extends javax.swing.JPanel {
     }//GEN-LAST:event_btnArmasMouseClicked
 
     private void lbBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbBackMouseClicked
-        Utilities.cargarPanel(MainWindow.contentPanel, MainWindow.panelJuego);
+        Utilities.cargarPanel(MainWindow.contentPanel, MainWindow.panelTiendaMercado);
     }//GEN-LAST:event_lbBackMouseClicked
 
 

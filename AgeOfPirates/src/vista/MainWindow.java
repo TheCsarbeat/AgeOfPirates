@@ -27,6 +27,7 @@ public class MainWindow extends javax.swing.JFrame {
     public static PanelComprar panelComprar;
     public static PanelMercado panelMercado;
     public static PanelStart panelStar;
+    public static PanelTiendaMercado panelTiendaMercado;
     
     public MainWindow() {
         initComponents();
@@ -36,12 +37,12 @@ public class MainWindow extends javax.swing.JFrame {
         panelVender = new PanelVender();
         panelComprar = new PanelComprar();
         panelMercado = new PanelMercado();
+        panelTiendaMercado = new PanelTiendaMercado();
         
         panelStar = new PanelStart();
         Utilities.cargarPanel(contentPanel, panelMenu);
         
     }
-    
     
 
     /**
