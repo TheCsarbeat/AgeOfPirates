@@ -100,11 +100,11 @@ public class PanelJuego extends javax.swing.JPanel {
         txtChat = new javax.swing.JTextArea();
         txtMsg = new javax.swing.JTextField();
         btnSendMsg = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        txtNombre = new javax.swing.JTextField();
         lbBarco = new javax.swing.JLabel();
-        lbSombrero = new javax.swing.JLabel();
-        lbBandera = new javax.swing.JLabel();
+        panelBitacora = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtBitacora = new javax.swing.JTextArea();
+        lbCoordenada5 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         panelCoordinates = new javax.swing.JPanel();
 
@@ -388,12 +388,12 @@ public class PanelJuego extends javax.swing.JPanel {
                 btnMercadoMouseClicked(evt);
             }
         });
-        panelBotones.add(btnMercado, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 80, 140, 50));
+        panelBotones.add(btnMercado, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, 140, 50));
 
         lbCoordenada3.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
         lbCoordenada3.setForeground(new java.awt.Color(0, 0, 0));
-        lbCoordenada3.setText("Opciones");
-        panelBotones.add(lbCoordenada3, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 20, 90, -1));
+        lbCoordenada3.setText("Bitácora");
+        panelBotones.add(lbCoordenada3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, -6, 90, 40));
 
         btnTienda3.setText("Tienda");
         btnTienda3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -401,7 +401,7 @@ public class PanelJuego extends javax.swing.JPanel {
                 btnTienda3MouseClicked(evt);
             }
         });
-        panelBotones.add(btnTienda3, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 80, 140, 50));
+        panelBotones.add(btnTienda3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 110, 140, 50));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -491,34 +491,36 @@ public class PanelJuego extends javax.swing.JPanel {
 
         chatPanel.add(optionPanel, "card2");
 
-        panelBotones.add(chatPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 20, 430, 250));
-
-        jLabel10.setBackground(new java.awt.Color(86, 73, 64));
-        jLabel10.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
-        jLabel10.setText("SEND");
-        jLabel10.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLabel10.setOpaque(true);
-        panelBotones.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 180, 130, 50));
-
-        txtNombre.setText("jTextField1");
-        panelBotones.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 190, 160, -1));
+        panelBotones.add(chatPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 30, 430, 250));
 
         lbBarco.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lbBarco.setForeground(new java.awt.Color(0, 0, 0));
         lbBarco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/barco.png"))); // NOI18N
-        panelBotones.add(lbBarco, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, 140, 140));
+        panelBotones.add(lbBarco, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 170, 130, 120));
+
+        txtBitacora.setColumns(20);
+        txtBitacora.setRows(5);
+        jScrollPane2.setViewportView(txtBitacora);
+
+        javax.swing.GroupLayout panelBitacoraLayout = new javax.swing.GroupLayout(panelBitacora);
+        panelBitacora.setLayout(panelBitacoraLayout);
+        panelBitacoraLayout.setHorizontalGroup(
+            panelBitacoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
+        );
+        panelBitacoraLayout.setVerticalGroup(
+            panelBitacoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+        );
+
+        panelBotones.add(panelBitacora, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 30, 360, 250));
+
+        lbCoordenada5.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
+        lbCoordenada5.setForeground(new java.awt.Color(0, 0, 0));
+        lbCoordenada5.setText("Opciones");
+        panelBotones.add(lbCoordenada5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, 90, -1));
 
         add(panelBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 690, 1630, 300));
-
-        lbSombrero.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lbSombrero.setForeground(new java.awt.Color(0, 0, 0));
-        lbSombrero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/sombrero.png"))); // NOI18N
-        add(lbSombrero, new org.netbeans.lib.awtextra.AbsoluteConstraints(1760, 510, 140, 140));
-
-        lbBandera.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lbBandera.setForeground(new java.awt.Color(0, 0, 0));
-        lbBandera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bandera.png"))); // NOI18N
-        add(lbBandera, new org.netbeans.lib.awtextra.AbsoluteConstraints(1680, 20, 140, 140));
 
         jLabel5.setText("   0         1         2         3        4         5        6         7        8        9       10      11      12      13      14      15      16      17      18      19");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 20, 650, -1));
@@ -530,7 +532,7 @@ public class PanelJuego extends javax.swing.JPanel {
 
     private void btnMercadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMercadoMouseClicked
         // TODO add your handling code here:
-        Utilities.cargarPanel(MainWindow.contentPanel,panelTienda);
+        Utilities.cargarPanel(MainWindow.contentPanel,panelMercado);
     }//GEN-LAST:event_btnMercadoMouseClicked
 
     private void btnCannonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCannonMouseClicked
@@ -546,7 +548,7 @@ public class PanelJuego extends javax.swing.JPanel {
     }//GEN-LAST:event_btnFireMouseClicked
 
     private void btnTienda3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTienda3MouseClicked
-        // TODO add your handling code here:
+        Utilities.cargarPanel(MainWindow.contentPanel,panelTienda);
     }//GEN-LAST:event_btnTienda3MouseClicked
 
     private void btnTienda3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTienda3ActionPerformed
@@ -624,7 +626,6 @@ public class PanelJuego extends javax.swing.JPanel {
     private javax.swing.JLabel imgCannon;
     private javax.swing.JLabel imgCannonB;
     private javax.swing.JLabel imgCannonM;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -635,7 +636,7 @@ public class PanelJuego extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lbBandera;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lbBarco;
     private javax.swing.JLabel lbCantidadCannon;
     private javax.swing.JLabel lbCañon;
@@ -646,19 +647,20 @@ public class PanelJuego extends javax.swing.JPanel {
     private javax.swing.JLabel lbCoordenada2;
     private javax.swing.JLabel lbCoordenada3;
     private javax.swing.JLabel lbCoordenada4;
-    private javax.swing.JLabel lbSombrero;
+    private javax.swing.JLabel lbCoordenada5;
     private javax.swing.JLabel lbcantidadBomba;
     private javax.swing.JLabel lbcantidadCannonBarba;
     private javax.swing.JLabel lbcantidadCannonMultiple;
     private javax.swing.JPanel myPanel;
     private javax.swing.JPanel optionPanel;
     private javax.swing.JPanel panelArmas;
+    private javax.swing.JPanel panelBitacora;
     private javax.swing.JPanel panelBotones;
     private javax.swing.JPanel panelCoordinates;
+    private javax.swing.JTextArea txtBitacora;
     private javax.swing.JTextArea txtChat;
     private javax.swing.JTextField txtCoordenadaX;
     private javax.swing.JTextField txtCoordenadaY;
     private javax.swing.JTextField txtMsg;
-    private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }
