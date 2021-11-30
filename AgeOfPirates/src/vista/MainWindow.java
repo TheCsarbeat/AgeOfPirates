@@ -32,6 +32,8 @@ public class MainWindow extends javax.swing.JFrame {
     public static PanelMercado panelMercado;
     public static PanelStart panelStar;
     
+    public static PanelTiendaMercado panelTiendaMercado;
+    
     public static Player player;
     
     public MainWindow() {
