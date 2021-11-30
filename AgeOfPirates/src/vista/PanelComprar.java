@@ -5,13 +5,17 @@
  */
 package vista;
 
+import control.TipoAccion;
 import control.Utilities;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import modelo.Exchange;
+import modelo.Peticion;
 
 /**
  *
@@ -28,8 +32,7 @@ public class PanelComprar extends javax.swing.JPanel {
     public PanelComprar() {
         initComponents();
         
-        panelPublicaciones = lbPublicaciones;
-        
+        panelPublicaciones = lbPublicaciones;        
         lbPublicaciones.setLayout(new BorderLayout());
         
         mainList = new JPanel(new GridBagLayout());
@@ -47,6 +50,55 @@ public class PanelComprar extends javax.swing.JPanel {
         lbPublicaciones.validate();
         lbPublicaciones.repaint();
         
+    }
+    
+    public void loadDatos(){
+        Peticion peticion = new Peticion(TipoAccion.LOAD_EXCHANGES, "");        
+        Client conexion = new Client(peticion);
+        Object respuesta = conexion.getRespuestaServer();
+        if(respuesta != null){
+            ArrayList<Exchange> walterMercado = (ArrayList)respuesta;
+            for (Exchange i: walterMercado) {                
+                GridBagConstraints gbc = new GridBagConstraints();
+                gbc.gridheight = 1;
+                gbc.weightx = GridBagConstraints.REMAINDER;
+                gbc.fill = GridBagConstraints.HORIZONTAL;
+                mainList.add(new PanelPublicaciones(i.getArma().getName(),i.getPrecio(),getStringImg(i.getArma().getName()), i.getNamePlayer()), gbc, 0);                
+                
+            }
+            MainWindow.panelComprar.panelPublicaciones.validate();
+            MainWindow.panelComprar.panelPublicaciones.repaint();
+        }
+        
+        lbCantidadDinero1.setText(String.valueOf(MainWindow.player.getMoney()));
+        
+    }
+    public void cleanExchange(){
+        mainList.removeAll();
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridheight = GridBagConstraints.REMAINDER;
+        gbc.weightx = 1;
+        gbc.weighty = 1;
+        JPanel p = new JPanel();
+        p.setBackground(new Color(255,255,255));
+        mainList.setBackground(new Color(255,255,255));
+        mainList.add(p, gbc);
+    }
+    
+    private String getStringImg(String nombre){
+        String imagen = "";
+        if (nombre.equals("Cannon")){
+            imagen = "src\\images\\canon.png"; 
+        }else if (nombre.equals("Cannon Multiple")){
+            imagen = "src\\images\\canonMultiple.png";
+        }else if(nombre.equals("Bomba")){
+            imagen = "src\\images\\bomba.png";
+        }else if(nombre.equals("Cannon Barba Roja")){
+            imagen = "src\\images\\cañonBarbaRoja.png";
+        }else if(nombre.equals("Acero")){
+            imagen = "src\\images\\acero.png";
+        }
+        return imagen;
     }
 
     /**
@@ -88,20 +140,21 @@ public class PanelComprar extends javax.swing.JPanel {
         );
         lbPublicacionesLayout.setVerticalGroup(
             lbPublicacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 310, Short.MAX_VALUE)
         );
 
-        add(lbPublicaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 1840, 300));
+        add(lbPublicaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 1840, 310));
 
         lbCalavera.setFont(new java.awt.Font("Roboto Light", 0, 24)); // NOI18N
         lbCalavera.setForeground(new java.awt.Color(0, 0, 0));
         lbCalavera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/calavera.png"))); // NOI18N
         add(lbCalavera, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 580, 270, 260));
 
-        lbComprarMercado.setFont(new java.awt.Font("Roboto Light", 0, 24)); // NOI18N
+        lbComprarMercado.setFont(new java.awt.Font("Roboto Light", 1, 36)); // NOI18N
         lbComprarMercado.setForeground(new java.awt.Color(0, 0, 0));
+        lbComprarMercado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbComprarMercado.setText("Comprar en el mercado");
-        add(lbComprarMercado, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 30, 260, -1));
+        add(lbComprarMercado, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 40, 490, -1));
 
         lbDinero.setFont(new java.awt.Font("Roboto Light", 0, 24)); // NOI18N
         lbDinero.setForeground(new java.awt.Color(0, 0, 0));
@@ -111,7 +164,7 @@ public class PanelComprar extends javax.swing.JPanel {
         lbCantidadDinero1.setFont(new java.awt.Font("Roboto Light", 0, 24)); // NOI18N
         lbCantidadDinero1.setForeground(new java.awt.Color(0, 0, 0));
         lbCantidadDinero1.setText("0000000000");
-        add(lbCantidadDinero1, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 160, 140, -1));
+        add(lbCantidadDinero1, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 160, 180, -1));
 
         lbSombrero.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lbSombrero.setForeground(new java.awt.Color(0, 0, 0));

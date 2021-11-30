@@ -7,9 +7,16 @@ package vista;
 
 import control.TipoAccion;
 import control.Utilities;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import modelo.Arma;
+import modelo.Conector;
+import modelo.Fuente;
+import modelo.Mercado;
 import modelo.Peticion;
 import modelo.Player;
+import modelo.Vertice;
+import static vista.MainWindow.player;
 
 /**
  *
@@ -34,23 +41,40 @@ public class PanelStart extends javax.swing.JPanel {
         Peticion peticionIngresar = new Peticion(TipoAccion.CONECTARSE, "");
         
         Client conexion = new Client(peticionIngresar);
-        //conexion.setNuevaPeticion(peticionIngresar);
-        //conexion.iniciarPeticion();
-        
-
         Object respuesta = conexion.getRespuestaServer();
         if(respuesta != null){
             Utilities.cargarPanel(cardPanel, dataPanel);
-            id = (int)respuesta;
+            MainWindow.player = (Player)respuesta;
+            id = MainWindow.player.getId();
             if(id ==-1){
                 Utilities.cargarPanel(cardPanel, infoPanel);
                 lbInfo.setText("There are too many players!");
             }else{
-                MainWindow.player = new Player(id);
+                MainWindow.player.setTurno(id);
+                MainWindow.player.setMoney(4000);
+                System.out.println(MainWindow.player.toString());
                 if(id ==0)
                     lbStatus.setText("HOST");
                 else
                     lbStatus.setText("GUEST");
+                
+                
+
+                Vertice verticeFuente = new Vertice(new Fuente(player.getNextValidName(0)));
+                player.grafo.agregarVertice(verticeFuente);
+
+                String nameMercado1 = player.getNextValidName(2);
+                Mercado mercado1 = new Mercado (nameMercado1); 
+                Vertice verticeMercado = new Vertice(mercado1);        
+                player.grafo.agregarVertice(verticeMercado);
+
+                Conector conector1 = new Conector(player.getNextValidName(1));
+                Vertice verticeConector = new Vertice(conector1);        
+                player.grafo.agregarVertice(verticeConector);
+
+                player.grafo.agregarArista(verticeFuente, verticeConector);
+                player.grafo.agregarArista(verticeConector, verticeMercado);
+                //player.grafo.imprimir();
             }
         }else{
             Utilities.cargarPanel(cardPanel, infoPanel);
@@ -178,8 +202,26 @@ public class PanelStart extends javax.swing.JPanel {
         // TODO add your handling code here:
         String name = txtName.getText();
         if(!name.equals("")){
-            Utilities.cargarPanel(MainWindow.contentPanel, MainWindow.panelJuego);
-            MainWindow.panelJuego.name = name;
+            MainWindow.player.setName(name);
+            //MainWindow.setPlayer();
+            
+            ArrayList<Arma> armas = new ArrayList();
+            for (int i = 0; i < 2; i++) {
+                int random = (int) Math.floor(Math.random()*(1-0+1)+0);
+                Arma a;
+                if(random ==0){
+                    a = new Arma(i, "Cannon");
+                }else{
+                    a = new Arma(i, "Bomba");
+                }
+                armas.add(a);
+            }
+            MainWindow.player.setArmas(armas);
+            
+            MainWindow.setPlayer();
+            
+            Utilities.cargarPanel(MainWindow.contentPanel, MainWindow.panelJuego);                
+            
         }else{
             JOptionPane.showMessageDialog(null, "Debe ingresar un nombre", "Error", JOptionPane.ERROR_MESSAGE);
         }

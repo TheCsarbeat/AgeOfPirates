@@ -27,7 +27,8 @@ public class PanelMercado extends javax.swing.JPanel {
         imgComprar.setIcon(Utilities.loadResizeIcon("src\\images\\comprar.png", 110));
         imgVender.setIcon(Utilities.loadResizeIcon("src\\images\\vender.png", 110));
     }
-
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -488,6 +489,9 @@ public class PanelMercado extends javax.swing.JPanel {
     private void btnCannon6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCannon6MouseClicked
         // TODO add your handling code here:
         Utilities.cargarPanel(MainWindow.contentPanel, MainWindow.panelComprar);
+        MainWindow.panelComprar.cleanExchange();
+        MainWindow.panelComprar.loadDatos();
+        
     }//GEN-LAST:event_btnCannon6MouseClicked
 
     private void imgComprarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgComprarMouseClicked

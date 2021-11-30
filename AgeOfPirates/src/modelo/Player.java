@@ -3,13 +3,14 @@
 
 package modelo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author ytces
  */
-public class Player {
+public class Player implements Serializable{
     private int id;
     private String name;
     private int turno;
@@ -18,9 +19,24 @@ public class Player {
     private boolean[][] positions = new boolean[20][20];
     public Grafo grafo;
     private ArrayList<Comodin> comodines = new ArrayList();
+    private ArrayList<Arma> armas = new ArrayList();
     
     public Player(int id){
         this.id = id;
+        name = "";
+        turno = 0;
+        money = 4000;
+        steel = 0;
+        grafo = new Grafo();
+        for(int row=0;row<20;row++){
+            for(int col=0;col<20;col++){
+                positions[row][col] = false;
+            }
+        }       
+    }
+    
+    public Player(){
+        id = -1;
         name = "";
         turno = 0;
         money = 4000;
@@ -34,7 +50,7 @@ public class Player {
         
     }
 
-    public Player(String name, int turno, int money) {
+    public Player(int id, String name, int turno, int money) {
         this.name = name;
         this.turno = turno;
         this.money = money;
@@ -47,6 +63,22 @@ public class Player {
         }
     }
 
+    public ArrayList<Comodin> getComodines() {
+        return comodines;
+    }
+
+    public void setComodines(ArrayList<Comodin> comodines) {
+        this.comodines = comodines;
+    }
+
+    public ArrayList<Arma> getArmas() {
+        return armas;
+    }
+
+    public void setArmas(ArrayList<Arma> armas) {
+        this.armas = armas;
+    }
+    
     public int getId() {
         return id;
     }
@@ -71,6 +103,22 @@ public class Player {
         this.grafo = grafo;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setTurno(int turno) {
+        this.turno = turno;
+    }
+
+    public void setMoney(int money) {
+        this.money = money;
+    }
+
+    public void setSteel(int steel) {
+        this.steel = steel;
+    }
+    
     public String getName() {
         return name;
     }
@@ -102,6 +150,32 @@ public class Player {
     public void subtractSteel(){
         this.steel = this.steel - steel; 
     }
+
+    @Override
+    public String toString() {
+        return "Player{" + "id=" + id + ", name=" + name + ", turno=" + turno + ", money=" + money + ", steel=" + steel + ", positions=" + positions + ", grafo=" + grafo + ", comodines=" + comodines + ", armas=" + armas + '}';
+    }
+    
+    public Arma buscarArma(String name){
+        for(Arma i: armas){
+            if(i.getName().equals(name)){
+                return i;
+            }
+        }
+        return null;
+    }
+    
+    public boolean eliminarArma(int idArma){
+        for(Arma i: armas){
+            //System.out.println("Buscando id... "+i.getId());
+            if(i.getId() == idArma){
+                armas.remove(i);
+                return true;
+            }
+        }
+        return false;
+    }
+    
     
     //fuente=0, conector=1, mercado=2, mina=3, templo=4, armeria=5
     public String getNextValidName(int tipo){

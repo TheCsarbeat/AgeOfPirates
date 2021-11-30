@@ -5,13 +5,14 @@
  */
 package modelo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author ytces
  */
-public  abstract class  Estructura {
+public  abstract class  Estructura  implements Serializable{
     protected ArrayList<Punto> cellsBusy;
     protected String id; //Estandar: armeria-> "ARM-0", "ARM-1" | mina-> "MIN-0", "MIN-1", es decir tres letras y un numero
 

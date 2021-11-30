@@ -38,12 +38,8 @@ public class Server {
                 Socket skCliente = skServidor.accept(); // espera la activacion de una peticion
                 ClientServiceThread client = new ClientServiceThread(skCliente);
                 client.start();
-                numCli++;
-                
-                System.out.println("SOy un nuevo cliente: "+numCli);
-
+                numCli++;            
                
-
                 // desconecta la comunicacion con el cliente
                 //skCliente.close();
                 System.out.println("Desconectando al cliente " + numCli);
@@ -90,7 +86,7 @@ public class Server {
 //                out = new PrintWriter(
 //                new OutputStreamWriter(skCliente.getOutputStream()));
 //            
-                Object input;
+                Object input ;
                 while((input = flujoEntrada.readObject()) != null){
                     //String clientCommand = in.readLine(); 
                     //System.out.println("Client Says :" + clientCommand);
@@ -98,8 +94,8 @@ public class Server {
                     
                     if(input!= null){
                         Peticion peticionRecibida = (Peticion)input;
-                        System.out.println(input.getClass());
-                        //Peticion peticionRecibida = (Peticion) flujoEntrada.readObject();
+                        System.out.println("\nProcesadndo la petici[on...\n");
+                        //Peticion peticionRecibida = (Peticion) flujoEntrada.readObject();                      
                         System.out.println("peticion recibida" + peticionRecibida);
 
                         // transfiere la petición a la logica de aplicación y esta le devuelve la respuesta en la misma peticion
@@ -120,6 +116,7 @@ public class Server {
                 }
 
             } catch(Exception e) { 
+                System.out.println(e.getMessage());
                 System.out.println("SOy un error");
                //e.printStackTrace(); 
             }finally { 

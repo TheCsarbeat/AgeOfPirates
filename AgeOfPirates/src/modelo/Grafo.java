@@ -5,13 +5,14 @@
 
 package modelo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author dmora
  */
-public class Grafo {
+public class Grafo  implements Serializable{
 
     public ArrayList<Vertice> vertices;
 
@@ -24,6 +25,12 @@ public class Grafo {
     public void agregarVertice(Estructura estructura)
     {
         vertices.add(new Vertice(estructura));
+    }
+    
+    // agrega a la lista
+    public void agregarVertice(Vertice vertice)
+    {
+        vertices.add(vertice);
     }
 
     // agrega las aristas
