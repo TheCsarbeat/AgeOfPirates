@@ -22,6 +22,9 @@ public class MainWindow extends javax.swing.JFrame {
     public static PanelJuego panelJuego;
     public static PanelTienda panelTienda;
     public static Player player;
+    public static PanelVender panelVender;
+    public static PanelComprar panelComprar;
+    public static PanelMercado panelMercado;
     
     public static int id; 
     
@@ -31,6 +34,10 @@ public class MainWindow extends javax.swing.JFrame {
         panelMenu = new PanelMenu();
         panelTienda = new PanelTienda();
         player = new Player();
+        panelVender = new PanelVender();
+        panelComprar = new PanelComprar();
+        panelMercado = new PanelMercado();
+        
         Utilities.cargarPanel(contentPanel, panelMenu);
         obtenerId();
     }
