@@ -6,12 +6,19 @@
 package vista;
 
 import control.ControlTienda;
+import control.IConstantes;
 import control.TipoAccion;
 import javax.swing.JOptionPane;
 import modelo.Message;
 import modelo.Peticion;
 import javax.swing.JLabel;
 import control.Utilities;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
+import java.net.Socket;
 
 /**
  *
@@ -21,9 +28,12 @@ public class PanelJuego extends javax.swing.JPanel {
     public PanelMar panelMar1, panelMar2;
     public ControlTienda controlTienda;
     public PanelTienda panelTienda;
+    
+    public String name;
     /**
      * Creates new form PanelJuego
      */
+    private ObjectOutputStream flujoSalida;
     public PanelJuego() {
         initComponents();
         controlTienda = new ControlTienda();
@@ -64,7 +74,6 @@ public class PanelJuego extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         panelArmas = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         lbCañon = new javax.swing.JLabel();
         btnCannon = new javax.swing.JPanel();
@@ -75,16 +84,16 @@ public class PanelJuego extends javax.swing.JPanel {
         btnBomba = new javax.swing.JPanel();
         imgBomba = new javax.swing.JLabel();
         lbcantidadBomba = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
-        lbCañonMultiple2 = new javax.swing.JLabel();
-        btnCannonBarba = new javax.swing.JPanel();
-        imgCannonB = new javax.swing.JLabel();
-        lbcantidadCannonBarba = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         lbCañonMultiple1 = new javax.swing.JLabel();
         btnCannonMultiple = new javax.swing.JPanel();
         imgCannonM = new javax.swing.JLabel();
         lbcantidadCannonMultiple = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        lbCañonMultiple2 = new javax.swing.JLabel();
+        btnCannonBarba = new javax.swing.JPanel();
+        imgCannonB = new javax.swing.JLabel();
+        lbcantidadCannonBarba = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         panelBotones = new javax.swing.JPanel();
         btnMercado = new javax.swing.JButton();
@@ -105,8 +114,6 @@ public class PanelJuego extends javax.swing.JPanel {
         txtChat = new javax.swing.JTextArea();
         txtMsg = new javax.swing.JTextField();
         btnSendMsg = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        txtNombre = new javax.swing.JTextField();
         lbBarco = new javax.swing.JLabel();
         panelNumero2 = new javax.swing.JPanel();
         PanelNumeros1 = new javax.swing.JPanel();
@@ -133,10 +140,8 @@ public class PanelJuego extends javax.swing.JPanel {
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Armas");
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-
-        jPanel2.setBackground(new java.awt.Color(165, 173, 167));
+        jPanel2.setBackground(new java.awt.Color(120, 120, 120));
+        jPanel2.setOpaque(false);
 
         lbCañon.setBackground(new java.awt.Color(0, 0, 0));
         lbCañon.setFont(new java.awt.Font("Roboto Light", 0, 20)); // NOI18N
@@ -189,7 +194,9 @@ public class PanelJuego extends javax.swing.JPanel {
                 .addContainerGap(8, Short.MAX_VALUE))
         );
 
-        jPanel3.setBackground(new java.awt.Color(165, 173, 167));
+        jPanel3.setBackground(new java.awt.Color(120, 120, 120));
+        jPanel3.setOpaque(false);
+        jPanel3.setPreferredSize(new java.awt.Dimension(220, 220));
 
         lbCañonMultiple.setBackground(new java.awt.Color(0, 0, 0));
         lbCañonMultiple.setFont(new java.awt.Font("Roboto Light", 0, 20)); // NOI18N
@@ -213,7 +220,89 @@ public class PanelJuego extends javax.swing.JPanel {
         lbcantidadBomba.setForeground(new java.awt.Color(0, 0, 0));
         lbcantidadBomba.setText("Cantidad");
 
-        jPanel5.setBackground(new java.awt.Color(165, 173, 167));
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbcantidadBomba)
+                .addGap(74, 74, 74))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnBomba, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                    .addComponent(lbCañonMultiple, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbCañonMultiple, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnBomba, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lbcantidadBomba)
+                .addContainerGap(8, Short.MAX_VALUE))
+        );
+
+        jPanel4.setBackground(new java.awt.Color(120, 120, 120));
+        jPanel4.setOpaque(false);
+
+        lbCañonMultiple1.setBackground(new java.awt.Color(0, 0, 0));
+        lbCañonMultiple1.setFont(new java.awt.Font("Roboto Light", 0, 20)); // NOI18N
+        lbCañonMultiple1.setForeground(new java.awt.Color(0, 0, 0));
+        lbCañonMultiple1.setText("Cañón múltiple");
+        lbCañonMultiple1.setToolTipText("");
+
+        btnCannonMultiple.setBackground(new java.awt.Color(212, 212, 212));
+        btnCannonMultiple.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCannonMultipleMouseClicked(evt);
+            }
+        });
+        btnCannonMultiple.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        imgCannonM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/canonMultiple.png"))); // NOI18N
+        btnCannonMultiple.add(imgCannonM, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 110, 110));
+
+        lbcantidadCannonMultiple.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
+        lbcantidadCannonMultiple.setForeground(new java.awt.Color(0, 0, 0));
+        lbcantidadCannonMultiple.setText("Cantidad");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbcantidadCannonMultiple)
+                .addGap(77, 77, 77))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(lbCañonMultiple1))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(btnCannonMultiple, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(38, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbCañonMultiple1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnCannonMultiple, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lbcantidadCannonMultiple)
+                .addContainerGap(8, Short.MAX_VALUE))
+        );
+
+        jPanel5.setBackground(new java.awt.Color(120, 120, 120));
+        jPanel5.setOpaque(false);
 
         lbCañonMultiple2.setBackground(new java.awt.Color(0, 0, 0));
         lbCañonMultiple2.setFont(new java.awt.Font("Roboto Light", 0, 20)); // NOI18N
@@ -266,91 +355,6 @@ public class PanelJuego extends javax.swing.JPanel {
                 .addContainerGap(8, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lbcantidadBomba)
-                .addGap(77, 77, 77))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnBomba, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                    .addComponent(lbCañonMultiple, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbCañonMultiple, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnBomba, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lbcantidadBomba)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel4.setBackground(new java.awt.Color(165, 173, 167));
-
-        lbCañonMultiple1.setBackground(new java.awt.Color(0, 0, 0));
-        lbCañonMultiple1.setFont(new java.awt.Font("Roboto Light", 0, 20)); // NOI18N
-        lbCañonMultiple1.setForeground(new java.awt.Color(0, 0, 0));
-        lbCañonMultiple1.setText("Cañón múltiple");
-        lbCañonMultiple1.setToolTipText("");
-
-        btnCannonMultiple.setBackground(new java.awt.Color(212, 212, 212));
-        btnCannonMultiple.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCannonMultipleMouseClicked(evt);
-            }
-        });
-        btnCannonMultiple.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        imgCannonM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/canonMultiple.png"))); // NOI18N
-        btnCannonMultiple.add(imgCannonM, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 110, 110));
-
-        lbcantidadCannonMultiple.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
-        lbcantidadCannonMultiple.setForeground(new java.awt.Color(0, 0, 0));
-        lbcantidadCannonMultiple.setText("Cantidad");
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lbcantidadCannonMultiple)
-                .addGap(77, 77, 77))
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(lbCañonMultiple1))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(btnCannonMultiple, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(39, Short.MAX_VALUE))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbCañonMultiple1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCannonMultiple, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lbcantidadCannonMultiple)
-                .addContainerGap(8, Short.MAX_VALUE))
-        );
-
         javax.swing.GroupLayout panelArmasLayout = new javax.swing.GroupLayout(panelArmas);
         panelArmas.setLayout(panelArmasLayout);
         panelArmasLayout.setHorizontalGroup(
@@ -365,21 +369,24 @@ public class PanelJuego extends javax.swing.JPanel {
                         .addGroup(panelArmasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(51, 51, 51))
+                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(48, 48, 48))
         );
         panelArmasLayout.setVerticalGroup(
             panelArmasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelArmasLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(13, 13, 13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(21, 21, 21)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2)
+                .addGap(21, 21, 21)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(268, 268, 268))
+                .addGap(21, 21, 21)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         add(panelArmas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 290, 1000));
@@ -411,6 +418,7 @@ public class PanelJuego extends javax.swing.JPanel {
         });
         panelBotones.add(btnTienda3, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 80, 140, 50));
 
+        jPanel1.setBackground(new java.awt.Color(120, 120, 120));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnFire.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -501,22 +509,12 @@ public class PanelJuego extends javax.swing.JPanel {
 
         panelBotones.add(chatPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 20, 430, 250));
 
-        jLabel10.setBackground(new java.awt.Color(86, 73, 64));
-        jLabel10.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
-        jLabel10.setText("SEND");
-        jLabel10.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLabel10.setOpaque(true);
-        panelBotones.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 180, 130, 50));
-
-        txtNombre.setText("jTextField1");
-        panelBotones.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 190, 160, -1));
-
         lbBarco.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lbBarco.setForeground(new java.awt.Color(0, 0, 0));
         lbBarco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/barco.png"))); // NOI18N
         panelBotones.add(lbBarco, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, 140, 140));
 
-        add(panelBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 620, 1630, 300));
+        add(panelBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 700, 1630, 300));
 
         panelNumero2.setLayout(new java.awt.GridLayout(20, 0));
         add(panelNumero2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 40, 20, 530));
@@ -562,7 +560,31 @@ public class PanelJuego extends javax.swing.JPanel {
 
     private void btnActivateChatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActivateChatMouseClicked
         // TODO add your handling code here:
+        
         Utilities.cargarPanel(chatPanel, optionPanel);
+        /*Peticion peticionIngresar = new Peticion(TipoAccion.ACTUALIZAR_CHAT, "");        
+        Client conexion = new Client(peticionIngresar);
+        
+        Thread th = new Thread(){
+        @Override
+        public void run(){
+            try {
+                int i = 0;
+                while(true){
+                    Thread.sleep(500);
+                    i++;
+                    Object respuesta = conexion.getRespuestaServer();
+                    if(respuesta != null){
+                       txtChat.setText((String)respuesta);
+                    }
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            }
+        }
+        };th.start();*/
+        
+        
         Thread th = new Thread(){
         @Override
         public void run(){
@@ -594,7 +616,7 @@ public class PanelJuego extends javax.swing.JPanel {
 
     private void btnSendMsgMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSendMsgMouseClicked
         // TODO add your handling code here:
-        Message msg = new Message(txtNombre.getText(),txtMsg.getText());
+        Message msg = new Message(name,txtMsg.getText());
         Peticion peticionIngresar = new Peticion(TipoAccion.SEND_MSG, msg);        
         Client conexion = new Client(peticionIngresar);
         Object respuesta = conexion.getRespuestaServer();
@@ -633,10 +655,8 @@ public class PanelJuego extends javax.swing.JPanel {
     private javax.swing.JLabel imgCannonB;
     private javax.swing.JLabel imgCannonM;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -667,6 +687,5 @@ public class PanelJuego extends javax.swing.JPanel {
     private javax.swing.JTextField txtCoordenadaX;
     private javax.swing.JTextField txtCoordenadaY;
     private javax.swing.JTextField txtMsg;
-    private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }

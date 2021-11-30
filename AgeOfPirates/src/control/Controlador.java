@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import modelo.Message;
 import modelo.Peticion;
+import modelo.Player;
 
 /**
  *
@@ -17,22 +18,26 @@ import modelo.Peticion;
 public class Controlador {
     
     private ArrayList<Message> chat = new ArrayList();
+    private ArrayList<Player> players = new ArrayList();
+    
     public Controlador() {
     }
     
-    public Peticion procesarPeticion(Peticion peticionRecibida) {
-        TipoAccion accion = peticionRecibida.getAccion();
+    public Peticion procesarPeticion(Peticion peticion) {
+        TipoAccion accion = peticion.getAccion();
         if(accion == TipoAccion.CONECTARSE){ 
-            peticionRecibida.setDatosSalida("Se ha conectado al servidor");
+            int id = addPlayer();
+            peticion.setDatosSalida(id);            
+            
         }else if(accion == TipoAccion.SEND_MSG){
-            Message msg = (Message)peticionRecibida.getDatosEntrada();
+            Message msg = (Message)peticion.getDatosEntrada();
             chat.add(msg);
-            peticionRecibida.setDatosSalida(chatToString());            
+            peticion.setDatosSalida(chatToString());            
         }else if(accion == TipoAccion.ACTUALIZAR_CHAT){
-            peticionRecibida.setDatosSalida(chatToString());            
+            peticion.setDatosSalida(chatToString());            
         }
         
-        return peticionRecibida;
+        return peticion;
     }
     
     private String chatToString(){
@@ -42,5 +47,14 @@ public class Controlador {
         
         return datos;
         
+    }
+    
+    private int addPlayer(){
+        int index = players.size();
+        if(index>=4)
+            return -1;            
+        else
+            players.add(new Player(index));        
+        return index;
     }
 }

@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import control.Utilities;
 import modelo.Peticion;
+import modelo.Player;
 
 
 
@@ -19,33 +20,25 @@ import modelo.Peticion;
  * @author ytces
  */
 public class MainWindow extends javax.swing.JFrame {
+    
     public static PanelMenu panelMenu;
     public static PanelJuego panelJuego;
     public static PanelTienda panelTienda;
+    public static PanelStart panelStar;
     
-    public static int id; 
+    public static Player player; 
     
     public MainWindow() {
         initComponents();
         panelJuego = new PanelJuego();
         panelMenu = new PanelMenu();
         panelTienda = new PanelTienda();
+        panelStar = new PanelStart();
         Utilities.cargarPanel(contentPanel, panelMenu);
-        obtenerId();
+        
     }
     
-    public void obtenerId(){
-        Peticion peticionIngresar = new Peticion(TipoAccion.CONECTARSE, "");
-        
-        Client conexion = new Client(peticionIngresar);
-
-        Object respuesta = conexion.getRespuestaServer();
-        if(respuesta != null){
-            System.out.println((String)respuesta);
-        }else{
-            JOptionPane.showMessageDialog(null, "Los datos no coinciden!", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

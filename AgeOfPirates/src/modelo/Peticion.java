@@ -16,7 +16,8 @@ import java.util.ArrayList;
 public class Peticion implements Serializable{
     private TipoAccion accion;
     private Object datosEntrada;
-    private Object datosSalida;    
+    private Object datosSalida;  
+    private boolean time;
 
     public TipoAccion getAccion() {
         return accion;
@@ -38,6 +39,14 @@ public class Peticion implements Serializable{
         return datosSalida;
     }
 
+    public boolean isTime() {
+        return time;
+    }
+
+    public void setTime(boolean time) {
+        this.time = time;
+    }
+
     public void setDatosSalida(Object datosSalida) {
         this.datosSalida = datosSalida;
     }
@@ -49,6 +58,7 @@ public class Peticion implements Serializable{
         this.accion = accion;
         this.datosEntrada = datosEntrada;
         this.datosSalida = datosSalida;
+        this.time = false;
     }
     
     
