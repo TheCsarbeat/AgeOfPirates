@@ -86,13 +86,6 @@ public class PanelJuego extends javax.swing.JPanel {
         btnMercado = new javax.swing.JButton();
         lbCoordenada3 = new javax.swing.JLabel();
         btnTienda3 = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        btnFire = new javax.swing.JButton();
-        txtCoordenadaY = new javax.swing.JTextField();
-        lbCoordenada2 = new javax.swing.JLabel();
-        txtCoordenadaX = new javax.swing.JTextField();
-        lbCoordenada = new javax.swing.JLabel();
-        lbCoordenada4 = new javax.swing.JLabel();
         chatPanel = new javax.swing.JPanel();
         activatePanel = new javax.swing.JPanel();
         btnActivateChat = new javax.swing.JLabel();
@@ -106,6 +99,13 @@ public class PanelJuego extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         txtBitacora = new javax.swing.JTextArea();
         lbCoordenada5 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        btnFire = new javax.swing.JButton();
+        txtCoordenadaY = new javax.swing.JTextField();
+        lbCoordenada2 = new javax.swing.JLabel();
+        txtCoordenadaX = new javax.swing.JTextField();
+        lbCoordenada = new javax.swing.JLabel();
+        lbCoordenada4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         panelCoordinates = new javax.swing.JPanel();
 
@@ -404,46 +404,6 @@ public class PanelJuego extends javax.swing.JPanel {
         });
         panelBotones.add(btnTienda3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 110, 140, 50));
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnFire.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnFire.setText("Disparar");
-        btnFire.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnFireMouseClicked(evt);
-            }
-        });
-        jPanel1.add(btnFire, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 160, 30));
-
-        txtCoordenadaY.setBackground(new java.awt.Color(212, 212, 212));
-        txtCoordenadaY.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
-        txtCoordenadaY.setForeground(new java.awt.Color(99, 99, 99));
-        txtCoordenadaY.setBorder(null);
-        jPanel1.add(txtCoordenadaY, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 200, 30));
-
-        lbCoordenada2.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
-        lbCoordenada2.setForeground(new java.awt.Color(0, 0, 0));
-        lbCoordenada2.setText("Coordenada en Y:");
-        jPanel1.add(lbCoordenada2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
-
-        txtCoordenadaX.setBackground(new java.awt.Color(212, 212, 212));
-        txtCoordenadaX.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
-        txtCoordenadaX.setForeground(new java.awt.Color(99, 99, 99));
-        txtCoordenadaX.setBorder(null);
-        jPanel1.add(txtCoordenadaX, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 200, 30));
-
-        lbCoordenada.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
-        lbCoordenada.setForeground(new java.awt.Color(0, 0, 0));
-        lbCoordenada.setText("Coordenada en X:");
-        jPanel1.add(lbCoordenada, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
-
-        lbCoordenada4.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
-        lbCoordenada4.setForeground(new java.awt.Color(0, 0, 0));
-        lbCoordenada4.setText("Indique las coordenadas");
-        jPanel1.add(lbCoordenada4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
-
-        panelBotones.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 270, 250));
-
         chatPanel.setLayout(new java.awt.CardLayout());
 
         activatePanel.setLayout(new java.awt.CardLayout());
@@ -521,6 +481,47 @@ public class PanelJuego extends javax.swing.JPanel {
         lbCoordenada5.setText("Opciones");
         panelBotones.add(lbCoordenada5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, 90, -1));
 
+        jPanel1.setBackground(new java.awt.Color(120, 120, 120));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnFire.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnFire.setText("Disparar");
+        btnFire.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnFireMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnFire, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 160, 30));
+
+        txtCoordenadaY.setBackground(new java.awt.Color(212, 212, 212));
+        txtCoordenadaY.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
+        txtCoordenadaY.setForeground(new java.awt.Color(99, 99, 99));
+        txtCoordenadaY.setBorder(null);
+        jPanel1.add(txtCoordenadaY, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 200, 30));
+
+        lbCoordenada2.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
+        lbCoordenada2.setForeground(new java.awt.Color(0, 0, 0));
+        lbCoordenada2.setText("Coordenada en Y:");
+        jPanel1.add(lbCoordenada2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
+
+        txtCoordenadaX.setBackground(new java.awt.Color(212, 212, 212));
+        txtCoordenadaX.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
+        txtCoordenadaX.setForeground(new java.awt.Color(99, 99, 99));
+        txtCoordenadaX.setBorder(null);
+        jPanel1.add(txtCoordenadaX, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 200, 30));
+
+        lbCoordenada.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
+        lbCoordenada.setForeground(new java.awt.Color(0, 0, 0));
+        lbCoordenada.setText("Coordenada en X:");
+        jPanel1.add(lbCoordenada, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
+
+        lbCoordenada4.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        lbCoordenada4.setForeground(new java.awt.Color(0, 0, 0));
+        lbCoordenada4.setText("Indique las coordenadas");
+        jPanel1.add(lbCoordenada4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
+
+        panelBotones.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 270, 250));
+
         add(panelBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 690, 1630, 300));
 
         jLabel5.setText("   0         1         2         3        4         5        6         7        8        9       10      11      12      13      14      15      16      17      18      19");
@@ -543,10 +544,6 @@ public class PanelJuego extends javax.swing.JPanel {
     private void btnBombaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBombaMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBombaMouseClicked
-
-    private void btnFireMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFireMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnFireMouseClicked
 
     private void btnTienda3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTienda3MouseClicked
         Utilities.cargarPanel(MainWindow.contentPanel,panelTienda);
@@ -610,6 +607,10 @@ public class PanelJuego extends javax.swing.JPanel {
     private void btnCannonBarbaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCannonBarbaMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCannonBarbaMouseClicked
+
+    private void btnFireMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFireMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnFireMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
