@@ -21,13 +21,14 @@ public class PanelJuego extends javax.swing.JPanel {
     public PanelMar panelMar1, panelMar2;
     public ControlTienda controlTienda;
     public PanelTienda panelTienda;
-
+    public PanelMercado panelMercado;
     public PanelJuego() {
         initComponents();
         controlTienda = new ControlTienda();
         panelMar1 = new PanelMar(0);
         panelMar2 = new PanelMar(1);
         panelTienda = new PanelTienda();
+        panelMercado = new PanelMercado();
         Utilities.cargarPanel(myPanel, panelMar1);
         Utilities.cargarPanel(enemyPanel, panelMar2);
         
@@ -589,6 +590,7 @@ public class PanelJuego extends javax.swing.JPanel {
 
     private void btnSendMsgMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSendMsgMouseClicked
         // TODO add your handling code here:
+        /*
         Message msg = new Message(txtNombre.getText(),txtMsg.getText());
         Peticion peticionIngresar = new Peticion(TipoAccion.SEND_MSG, msg);        
         Client conexion = new Client(peticionIngresar);
@@ -598,6 +600,7 @@ public class PanelJuego extends javax.swing.JPanel {
         }else{
             JOptionPane.showMessageDialog(null, "Los datos no coinciden!", "Error", JOptionPane.ERROR_MESSAGE);
         }
+*/
     }//GEN-LAST:event_btnSendMsgMouseClicked
 
     private void btnCannonMultipleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCannonMultipleMouseClicked
