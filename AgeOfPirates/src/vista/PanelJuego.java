@@ -21,6 +21,7 @@ public class PanelJuego extends javax.swing.JPanel {
     public PanelMar panelMar1, panelMar2;
     public ControlTienda controlTienda;
     public PanelTienda panelTienda;
+    public PanelMercado panelMercado;
     /**
      * Creates new form PanelJuego
      */
@@ -30,6 +31,7 @@ public class PanelJuego extends javax.swing.JPanel {
         panelMar1 = new PanelMar();
         panelMar2 = new PanelMar();
         panelTienda = new PanelTienda();
+        panelMercado = new PanelMercado();
         Utilities.cargarPanel(myPanel, panelMar1);
         Utilities.cargarPanel(enemyPanel, panelMar2);
         
@@ -65,26 +67,7 @@ public class PanelJuego extends javax.swing.JPanel {
         panelArmas = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        lbCañon = new javax.swing.JLabel();
-        btnCannon = new javax.swing.JPanel();
-        imgCannon = new javax.swing.JLabel();
-        lbCantidadCannon = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        lbCañonMultiple = new javax.swing.JLabel();
-        btnBomba = new javax.swing.JPanel();
-        imgBomba = new javax.swing.JLabel();
-        lbcantidadBomba = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
-        lbCañonMultiple2 = new javax.swing.JLabel();
-        btnCannonBarba = new javax.swing.JPanel();
-        imgCannonB = new javax.swing.JLabel();
-        lbcantidadCannonBarba = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        lbCañonMultiple1 = new javax.swing.JLabel();
-        btnCannonMultiple = new javax.swing.JPanel();
-        imgCannonM = new javax.swing.JLabel();
-        lbcantidadCannonMultiple = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         panelBotones = new javax.swing.JPanel();
         btnMercado = new javax.swing.JButton();
@@ -98,20 +81,43 @@ public class PanelJuego extends javax.swing.JPanel {
         lbCoordenada = new javax.swing.JLabel();
         lbCoordenada4 = new javax.swing.JLabel();
         chatPanel = new javax.swing.JPanel();
-        activatePanel = new javax.swing.JPanel();
-        btnActivateChat = new javax.swing.JLabel();
         optionPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtChat = new javax.swing.JTextArea();
         txtMsg = new javax.swing.JTextField();
         btnSendMsg = new javax.swing.JLabel();
+        activatePanel = new javax.swing.JPanel();
+        btnActivateChat = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
         lbBarco = new javax.swing.JLabel();
-        panelNumero2 = new javax.swing.JPanel();
-        PanelNumeros1 = new javax.swing.JPanel();
         lbSombrero = new javax.swing.JLabel();
         lbBandera = new javax.swing.JLabel();
+        panelNumero2 = new javax.swing.JPanel();
+        PanelNumeros1 = new javax.swing.JPanel();
+        panelArmas1 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        lbCañon1 = new javax.swing.JLabel();
+        btnCannon1 = new javax.swing.JPanel();
+        imgCannon = new javax.swing.JLabel();
+        lbCantidadCannon1 = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        lbCañonMultiple3 = new javax.swing.JLabel();
+        btnBomba1 = new javax.swing.JPanel();
+        imgBomba = new javax.swing.JLabel();
+        lbcantidadBomba1 = new javax.swing.JLabel();
+        jPanel8 = new javax.swing.JPanel();
+        lbCañonMultiple4 = new javax.swing.JLabel();
+        btnCannonBarba1 = new javax.swing.JPanel();
+        imgCannonB = new javax.swing.JLabel();
+        lbcantidadCannonBarba1 = new javax.swing.JLabel();
+        jPanel9 = new javax.swing.JPanel();
+        lbCañonMultiple5 = new javax.swing.JLabel();
+        btnCannonMultiple1 = new javax.swing.JPanel();
+        imgCannonM = new javax.swing.JLabel();
+        lbcantidadCannonMultiple1 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(1900, 1000));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -131,258 +137,42 @@ public class PanelJuego extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("Roboto Light", 0, 30)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Armas");
+        jLabel2.setText("Bitácora");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
 
-        jPanel2.setBackground(new java.awt.Color(165, 173, 167));
-
-        lbCañon.setBackground(new java.awt.Color(0, 0, 0));
-        lbCañon.setFont(new java.awt.Font("Roboto Light", 0, 20)); // NOI18N
-        lbCañon.setForeground(new java.awt.Color(0, 0, 0));
-        lbCañon.setText("Cañón");
-        lbCañon.setToolTipText("");
-
-        btnCannon.setBackground(new java.awt.Color(212, 212, 212));
-        btnCannon.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCannonMouseClicked(evt);
-            }
-        });
-        btnCannon.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        imgCannon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/canon.png"))); // NOI18N
-        btnCannon.add(imgCannon, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 110, 110));
-
-        lbCantidadCannon.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
-        lbCantidadCannon.setForeground(new java.awt.Color(0, 0, 0));
-        lbCantidadCannon.setText("Cantidad");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(39, Short.MAX_VALUE)
-                .addComponent(btnCannon, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(75, 75, 75)
-                        .addComponent(lbCantidadCannon))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(73, 73, 73)
-                        .addComponent(lbCañon, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbCañon, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCannon, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lbCantidadCannon)
-                .addContainerGap(8, Short.MAX_VALUE))
-        );
-
-        jPanel3.setBackground(new java.awt.Color(165, 173, 167));
-
-        lbCañonMultiple.setBackground(new java.awt.Color(0, 0, 0));
-        lbCañonMultiple.setFont(new java.awt.Font("Roboto Light", 0, 20)); // NOI18N
-        lbCañonMultiple.setForeground(new java.awt.Color(0, 0, 0));
-        lbCañonMultiple.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbCañonMultiple.setText("Bomba");
-        lbCañonMultiple.setToolTipText("");
-
-        btnBomba.setBackground(new java.awt.Color(212, 212, 212));
-        btnBomba.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnBombaMouseClicked(evt);
-            }
-        });
-        btnBomba.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        imgBomba.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/canonMultiple.png"))); // NOI18N
-        btnBomba.add(imgBomba, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 110, 110));
-
-        lbcantidadBomba.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
-        lbcantidadBomba.setForeground(new java.awt.Color(0, 0, 0));
-        lbcantidadBomba.setText("Cantidad");
-
-        jPanel5.setBackground(new java.awt.Color(165, 173, 167));
-
-        lbCañonMultiple2.setBackground(new java.awt.Color(0, 0, 0));
-        lbCañonMultiple2.setFont(new java.awt.Font("Roboto Light", 0, 20)); // NOI18N
-        lbCañonMultiple2.setForeground(new java.awt.Color(0, 0, 0));
-        lbCañonMultiple2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbCañonMultiple2.setText("Cañón Barba Roja");
-        lbCañonMultiple2.setToolTipText("");
-
-        btnCannonBarba.setBackground(new java.awt.Color(212, 212, 212));
-        btnCannonBarba.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCannonBarbaMouseClicked(evt);
-            }
-        });
-        btnCannonBarba.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        imgCannonB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/canonMultiple.png"))); // NOI18N
-        btnCannonBarba.add(imgCannonB, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 110, 110));
-
-        lbcantidadCannonBarba.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
-        lbcantidadCannonBarba.setForeground(new java.awt.Color(0, 0, 0));
-        lbcantidadCannonBarba.setText("Cantidad");
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lbcantidadCannonBarba)
-                .addGap(77, 77, 77))
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(btnCannonBarba, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lbCañonMultiple2, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbCañonMultiple2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCannonBarba, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lbcantidadCannonBarba)
-                .addContainerGap(8, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lbcantidadBomba)
-                .addGap(77, 77, 77))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnBomba, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                    .addComponent(lbCañonMultiple, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbCañonMultiple, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnBomba, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lbcantidadBomba)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel4.setBackground(new java.awt.Color(165, 173, 167));
-
-        lbCañonMultiple1.setBackground(new java.awt.Color(0, 0, 0));
-        lbCañonMultiple1.setFont(new java.awt.Font("Roboto Light", 0, 20)); // NOI18N
-        lbCañonMultiple1.setForeground(new java.awt.Color(0, 0, 0));
-        lbCañonMultiple1.setText("Cañón múltiple");
-        lbCañonMultiple1.setToolTipText("");
-
-        btnCannonMultiple.setBackground(new java.awt.Color(212, 212, 212));
-        btnCannonMultiple.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCannonMultipleMouseClicked(evt);
-            }
-        });
-        btnCannonMultiple.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        imgCannonM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/canonMultiple.png"))); // NOI18N
-        btnCannonMultiple.add(imgCannonM, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 110, 110));
-
-        lbcantidadCannonMultiple.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
-        lbcantidadCannonMultiple.setForeground(new java.awt.Color(0, 0, 0));
-        lbcantidadCannonMultiple.setText("Cantidad");
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lbcantidadCannonMultiple)
-                .addGap(77, 77, 77))
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(lbCañonMultiple1))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(btnCannonMultiple, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(39, Short.MAX_VALUE))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbCañonMultiple1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCannonMultiple, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lbcantidadCannonMultiple)
-                .addContainerGap(8, Short.MAX_VALUE))
-        );
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setText("Información de la bitácora");
 
         javax.swing.GroupLayout panelArmasLayout = new javax.swing.GroupLayout(panelArmas);
         panelArmas.setLayout(panelArmasLayout);
         panelArmasLayout.setHorizontalGroup(
             panelArmasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelArmasLayout.createSequentialGroup()
-                .addGroup(panelArmasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelArmasLayout.createSequentialGroup()
-                        .addGap(110, 110, 110)
-                        .addComponent(jLabel2))
-                    .addGroup(panelArmasLayout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addGroup(panelArmasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(51, 51, 51))
+                .addGap(97, 97, 97)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(72, Short.MAX_VALUE))
+            .addGroup(panelArmasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelArmasLayout.createSequentialGroup()
+                    .addContainerGap(23, Short.MAX_VALUE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(15, Short.MAX_VALUE)))
         );
         panelArmasLayout.setVerticalGroup(
             panelArmasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelArmasLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(13, 13, 13)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(268, 268, 268))
+                .addGap(1193, 1193, 1193))
+            .addGroup(panelArmasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelArmasLayout.createSequentialGroup()
+                    .addContainerGap(55, Short.MAX_VALUE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 494, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(683, Short.MAX_VALUE)))
         );
 
-        add(panelArmas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 290, 1000));
+        add(panelArmas, new org.netbeans.lib.awtextra.AbsoluteConstraints(1610, 0, 290, 570));
 
         jLabel3.setText("0       1       2       3       4       5       6       7       8       9     10    11    12    13    14    15     16     17     18     19");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, 580, -1));
@@ -409,6 +199,11 @@ public class PanelJuego extends javax.swing.JPanel {
                 btnTienda3MouseClicked(evt);
             }
         });
+        btnTienda3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTienda3ActionPerformed(evt);
+            }
+        });
         panelBotones.add(btnTienda3, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 80, 140, 50));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -422,7 +217,7 @@ public class PanelJuego extends javax.swing.JPanel {
         });
         jPanel1.add(btnFire, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 160, 30));
 
-        txtCoordenadaY.setBackground(new java.awt.Color(212, 212, 212));
+        txtCoordenadaY.setBackground(new java.awt.Color(255, 255, 255));
         txtCoordenadaY.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
         txtCoordenadaY.setForeground(new java.awt.Color(99, 99, 99));
         txtCoordenadaY.setBorder(null);
@@ -433,7 +228,7 @@ public class PanelJuego extends javax.swing.JPanel {
         lbCoordenada2.setText("Coordenada en Y:");
         jPanel1.add(lbCoordenada2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
 
-        txtCoordenadaX.setBackground(new java.awt.Color(212, 212, 212));
+        txtCoordenadaX.setBackground(new java.awt.Color(255, 255, 255));
         txtCoordenadaX.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
         txtCoordenadaX.setForeground(new java.awt.Color(99, 99, 99));
         txtCoordenadaX.setBorder(null);
@@ -452,24 +247,6 @@ public class PanelJuego extends javax.swing.JPanel {
         panelBotones.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 270, 250));
 
         chatPanel.setLayout(new java.awt.CardLayout());
-
-        activatePanel.setLayout(new java.awt.CardLayout());
-
-        btnActivateChat.setBackground(new java.awt.Color(86, 73, 64));
-        btnActivateChat.setFont(new java.awt.Font("Roboto Light", 1, 36)); // NOI18N
-        btnActivateChat.setForeground(new java.awt.Color(255, 255, 255));
-        btnActivateChat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnActivateChat.setText("Activate Chat");
-        btnActivateChat.setIconTextGap(20);
-        btnActivateChat.setOpaque(true);
-        btnActivateChat.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnActivateChatMouseClicked(evt);
-            }
-        });
-        activatePanel.add(btnActivateChat, "card3");
-
-        chatPanel.add(activatePanel, "card3");
 
         optionPanel.setName("optionPanel"); // NOI18N
         optionPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -499,6 +276,24 @@ public class PanelJuego extends javax.swing.JPanel {
 
         chatPanel.add(optionPanel, "card2");
 
+        activatePanel.setLayout(new java.awt.CardLayout());
+
+        btnActivateChat.setBackground(new java.awt.Color(86, 73, 64));
+        btnActivateChat.setFont(new java.awt.Font("Roboto Light", 1, 36)); // NOI18N
+        btnActivateChat.setForeground(new java.awt.Color(255, 255, 255));
+        btnActivateChat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnActivateChat.setText("Activate Chat");
+        btnActivateChat.setIconTextGap(20);
+        btnActivateChat.setOpaque(true);
+        btnActivateChat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnActivateChatMouseClicked(evt);
+            }
+        });
+        activatePanel.add(btnActivateChat, "card3");
+
+        chatPanel.add(activatePanel, "card3");
+
         panelBotones.add(chatPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 20, 430, 250));
 
         jLabel10.setBackground(new java.awt.Color(86, 73, 64));
@@ -508,13 +303,23 @@ public class PanelJuego extends javax.swing.JPanel {
         jLabel10.setOpaque(true);
         panelBotones.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 180, 130, 50));
 
-        txtNombre.setText("jTextField1");
+        txtNombre.setText("Ingrese su nombre");
         panelBotones.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 190, 160, -1));
 
         lbBarco.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lbBarco.setForeground(new java.awt.Color(0, 0, 0));
         lbBarco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/barco.png"))); // NOI18N
         panelBotones.add(lbBarco, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, 140, 140));
+
+        lbSombrero.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbSombrero.setForeground(new java.awt.Color(0, 0, 0));
+        lbSombrero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/sombrero.png"))); // NOI18N
+        panelBotones.add(lbSombrero, new org.netbeans.lib.awtextra.AbsoluteConstraints(1380, 150, 140, 140));
+
+        lbBandera.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbBandera.setForeground(new java.awt.Color(0, 0, 0));
+        lbBandera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bandera.png"))); // NOI18N
+        panelBotones.add(lbBandera, new org.netbeans.lib.awtextra.AbsoluteConstraints(1430, 20, 140, 140));
 
         add(panelBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 620, 1630, 300));
 
@@ -524,29 +329,268 @@ public class PanelJuego extends javax.swing.JPanel {
         PanelNumeros1.setLayout(new java.awt.GridLayout(20, 0));
         add(PanelNumeros1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, 20, 530));
 
-        lbSombrero.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lbSombrero.setForeground(new java.awt.Color(0, 0, 0));
-        lbSombrero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/sombrero.png"))); // NOI18N
-        add(lbSombrero, new org.netbeans.lib.awtextra.AbsoluteConstraints(1660, 480, 140, 140));
+        panelArmas1.setBackground(new java.awt.Color(165, 173, 167));
 
-        lbBandera.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lbBandera.setForeground(new java.awt.Color(0, 0, 0));
-        lbBandera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bandera.png"))); // NOI18N
-        add(lbBandera, new org.netbeans.lib.awtextra.AbsoluteConstraints(1650, 290, 140, 140));
+        jLabel5.setFont(new java.awt.Font("Roboto Light", 0, 30)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("Armas");
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+
+        jPanel6.setBackground(new java.awt.Color(165, 173, 167));
+
+        lbCañon1.setBackground(new java.awt.Color(0, 0, 0));
+        lbCañon1.setFont(new java.awt.Font("Roboto Light", 0, 20)); // NOI18N
+        lbCañon1.setForeground(new java.awt.Color(0, 0, 0));
+        lbCañon1.setText("Cañón");
+        lbCañon1.setToolTipText("");
+
+        btnCannon1.setBackground(new java.awt.Color(212, 212, 212));
+        btnCannon1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCannon1MouseClicked(evt);
+            }
+        });
+        btnCannon1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        imgCannon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/canon.png"))); // NOI18N
+        btnCannon1.add(imgCannon, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 110, 110));
+
+        lbCantidadCannon1.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
+        lbCantidadCannon1.setForeground(new java.awt.Color(0, 0, 0));
+        lbCantidadCannon1.setText("Cantidad");
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap(39, Short.MAX_VALUE)
+                .addComponent(btnCannon1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(75, 75, 75)
+                        .addComponent(lbCantidadCannon1))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(73, 73, 73)
+                        .addComponent(lbCañon1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbCañon1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnCannon1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lbCantidadCannon1)
+                .addContainerGap(8, Short.MAX_VALUE))
+        );
+
+        jPanel7.setBackground(new java.awt.Color(165, 173, 167));
+
+        lbCañonMultiple3.setBackground(new java.awt.Color(0, 0, 0));
+        lbCañonMultiple3.setFont(new java.awt.Font("Roboto Light", 0, 20)); // NOI18N
+        lbCañonMultiple3.setForeground(new java.awt.Color(0, 0, 0));
+        lbCañonMultiple3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbCañonMultiple3.setText("Bomba");
+        lbCañonMultiple3.setToolTipText("");
+
+        btnBomba1.setBackground(new java.awt.Color(212, 212, 212));
+        btnBomba1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBomba1MouseClicked(evt);
+            }
+        });
+        btnBomba1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        imgBomba.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/canonMultiple.png"))); // NOI18N
+        btnBomba1.add(imgBomba, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 110, 110));
+
+        lbcantidadBomba1.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
+        lbcantidadBomba1.setForeground(new java.awt.Color(0, 0, 0));
+        lbcantidadBomba1.setText("Cantidad");
+
+        jPanel8.setBackground(new java.awt.Color(165, 173, 167));
+
+        lbCañonMultiple4.setBackground(new java.awt.Color(0, 0, 0));
+        lbCañonMultiple4.setFont(new java.awt.Font("Roboto Light", 0, 20)); // NOI18N
+        lbCañonMultiple4.setForeground(new java.awt.Color(0, 0, 0));
+        lbCañonMultiple4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbCañonMultiple4.setText("Cañón Barba Roja");
+        lbCañonMultiple4.setToolTipText("");
+
+        btnCannonBarba1.setBackground(new java.awt.Color(212, 212, 212));
+        btnCannonBarba1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCannonBarba1MouseClicked(evt);
+            }
+        });
+        btnCannonBarba1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        imgCannonB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/canonMultiple.png"))); // NOI18N
+        btnCannonBarba1.add(imgCannonB, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 110, 110));
+
+        lbcantidadCannonBarba1.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
+        lbcantidadCannonBarba1.setForeground(new java.awt.Color(0, 0, 0));
+        lbcantidadCannonBarba1.setText("Cantidad");
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbcantidadCannonBarba1)
+                .addGap(77, 77, 77))
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(btnCannonBarba1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(39, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbCañonMultiple4, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbCañonMultiple4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnCannonBarba1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lbcantidadCannonBarba1)
+                .addContainerGap(8, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbcantidadBomba1)
+                .addGap(77, 77, 77))
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnBomba1, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                    .addComponent(lbCañonMultiple3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbCañonMultiple3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnBomba1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lbcantidadBomba1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel9.setBackground(new java.awt.Color(165, 173, 167));
+
+        lbCañonMultiple5.setBackground(new java.awt.Color(0, 0, 0));
+        lbCañonMultiple5.setFont(new java.awt.Font("Roboto Light", 0, 20)); // NOI18N
+        lbCañonMultiple5.setForeground(new java.awt.Color(0, 0, 0));
+        lbCañonMultiple5.setText("Cañón múltiple");
+        lbCañonMultiple5.setToolTipText("");
+
+        btnCannonMultiple1.setBackground(new java.awt.Color(212, 212, 212));
+        btnCannonMultiple1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCannonMultiple1MouseClicked(evt);
+            }
+        });
+        btnCannonMultiple1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        imgCannonM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/canonMultiple.png"))); // NOI18N
+        btnCannonMultiple1.add(imgCannonM, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 110, 110));
+
+        lbcantidadCannonMultiple1.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
+        lbcantidadCannonMultiple1.setForeground(new java.awt.Color(0, 0, 0));
+        lbcantidadCannonMultiple1.setText("Cantidad");
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbcantidadCannonMultiple1)
+                .addGap(77, 77, 77))
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(lbCañonMultiple5))
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(btnCannonMultiple1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(39, Short.MAX_VALUE))
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbCañonMultiple5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnCannonMultiple1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lbcantidadCannonMultiple1)
+                .addContainerGap(8, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout panelArmas1Layout = new javax.swing.GroupLayout(panelArmas1);
+        panelArmas1.setLayout(panelArmas1Layout);
+        panelArmas1Layout.setHorizontalGroup(
+            panelArmas1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelArmas1Layout.createSequentialGroup()
+                .addGroup(panelArmas1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelArmas1Layout.createSequentialGroup()
+                        .addGap(110, 110, 110)
+                        .addComponent(jLabel5))
+                    .addGroup(panelArmas1Layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addGroup(panelArmas1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(51, 51, 51))
+        );
+        panelArmas1Layout.setVerticalGroup(
+            panelArmas1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelArmas1Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2, 2, 2)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(268, 268, 268))
+        );
+
+        add(panelArmas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 290, 1000));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMercadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMercadoMouseClicked
         // TODO add your handling code here:
-        Utilities.cargarPanel(MainWindow.contentPanel,panelTienda);
+        Utilities.cargarPanel(MainWindow.contentPanel,panelMercado);
     }//GEN-LAST:event_btnMercadoMouseClicked
-
-    private void btnCannonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCannonMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCannonMouseClicked
-
-    private void btnBombaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBombaMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnBombaMouseClicked
 
     private void btnFireMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFireMouseClicked
         // TODO add your handling code here:
@@ -554,6 +598,7 @@ public class PanelJuego extends javax.swing.JPanel {
 
     private void btnTienda3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTienda3MouseClicked
         // TODO add your handling code here:
+        Utilities.cargarPanel(MainWindow.contentPanel,panelTienda);
     }//GEN-LAST:event_btnTienda3MouseClicked
 
     private void btnTienda3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTienda3ActionPerformed
@@ -605,23 +650,31 @@ public class PanelJuego extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnSendMsgMouseClicked
 
-    private void btnCannonMultipleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCannonMultipleMouseClicked
+    private void btnCannon1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCannon1MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCannonMultipleMouseClicked
+    }//GEN-LAST:event_btnCannon1MouseClicked
 
-    private void btnCannonBarbaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCannonBarbaMouseClicked
+    private void btnBomba1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBomba1MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCannonBarbaMouseClicked
+    }//GEN-LAST:event_btnBomba1MouseClicked
+
+    private void btnCannonBarba1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCannonBarba1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCannonBarba1MouseClicked
+
+    private void btnCannonMultiple1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCannonMultiple1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCannonMultiple1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelNumeros1;
     private javax.swing.JPanel activatePanel;
     private javax.swing.JLabel btnActivateChat;
-    private javax.swing.JPanel btnBomba;
-    private javax.swing.JPanel btnCannon;
-    private javax.swing.JPanel btnCannonBarba;
-    private javax.swing.JPanel btnCannonMultiple;
+    private javax.swing.JPanel btnBomba1;
+    private javax.swing.JPanel btnCannon1;
+    private javax.swing.JPanel btnCannonBarba1;
+    private javax.swing.JPanel btnCannonMultiple1;
     private javax.swing.JButton btnFire;
     private javax.swing.JButton btnMercado;
     private javax.swing.JLabel btnSendMsg;
@@ -637,30 +690,34 @@ public class PanelJuego extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbBandera;
     private javax.swing.JLabel lbBarco;
-    private javax.swing.JLabel lbCantidadCannon;
-    private javax.swing.JLabel lbCañon;
-    private javax.swing.JLabel lbCañonMultiple;
-    private javax.swing.JLabel lbCañonMultiple1;
-    private javax.swing.JLabel lbCañonMultiple2;
+    private javax.swing.JLabel lbCantidadCannon1;
+    private javax.swing.JLabel lbCañon1;
+    private javax.swing.JLabel lbCañonMultiple3;
+    private javax.swing.JLabel lbCañonMultiple4;
+    private javax.swing.JLabel lbCañonMultiple5;
     private javax.swing.JLabel lbCoordenada;
     private javax.swing.JLabel lbCoordenada2;
     private javax.swing.JLabel lbCoordenada3;
     private javax.swing.JLabel lbCoordenada4;
     private javax.swing.JLabel lbSombrero;
-    private javax.swing.JLabel lbcantidadBomba;
-    private javax.swing.JLabel lbcantidadCannonBarba;
-    private javax.swing.JLabel lbcantidadCannonMultiple;
+    private javax.swing.JLabel lbcantidadBomba1;
+    private javax.swing.JLabel lbcantidadCannonBarba1;
+    private javax.swing.JLabel lbcantidadCannonMultiple1;
     private javax.swing.JPanel myPanel;
     private javax.swing.JPanel optionPanel;
     private javax.swing.JPanel panelArmas;
+    private javax.swing.JPanel panelArmas1;
     private javax.swing.JPanel panelBotones;
     private javax.swing.JPanel panelNumero2;
     private javax.swing.JTextArea txtChat;
