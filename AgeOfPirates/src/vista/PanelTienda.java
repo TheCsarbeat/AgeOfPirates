@@ -15,6 +15,8 @@ import javax.swing.JPanel;
 public class PanelTienda extends javax.swing.JPanel {
     public PanelEdificios panelEdificios;
     public PanelArmas panelArmas;
+    public static PanelColocar panelColocar;
+    public static int lastItemSelected; //fuente=0, conector=1, mercado=2, mina=3, templo=4, armeria=5
     /**
      * Creates new form PanelTienda
      */
@@ -22,9 +24,10 @@ public class PanelTienda extends javax.swing.JPanel {
         initComponents();
         panelEdificios = new PanelEdificios();
         panelArmas = new PanelArmas();
+        panelColocar = new PanelColocar();
         cargarPanel(panelEdificios);
     }
-
+    
     public void cargarPanel(JPanel panel) {
         otroPanel.removeAll();
         otroPanel.add(panel);

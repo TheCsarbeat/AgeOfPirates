@@ -5,7 +5,7 @@
  */
 package vista;
 
-import control.ControlTienda;
+import control.Utilities;
 
 /**
  *
@@ -18,9 +18,8 @@ public class PanelEdificios extends javax.swing.JPanel {
      */
     public PanelEdificios() {
         initComponents();
+        
     }
-    
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -66,6 +65,11 @@ public class PanelEdificios extends javax.swing.JPanel {
         setLayout(new java.awt.GridLayout(2, 3));
 
         itemPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
+        itemPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                itemPanelMouseClicked(evt);
+            }
+        });
         itemPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -89,6 +93,11 @@ public class PanelEdificios extends javax.swing.JPanel {
         add(itemPanel);
 
         itemPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
+        itemPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                itemPanel1MouseClicked(evt);
+            }
+        });
         itemPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -112,6 +121,11 @@ public class PanelEdificios extends javax.swing.JPanel {
         add(itemPanel1);
 
         itemPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
+        itemPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                itemPanel2MouseClicked(evt);
+            }
+        });
         itemPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -135,6 +149,11 @@ public class PanelEdificios extends javax.swing.JPanel {
         add(itemPanel2);
 
         itemPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
+        itemPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                itemPanel3MouseClicked(evt);
+            }
+        });
         itemPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -158,6 +177,11 @@ public class PanelEdificios extends javax.swing.JPanel {
         add(itemPanel3);
 
         itemPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
+        itemPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                itemPanel4MouseClicked(evt);
+            }
+        });
         itemPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -181,6 +205,11 @@ public class PanelEdificios extends javax.swing.JPanel {
         add(itemPanel4);
 
         itemPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
+        itemPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                itemPanel5MouseClicked(evt);
+            }
+        });
         itemPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -203,6 +232,37 @@ public class PanelEdificios extends javax.swing.JPanel {
 
         add(itemPanel5);
     }// </editor-fold>//GEN-END:initComponents
+
+    //fuente=0, conector=1, mercado=2, mina=3, templo=4, armeria=5
+    private void itemPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemPanelMouseClicked
+        PanelTienda.lastItemSelected = 3;
+        Utilities.cargarPanel(MainWindow.contentPanel, PanelTienda.panelColocar);
+    }//GEN-LAST:event_itemPanelMouseClicked
+
+    private void itemPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemPanel1MouseClicked
+        PanelTienda.lastItemSelected = 4;
+        Utilities.cargarPanel(MainWindow.contentPanel, PanelTienda.panelColocar);
+    }//GEN-LAST:event_itemPanel1MouseClicked
+
+    private void itemPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemPanel2MouseClicked
+        PanelTienda.lastItemSelected = 5;
+        Utilities.cargarPanel(MainWindow.contentPanel, PanelTienda.panelColocar);
+    }//GEN-LAST:event_itemPanel2MouseClicked
+
+    private void itemPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemPanel3MouseClicked
+        PanelTienda.lastItemSelected = 2;
+        Utilities.cargarPanel(MainWindow.contentPanel, PanelTienda.panelColocar);
+    }//GEN-LAST:event_itemPanel3MouseClicked
+
+    private void itemPanel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemPanel4MouseClicked
+        PanelTienda.lastItemSelected = 0;
+        Utilities.cargarPanel(MainWindow.contentPanel, PanelTienda.panelColocar);
+    }//GEN-LAST:event_itemPanel4MouseClicked
+
+    private void itemPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemPanel5MouseClicked
+        PanelTienda.lastItemSelected = 1;
+        Utilities.cargarPanel(MainWindow.contentPanel, PanelTienda.panelColocar);
+    }//GEN-LAST:event_itemPanel5MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

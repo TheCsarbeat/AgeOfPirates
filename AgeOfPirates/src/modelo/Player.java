@@ -14,7 +14,7 @@ public class Player {
     private boolean[][] positions = new boolean[20][20];
     public Grafo grafo;
     
-    Player(){
+    public Player(){
         name = "";
         turno = 0;
         money = 4000;

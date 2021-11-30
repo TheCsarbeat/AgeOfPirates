@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class Grafo {
 
-    ArrayList<Vertice> vertices;
+    public ArrayList<Vertice> vertices;
 
     public Grafo()
     {

@@ -10,25 +10,24 @@ package vista;
  * @author ytces
  */
 public class PanelMar extends javax.swing.JPanel {
-
+    private CanvasSea canvas;
+    private int whoIs; //Mi canvas=0, Canvas enemigo = 1;
     /**
      * Creates new form PanelMar
      */
-    public PanelMar() {
+    public PanelMar(int whoIs) {
         initComponents();
-        generateTiles();
+        canvas = new CanvasSea();        
+        this.add(canvas);
+        this.whoIs = whoIs;
     }
     
-    public void generateTiles(){
-        for(int row=0;row<20;row++){
-            for(int col=0;col<20;col++){
-                this.add(new Tile("Tile "+row+"-"+col));
-            }
-        }
+    public void updateCanvas(){
+        this.removeAll();
         
+        canvas = new CanvasSea();
     }
-    
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,7 +37,7 @@ public class PanelMar extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setLayout(new java.awt.GridLayout(20, 20));
+        setLayout(new java.awt.GridLayout());
     }// </editor-fold>//GEN-END:initComponents
 
 

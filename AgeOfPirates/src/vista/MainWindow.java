@@ -5,12 +5,11 @@
  */
 package vista;
 
-import control.ControlTienda;
 import control.TipoAccion;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import control.Utilities;
 import modelo.Peticion;
+import modelo.Player;
 
 
 
@@ -22,6 +21,7 @@ public class MainWindow extends javax.swing.JFrame {
     public static PanelMenu panelMenu;
     public static PanelJuego panelJuego;
     public static PanelTienda panelTienda;
+    public static Player player;
     
     public static int id; 
     
@@ -30,6 +30,7 @@ public class MainWindow extends javax.swing.JFrame {
         panelJuego = new PanelJuego();
         panelMenu = new PanelMenu();
         panelTienda = new PanelTienda();
+        player = new Player();
         Utilities.cargarPanel(contentPanel, panelMenu);
         obtenerId();
     }

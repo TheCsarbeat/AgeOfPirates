@@ -21,25 +21,21 @@ public class PanelJuego extends javax.swing.JPanel {
     public PanelMar panelMar1, panelMar2;
     public ControlTienda controlTienda;
     public PanelTienda panelTienda;
-    /**
-     * Creates new form PanelJuego
-     */
+
     public PanelJuego() {
         initComponents();
         controlTienda = new ControlTienda();
-        panelMar1 = new PanelMar();
-        panelMar2 = new PanelMar();
+        panelMar1 = new PanelMar(0);
+        panelMar2 = new PanelMar(1);
         panelTienda = new PanelTienda();
         Utilities.cargarPanel(myPanel, panelMar1);
         Utilities.cargarPanel(enemyPanel, panelMar2);
         
         for(int i=0; i<20; i++ ){
             JLabel lb = new JLabel();
-            JLabel lb2 = new JLabel();
+            lb.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
             lb.setText(String.valueOf(i));
-            lb2.setText(String.valueOf(i));
-            panelNumero2.add(lb);
-            PanelNumeros1.add(lb2);
+            panelCoordinates.add(lb);
         }
         
         imgCannon.setIcon(Utilities.loadResizeIcon("src\\images\\canon.png", 110));
@@ -61,7 +57,6 @@ public class PanelJuego extends javax.swing.JPanel {
 
         myPanel = new javax.swing.JPanel();
         enemyPanel = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         panelArmas = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -108,24 +103,21 @@ public class PanelJuego extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
         lbBarco = new javax.swing.JLabel();
-        panelNumero2 = new javax.swing.JPanel();
-        PanelNumeros1 = new javax.swing.JPanel();
         lbSombrero = new javax.swing.JLabel();
         lbBandera = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        panelCoordinates = new javax.swing.JPanel();
 
         setPreferredSize(new java.awt.Dimension(1900, 1000));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         myPanel.setBackground(new java.awt.Color(255, 0, 0));
         myPanel.setLayout(new java.awt.CardLayout());
-        add(myPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 40, 550, 530));
+        add(myPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 40, 640, 640));
 
         enemyPanel.setBackground(new java.awt.Color(255, 0, 0));
         enemyPanel.setLayout(new java.awt.CardLayout());
-        add(enemyPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 40, 550, 530));
-
-        jLabel1.setText("0       1       2       3       4       5       6       7       8       9     10    11    12    13    14    15     16     17     18     19");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 20, 580, -1));
+        add(enemyPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 40, 640, 640));
 
         panelArmas.setBackground(new java.awt.Color(165, 173, 167));
 
@@ -384,8 +376,8 @@ public class PanelJuego extends javax.swing.JPanel {
 
         add(panelArmas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 290, 1000));
 
-        jLabel3.setText("0       1       2       3       4       5       6       7       8       9     10    11    12    13    14    15     16     17     18     19");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, 580, -1));
+        jLabel3.setText("   0         1         2         3        4         5        6         7        8        9       10      11      12      13      14      15      16      17      18      19");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 20, 650, -1));
 
         panelBotones.setBackground(new java.awt.Color(165, 173, 167));
         panelBotones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -516,23 +508,24 @@ public class PanelJuego extends javax.swing.JPanel {
         lbBarco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/barco.png"))); // NOI18N
         panelBotones.add(lbBarco, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, 140, 140));
 
-        add(panelBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 620, 1630, 300));
-
-        panelNumero2.setLayout(new java.awt.GridLayout(20, 0));
-        add(panelNumero2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 40, 20, 530));
-
-        PanelNumeros1.setLayout(new java.awt.GridLayout(20, 0));
-        add(PanelNumeros1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, 20, 530));
+        add(panelBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 690, 1630, 300));
 
         lbSombrero.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lbSombrero.setForeground(new java.awt.Color(0, 0, 0));
         lbSombrero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/sombrero.png"))); // NOI18N
-        add(lbSombrero, new org.netbeans.lib.awtextra.AbsoluteConstraints(1660, 480, 140, 140));
+        add(lbSombrero, new org.netbeans.lib.awtextra.AbsoluteConstraints(1760, 510, 140, 140));
 
         lbBandera.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lbBandera.setForeground(new java.awt.Color(0, 0, 0));
         lbBandera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bandera.png"))); // NOI18N
-        add(lbBandera, new org.netbeans.lib.awtextra.AbsoluteConstraints(1650, 290, 140, 140));
+        add(lbBandera, new org.netbeans.lib.awtextra.AbsoluteConstraints(1680, 20, 140, 140));
+
+        jLabel5.setText("   0         1         2         3        4         5        6         7        8        9       10      11      12      13      14      15      16      17      18      19");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 20, 650, -1));
+
+        panelCoordinates.setForeground(new java.awt.Color(0, 0, 0));
+        panelCoordinates.setLayout(new java.awt.GridLayout(20, 0));
+        add(panelCoordinates, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 40, 30, 640));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMercadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMercadoMouseClicked
@@ -615,7 +608,6 @@ public class PanelJuego extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel PanelNumeros1;
     private javax.swing.JPanel activatePanel;
     private javax.swing.JLabel btnActivateChat;
     private javax.swing.JPanel btnBomba;
@@ -632,11 +624,11 @@ public class PanelJuego extends javax.swing.JPanel {
     private javax.swing.JLabel imgCannon;
     private javax.swing.JLabel imgCannonB;
     private javax.swing.JLabel imgCannonM;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -662,7 +654,7 @@ public class PanelJuego extends javax.swing.JPanel {
     private javax.swing.JPanel optionPanel;
     private javax.swing.JPanel panelArmas;
     private javax.swing.JPanel panelBotones;
-    private javax.swing.JPanel panelNumero2;
+    private javax.swing.JPanel panelCoordinates;
     private javax.swing.JTextArea txtChat;
     private javax.swing.JTextField txtCoordenadaX;
     private javax.swing.JTextField txtCoordenadaY;
