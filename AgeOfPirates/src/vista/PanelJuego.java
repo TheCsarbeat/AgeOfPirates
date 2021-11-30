@@ -389,6 +389,19 @@ public class PanelJuego extends javax.swing.JPanel {
         panelBotones.setBackground(new java.awt.Color(165, 173, 167));
         panelBotones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnMercado.setText("Opciones de Mercado");
+        btnMercado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMercadoMouseClicked(evt);
+            }
+        });
+        btnMercado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMercadoActionPerformed(evt);
+            }
+        });
+        panelBotones.add(btnMercado, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, 150, 50));
+
         lbCoordenada3.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
         lbCoordenada3.setForeground(new java.awt.Color(0, 0, 0));
         lbCoordenada3.setText("Bitácora");
@@ -536,6 +549,11 @@ public class PanelJuego extends javax.swing.JPanel {
         add(panelCoordinates, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 40, 30, 640));
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnMercadoMouseClicked(java.awt.event.MouseEvent evt) {                                        
+        // TODO add your handling code here:
+        Utilities.cargarPanel(MainWindow.contentPanel,MainWindow.panelTiendaMercado);
+    }                                       
+
     private void btnCannonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCannonMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCannonMouseClicked
@@ -625,7 +643,7 @@ public class PanelJuego extends javax.swing.JPanel {
 
     private void btnMercadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMercadoMouseClicked
         // TODO add your handling code here:
-        Utilities.cargarPanel(MainWindow.contentPanel,panelTiendaMercado);
+        Utilities.cargarPanel(MainWindow.contentPanel,MainWindow.panelTiendaMercado);
     }//GEN-LAST:event_btnMercadoMouseClicked
 
     private void btnMercadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMercadoActionPerformed
