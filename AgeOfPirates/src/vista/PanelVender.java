@@ -92,7 +92,7 @@ public class PanelVender extends javax.swing.JPanel {
                 btnActivateChatMouseClicked(evt);
             }
         });
-        jPanel1.add(btnActivateChat, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, 190, 40));
+        jPanel1.add(btnActivateChat, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 190, 40));
 
         panelBotones.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 30, 460, 250));
 

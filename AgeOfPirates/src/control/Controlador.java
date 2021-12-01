@@ -64,9 +64,9 @@ public class Controlador {
             peticion.setDatosSalida(cheackPlayersReady());      
             
         }else if(accion == TipoAccion.FINISH_TURN){ 
-            int id = (int) peticion.getDatosEntrada();     
-            Player p = getPlayer(id);
-            peticion.setDatosSalida(modifcarTurn(p));      
+            ArrayList datos = (ArrayList) peticion.getDatosEntrada();     
+            Player p = getPlayer((int)datos.get(0));
+            peticion.setDatosSalida(modifcarTurn(p, (Arma)datos.get(1)));      
             
         }
         
@@ -174,7 +174,7 @@ public class Controlador {
         return true;
     }
     
-    public boolean modifcarTurn(Player p){
+    public boolean modifcarTurn(Player p, Arma arma){
         Player next; 
         p.setTurn(false);
         int index = 0;
@@ -185,9 +185,11 @@ public class Controlador {
             index++;
         }
         
+        p.eliminarArma(arma.getId());
         if(p.getId() == players.size()-1){
             next = players.get(0);
             next.setTurn(true);
+            
             players.set(0, next);
         }else{
             next = players.get(index+1);

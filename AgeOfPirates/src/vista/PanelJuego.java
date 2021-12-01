@@ -13,6 +13,7 @@ import modelo.Message;
 import modelo.Peticion;
 import javax.swing.JLabel;
 import control.Utilities;
+import java.awt.Color;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
@@ -21,8 +22,11 @@ import java.io.OutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Random;
+import modelo.Arma;
 import modelo.Punto;
 import modelo.Vertice;
+
+
 
 
 /**
@@ -33,6 +37,9 @@ public class PanelJuego extends javax.swing.JPanel {
     public PanelMar panelMar1, panelMar2;
     public ControlTienda controlTienda;   
     public int lastUsed = -1;
+    public int lastEnemy = -1;
+    
+    private boolean flagCargado = false;
     
     /**
      * Creates new form PanelJuego
@@ -166,16 +173,11 @@ public class PanelJuego extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         panelCoordinates = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
-        jPanel7 = new javax.swing.JPanel();
-        lbCañon1 = new javax.swing.JLabel();
-        btnCannon1 = new javax.swing.JPanel();
-        imgCannon1 = new javax.swing.JLabel();
-        lbCantCannon1 = new javax.swing.JLabel();
-        jPanel8 = new javax.swing.JPanel();
-        lbCañon2 = new javax.swing.JLabel();
-        btnCannon2 = new javax.swing.JPanel();
-        imgCannon2 = new javax.swing.JLabel();
-        lbCantCannon2 = new javax.swing.JLabel();
+        lbPlayer3 = new javax.swing.JLabel();
+        lbPlayer0 = new javax.swing.JLabel();
+        lbPlayer1 = new javax.swing.JLabel();
+        lbPlayer2 = new javax.swing.JLabel();
+        btnLoadSeaEnemy = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(120, 120, 120));
         setPreferredSize(new java.awt.Dimension(1900, 1000));
@@ -202,7 +204,7 @@ public class PanelJuego extends javax.swing.JPanel {
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         panelArmas.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        panelCannon.setBackground(new java.awt.Color(255, 0, 102));
+        panelCannon.setBackground(new java.awt.Color(120, 120, 120));
         panelCannon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 panelCannonMouseClicked(evt);
@@ -239,7 +241,7 @@ public class PanelJuego extends javax.swing.JPanel {
 
         panelArmas.add(panelCannon, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, -1, -1));
 
-        panelBomba.setBackground(new java.awt.Color(255, 0, 102));
+        panelBomba.setBackground(new java.awt.Color(120, 120, 120));
         panelBomba.setPreferredSize(new java.awt.Dimension(181, 220));
         panelBomba.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -278,7 +280,7 @@ public class PanelJuego extends javax.swing.JPanel {
 
         panelArmas.add(panelBomba, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 510, 190, 210));
 
-        panelCannonM.setBackground(new java.awt.Color(255, 0, 102));
+        panelCannonM.setBackground(new java.awt.Color(120, 120, 120));
         panelCannonM.setPreferredSize(new java.awt.Dimension(181, 220));
         panelCannonM.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -316,7 +318,7 @@ public class PanelJuego extends javax.swing.JPanel {
 
         panelArmas.add(panelCannonM, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 190, 210));
 
-        panelCannonBR.setBackground(new java.awt.Color(255, 0, 102));
+        panelCannonBR.setBackground(new java.awt.Color(120, 120, 120));
         panelCannonBR.setPreferredSize(new java.awt.Dimension(181, 220));
         panelCannonBR.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -535,79 +537,72 @@ public class PanelJuego extends javax.swing.JPanel {
         panelCoordinates.setLayout(new java.awt.GridLayout(20, 0));
         add(panelCoordinates, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 40, 30, 640));
 
-        jPanel7.setBackground(new java.awt.Color(255, 0, 102));
-        jPanel7.addMouseListener(new java.awt.event.MouseAdapter() {
+        jPanel6.setBackground(new java.awt.Color(165, 173, 167));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lbPlayer3.setBackground(new java.awt.Color(120, 120, 120));
+        lbPlayer3.setFont(new java.awt.Font("Roboto Light", 0, 20)); // NOI18N
+        lbPlayer3.setForeground(new java.awt.Color(0, 0, 0));
+        lbPlayer3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbPlayer3.setText("Player 3");
+        lbPlayer3.setToolTipText("");
+        lbPlayer3.setOpaque(true);
+        lbPlayer3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel7MouseClicked(evt);
+                lbPlayer3MouseClicked(evt);
             }
         });
-        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel6.add(lbPlayer3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 200, 60));
 
-        lbCañon1.setBackground(new java.awt.Color(0, 0, 0));
-        lbCañon1.setFont(new java.awt.Font("Roboto Light", 0, 20)); // NOI18N
-        lbCañon1.setForeground(new java.awt.Color(0, 0, 0));
-        lbCañon1.setText("Cañón");
-        lbCañon1.setToolTipText("");
-        jPanel7.add(lbCañon1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 70, 40));
-
-        btnCannon1.setBackground(new java.awt.Color(212, 212, 212));
-        btnCannon1.addMouseListener(new java.awt.event.MouseAdapter() {
+        lbPlayer0.setBackground(new java.awt.Color(120, 120, 120));
+        lbPlayer0.setFont(new java.awt.Font("Roboto Light", 0, 20)); // NOI18N
+        lbPlayer0.setForeground(new java.awt.Color(0, 0, 0));
+        lbPlayer0.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbPlayer0.setText("Player 0");
+        lbPlayer0.setToolTipText("");
+        lbPlayer0.setOpaque(true);
+        lbPlayer0.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCannon1MouseClicked(evt);
+                lbPlayer0MouseClicked(evt);
             }
         });
-        btnCannon1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel6.add(lbPlayer0, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 200, 60));
 
-        imgCannon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/canon.png"))); // NOI18N
-        btnCannon1.add(imgCannon1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 110, 110));
-
-        jPanel7.add(btnCannon1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 150, -1));
-
-        lbCantCannon1.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
-        lbCantCannon1.setForeground(new java.awt.Color(0, 0, 0));
-        lbCantCannon1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbCantCannon1.setText("Cantidad");
-        lbCantCannon1.setPreferredSize(new java.awt.Dimension(100, 22));
-        lbCantCannon1.addMouseListener(new java.awt.event.MouseAdapter() {
+        lbPlayer1.setBackground(new java.awt.Color(120, 120, 120));
+        lbPlayer1.setFont(new java.awt.Font("Roboto Light", 0, 20)); // NOI18N
+        lbPlayer1.setForeground(new java.awt.Color(0, 0, 0));
+        lbPlayer1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbPlayer1.setText("Player 1");
+        lbPlayer1.setToolTipText("");
+        lbPlayer1.setOpaque(true);
+        lbPlayer1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lbCantCannon1MouseClicked(evt);
+                lbPlayer1MouseClicked(evt);
             }
         });
-        jPanel7.add(lbCantCannon1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 190, -1));
+        jPanel6.add(lbPlayer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 200, 60));
 
-        jPanel6.add(jPanel7);
-
-        jPanel8.setBackground(new java.awt.Color(255, 0, 102));
-        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lbCañon2.setBackground(new java.awt.Color(0, 0, 0));
-        lbCañon2.setFont(new java.awt.Font("Roboto Light", 0, 20)); // NOI18N
-        lbCañon2.setForeground(new java.awt.Color(0, 0, 0));
-        lbCañon2.setText("Cañón");
-        lbCañon2.setToolTipText("");
-        jPanel8.add(lbCañon2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 70, 40));
-
-        btnCannon2.setBackground(new java.awt.Color(212, 212, 212));
-        btnCannon2.addMouseListener(new java.awt.event.MouseAdapter() {
+        lbPlayer2.setBackground(new java.awt.Color(120, 120, 120));
+        lbPlayer2.setFont(new java.awt.Font("Roboto Light", 0, 20)); // NOI18N
+        lbPlayer2.setForeground(new java.awt.Color(0, 0, 0));
+        lbPlayer2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbPlayer2.setText("Player 2");
+        lbPlayer2.setToolTipText("");
+        lbPlayer2.setOpaque(true);
+        lbPlayer2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCannon2MouseClicked(evt);
+                lbPlayer2MouseClicked(evt);
             }
         });
-        btnCannon2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel6.add(lbPlayer2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 200, 60));
 
-        imgCannon2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/canon.png"))); // NOI18N
-        btnCannon2.add(imgCannon2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 110, 110));
-
-        jPanel8.add(btnCannon2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 150, -1));
-
-        lbCantCannon2.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
-        lbCantCannon2.setForeground(new java.awt.Color(0, 0, 0));
-        lbCantCannon2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbCantCannon2.setText("Cantidad");
-        lbCantCannon2.setPreferredSize(new java.awt.Dimension(100, 22));
-        jPanel8.add(lbCantCannon2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 190, -1));
-
-        jPanel6.add(jPanel8);
+        btnLoadSeaEnemy.setText("Load Sea");
+        btnLoadSeaEnemy.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnLoadSeaEnemyMouseClicked(evt);
+            }
+        });
+        jPanel6.add(btnLoadSeaEnemy, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 200, 60));
 
         add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1670, 20, 220, 660));
     }// </editor-fold>//GEN-END:initComponents
@@ -699,10 +694,48 @@ public class PanelJuego extends javax.swing.JPanel {
     }//GEN-LAST:event_btnCannonBMouseClicked
 
     private void btnFireMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFireMouseClicked
-        // TODO add your handling code here:             
-        disparar();   
-        MainWindow.setPlayerEnemigo();  
-        MainWindow.finishTurn();        
+        // TODO add your handling code here:    
+        String nombre ="";
+        if(!btnFire.isEnabled() && (!btnHost.isEnabled() || !btnHost.isVisible())){
+           return; 
+        }
+        if(lastEnemy == MainWindow.player.getId()){
+            JOptionPane.showMessageDialog(null, "Bro usted no se puede disparar a si mismo!", "Error", JOptionPane.ERROR_MESSAGE);
+        }else if(lastEnemy == -1){
+             JOptionPane.showMessageDialog(null, "Debe selecionar un enemigo a disparar!", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+          
+        if(lastUsed == 0){
+            nombre = "Cannon";
+        }else if(lastUsed == 1){
+            nombre ="Cannon Multiple";
+        }else if(lastUsed == 2){
+            nombre ="Bomba";
+        }else if(lastUsed == 3){
+            nombre ="Cannon Barba Roja";
+        }        
+        
+        MainWindow.armaUsada = MainWindow.player.buscarArma(nombre);
+       
+        if(MainWindow.armaUsada == null){
+            JOptionPane.showMessageDialog(null, "No puede disparar porque no tiene esta arma!", "Error", JOptionPane.ERROR_MESSAGE);
+        }else{
+            disparar();  
+            panelCannonBR.setBackground(new Color(120,120,120));
+            panelCannonM.setBackground(new Color(120,120,120));
+            panelBomba.setBackground(new Color(120,120,120));
+            panelCannon.setBackground(new Color(120,120,120));
+            lastUsed =-1;
+            lastEnemy = -1;
+            lbPlayer0.setBackground(new Color(120,120,120));
+            lbPlayer1.setBackground(new Color(120,120,120));
+            lbPlayer2.setBackground(new Color(120,120,120));
+            lbPlayer3.setBackground(new Color(120,120,120));
+            flagCargado = false;
+            MainWindow.setPlayerEnemigo();  
+            MainWindow.finishTurn();
+        }
+               
              
     }//GEN-LAST:event_btnFireMouseClicked
 
@@ -714,24 +747,6 @@ public class PanelJuego extends javax.swing.JPanel {
     private void btnMercadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMercadoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnMercadoActionPerformed
-
-    private void btnCannon1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCannon1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCannon1MouseClicked
-
-    private void btnCannon2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCannon2MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCannon2MouseClicked
-
-    private void jPanel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseClicked
-        // TODO add your handling code here:
-         MainWindow.getPlayerEnemigo(1);
-    }//GEN-LAST:event_jPanel7MouseClicked
-
-    private void lbCantCannon1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbCantCannon1MouseClicked
-        // TODO add your handling code here:
-   
-    }//GEN-LAST:event_lbCantCannon1MouseClicked
 
     private void btnReadyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReadyMouseClicked
         // TODO add your handling code here:
@@ -748,15 +763,18 @@ public class PanelJuego extends javax.swing.JPanel {
     private void btnHostMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHostMouseClicked
         // TODO add your handling code here:
         
+        if(!btnHost.isEnabled()){
+           return; 
+        }
         Peticion peticionIngresar = new Peticion(TipoAccion.CHECK_PLAYER_READY, "");        
         Client conexion = new Client(peticionIngresar);
         Object respuesta = conexion.getRespuestaServer();
         if(respuesta != null){
            if((boolean)respuesta){
                JOptionPane.showMessageDialog(null, "El juego ha iniciado!", "Error", JOptionPane.INFORMATION_MESSAGE);
-               btnHost.setEnabled(false);
+               btnHost.setEnabled(false);               
            }else{
-               JOptionPane.showMessageDialog(null, "No Funca esta vara!", "Error", JOptionPane.ERROR);
+               JOptionPane.showMessageDialog(null, "Los jugadores no están listos!", "Error", JOptionPane.ERROR_MESSAGE);
            }
         }else{
             JOptionPane.showMessageDialog(null, "Los datos no coinciden!", "Error", JOptionPane.ERROR_MESSAGE);
@@ -765,24 +783,89 @@ public class PanelJuego extends javax.swing.JPanel {
 
     private void panelCannonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelCannonMouseClicked
         // TODO add your handling code here:
-        
+        panelCannonBR.setBackground(new Color(120,120,120));
+        panelCannonM.setBackground(new Color(120,120,120));
+        panelBomba.setBackground(new Color(120,120,120));
+        panelCannon.setBackground(new Color(255,0,102));
         lastUsed = 0;
+        
     }//GEN-LAST:event_panelCannonMouseClicked
 
     private void panelCannonMMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelCannonMMouseClicked
         // TODO add your handling code here:
+        panelCannonBR.setBackground(new Color(120,120,120));
+        panelCannonM.setBackground(new Color(255,0,102));
+        panelBomba.setBackground(new Color(120,120,120));
+        panelCannon.setBackground(new Color(120,120,120));
         lastUsed = 1;
     }//GEN-LAST:event_panelCannonMMouseClicked
 
     private void panelBombaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBombaMouseClicked
         // TODO add your handling code here:
+        panelCannonBR.setBackground(new Color(120,120,120));
+        panelCannonM.setBackground(new Color(120,120,120));
+        panelBomba.setBackground(new Color(255,0,102));
+        panelCannon.setBackground(new Color(120,120,120));
         lastUsed = 2;
     }//GEN-LAST:event_panelBombaMouseClicked
 
     private void panelCannonBRMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelCannonBRMouseClicked
         // TODO add your handling code here:
+        panelCannonBR.setBackground(new Color(255,0,102));
+        panelCannonM.setBackground(new Color(120,120,120));
+        panelBomba.setBackground(new Color(120,120,120));
+        panelCannon.setBackground(new Color(120,120,120));
         lastUsed = 3;
     }//GEN-LAST:event_panelCannonBRMouseClicked
+
+    private void lbPlayer0MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbPlayer0MouseClicked
+        // TODO add your handling code here:
+        lbPlayer0.setBackground(new Color(255,0,102));
+        lbPlayer1.setBackground(new Color(120,120,120));
+        lbPlayer2.setBackground(new Color(120,120,120));
+        lbPlayer3.setBackground(new Color(120,120,120));
+        lastEnemy = 0;
+        
+    }//GEN-LAST:event_lbPlayer0MouseClicked
+
+    private void lbPlayer1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbPlayer1MouseClicked
+        // TODO add your handling code here:
+        lbPlayer0.setBackground(new Color(120,120,120));
+        lbPlayer1.setBackground(new Color(255,0,102));
+        lbPlayer2.setBackground(new Color(120,120,120));
+        lbPlayer3.setBackground(new Color(120,120,120));
+        lastEnemy = 1;
+        
+    }//GEN-LAST:event_lbPlayer1MouseClicked
+
+    private void lbPlayer2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbPlayer2MouseClicked
+        // TODO add your handling code here:
+        lbPlayer0.setBackground(new Color(120,120,120));
+        lbPlayer1.setBackground(new Color(120,120,120));
+        lbPlayer2.setBackground(new Color(255,0,102));
+        lbPlayer3.setBackground(new Color(120,120,120));
+        lastEnemy = 2;
+        
+    }//GEN-LAST:event_lbPlayer2MouseClicked
+
+    private void lbPlayer3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbPlayer3MouseClicked
+        // TODO add your handling code here:
+        lbPlayer0.setBackground(new Color(120,120,120));
+        lbPlayer1.setBackground(new Color(120,120,120));
+        lbPlayer2.setBackground(new Color(120,120,120));
+        lbPlayer3.setBackground(new Color(255,0,102));
+        lastEnemy = 3;
+        
+    }//GEN-LAST:event_lbPlayer3MouseClicked
+
+    private void btnLoadSeaEnemyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoadSeaEnemyMouseClicked
+        // TODO add your handling code here:
+        
+         MainWindow.getPlayerEnemigo(lastEnemy);
+         panelMar2.updateCanvas();
+         flagCargado = true;
+         
+    }//GEN-LAST:event_btnLoadSeaEnemyMouseClicked
     private int randomX(){
         int min_val = 0;
         int max_val = 19;
@@ -912,12 +995,11 @@ public class PanelJuego extends javax.swing.JPanel {
     private javax.swing.JLabel btnActivateChat;
     private javax.swing.JPanel btnBomba;
     private javax.swing.JPanel btnCannon;
-    private javax.swing.JPanel btnCannon1;
-    private javax.swing.JPanel btnCannon2;
     private javax.swing.JPanel btnCannonB;
     private javax.swing.JPanel btnCannonM;
     private javax.swing.JButton btnFire;
     private javax.swing.JButton btnHost;
+    private javax.swing.JButton btnLoadSeaEnemy;
     private javax.swing.JButton btnMercado;
     private javax.swing.JButton btnReady;
     private javax.swing.JLabel btnSendMsg;
@@ -925,8 +1007,6 @@ public class PanelJuego extends javax.swing.JPanel {
     private javax.swing.JPanel enemyPanel;
     private javax.swing.JLabel imgBomba;
     private javax.swing.JLabel imgCannon;
-    private javax.swing.JLabel imgCannon1;
-    private javax.swing.JLabel imgCannon2;
     private javax.swing.JLabel imgCannonB;
     private javax.swing.JLabel imgCannonM;
     private javax.swing.JLabel jLabel3;
@@ -934,8 +1014,6 @@ public class PanelJuego extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lbBarco;
@@ -944,18 +1022,18 @@ public class PanelJuego extends javax.swing.JPanel {
     private javax.swing.JLabel lbCannonM;
     private javax.swing.JLabel lbCantBomba;
     private javax.swing.JLabel lbCantCannon;
-    private javax.swing.JLabel lbCantCannon1;
-    private javax.swing.JLabel lbCantCannon2;
     private javax.swing.JLabel lbCantCannonB;
     private javax.swing.JLabel lbCantCannonM;
     private javax.swing.JLabel lbCañon;
-    private javax.swing.JLabel lbCañon1;
-    private javax.swing.JLabel lbCañon2;
     private javax.swing.JLabel lbCoordenada;
     private javax.swing.JLabel lbCoordenada2;
     private javax.swing.JLabel lbCoordenada4;
     private javax.swing.JLabel lbCoordenada5;
     private javax.swing.JLabel lbCoordenada6;
+    private javax.swing.JLabel lbPlayer0;
+    private javax.swing.JLabel lbPlayer1;
+    private javax.swing.JLabel lbPlayer2;
+    private javax.swing.JLabel lbPlayer3;
     private javax.swing.JLabel lbPlayerName;
     private javax.swing.JLabel lbState;
     private javax.swing.JPanel myPanel;

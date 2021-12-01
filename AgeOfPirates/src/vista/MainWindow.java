@@ -7,7 +7,9 @@ package vista;
 
 import control.TipoAccion;
 import control.Utilities;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import modelo.Arma;
 import modelo.Armeria;
 import modelo.Conector;
 import modelo.Mina;
@@ -40,6 +42,8 @@ public class MainWindow extends javax.swing.JFrame {
     public static Player player;
     
     public static Player  enemigo= new Player();
+    
+    public static Arma armaUsada;
     
     public MainWindow() {
         initComponents();
@@ -175,17 +179,20 @@ public class MainWindow extends javax.swing.JFrame {
             enemigo = (Player)respuesta;
             System.out.println(((Player)respuesta).toString());
         }else{
-            System.out.println("The answer is null");
+            System.out.println("The answer is null: "+id);
         }
     }
     
     public static void finishTurn(){       
-        Peticion peticion = new Peticion(TipoAccion.FINISH_TURN, player.getId());        
+        ArrayList datos = new ArrayList();
+        datos.add(player.getId());
+        datos.add(armaUsada);
+        Peticion peticion = new Peticion(TipoAccion.FINISH_TURN, datos);        
         Client conexion = new Client(peticion);
         Object respuesta = conexion.getRespuestaServer();
         if(respuesta != null){
             if((boolean)respuesta){
-                JOptionPane.showMessageDialog(null, "Su turno ha acabado!", "LISTo", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Su turno ha acabado!", "LISTO", JOptionPane.INFORMATION_MESSAGE);
             }
             
         }else{
