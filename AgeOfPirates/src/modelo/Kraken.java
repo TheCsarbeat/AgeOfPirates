@@ -5,7 +5,10 @@
  */
 package modelo;
 
+import java.util.ArrayList;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
+import vista.MainWindow;
 
 /**
  *
@@ -14,7 +17,18 @@ import java.util.Random;
 public class Kraken extends Comodin{
     
     public int idPlayer;
+    public int posicion;
     
-    
+    public Vertice obtenerComponente(){
+       
+        int min_val = 0;
+        int max_val = MainWindow.player.grafo.vertices.size();
+        ThreadLocalRandom tlr = ThreadLocalRandom.current();
+        posicion = tlr.nextInt(min_val, max_val + 1);
+        System.out.println("La posición en el array es: "+ posicion);
+        System.out.println("El número en la posición del array es: "+ MainWindow.player.grafo.vertices.get(posicion));
+        
+        return MainWindow.player.grafo.vertices.get(posicion);
+    }
  
 }
