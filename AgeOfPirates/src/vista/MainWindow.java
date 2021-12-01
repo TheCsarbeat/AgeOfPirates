@@ -6,9 +6,12 @@
 package vista;
 
 import control.TipoAccion;
-import javax.swing.JOptionPane;
 import control.Utilities;
+import modelo.Armeria;
 import modelo.Conector;
+import modelo.Mina;
+import modelo.Punto;
+import modelo.Templo;
 import modelo.Fuente;
 import modelo.Mercado;
 import modelo.Peticion;
@@ -48,7 +51,56 @@ public class MainWindow extends javax.swing.JFrame {
         panelStar = new PanelStart();
         //player = new Player();
         Utilities.cargarPanel(contentPanel, panelMenu);
-        
+    }
+    //fuente=0, conector=1, mercado=2, mina=3, templo=4, armeria=5
+    //"0": es un conector, no hay que agregarlo como arista
+    //"CON-xxx": no es conector, ocupa estar conectado a ese conector del id que recibe
+    public static void agregarEstructura(int dimensiones, Punto point, String conectorId){
+        if(!"0".equals(conectorId)){
+            if(PanelTienda.lastItemSelected == 0){
+                String name = player.getNextValidName(0);
+                Fuente unaFuente = new Fuente(name);
+                unaFuente.setPuntos(point);
+                unaFuente.setEspacio(dimensiones);
+                player.grafo.agregarVertice(unaFuente);
+                player.grafo.agregarArista(player.grafo.buscarVertice(conectorId), player.grafo.buscarVertice(name));
+            }else if(PanelTienda.lastItemSelected == 2){
+                String name = player.getNextValidName(2);
+                Mercado unMercado = new Mercado(name);
+                unMercado.setPuntos(point);
+                unMercado.setEspacio(dimensiones);
+                player.grafo.agregarVertice(unMercado);
+                player.grafo.agregarArista(player.grafo.buscarVertice(conectorId), player.grafo.buscarVertice(name));
+            }else if(PanelTienda.lastItemSelected == 3){
+                String name = player.getNextValidName(3);
+                Mina unaMina = new Mina(name);
+                unaMina.setPuntos(point);
+                unaMina.setEspacio(dimensiones);
+                player.grafo.agregarVertice(unaMina);
+                player.grafo.agregarArista(player.grafo.buscarVertice(conectorId), player.grafo.buscarVertice(name));
+            }else if(PanelTienda.lastItemSelected == 4){
+                String name = player.getNextValidName(4);
+                Templo unTemplo = new Templo(name);
+                unTemplo.setPuntos(point);
+                unTemplo.setEspacio(dimensiones);
+                player.grafo.agregarVertice(unTemplo);
+                player.grafo.agregarArista(player.grafo.buscarVertice(conectorId), player.grafo.buscarVertice(name));
+            }else{
+                String name = player.getNextValidName(5);
+                Armeria unaArmeria = new Armeria(name);
+                unaArmeria.setPuntos(point);
+                unaArmeria.setEspacio(dimensiones);
+                player.grafo.agregarVertice(unaArmeria);
+                player.grafo.agregarArista(player.grafo.buscarVertice(conectorId), player.grafo.buscarVertice(name));
+            }
+        }else{
+            String name = player.getNextValidName(1);
+            Conector unConector = new Conector(name);
+            unConector.setPuntos(point);
+            unConector.setEspacio(dimensiones);
+            player.grafo.agregarVertice(unConector);
+        }
+        MainWindow.player.grafo.imprimir();
     }
     
     public static void setPlayer(){       

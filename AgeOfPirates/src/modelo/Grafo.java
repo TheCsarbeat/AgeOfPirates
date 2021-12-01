@@ -36,7 +36,7 @@ public class Grafo  implements Serializable{
     // agrega las aristas
     public void agregarArista(Vertice origen, Vertice destino)
     {
-        if (origen != null && destino != null)
+        if (origen != null && destino != null && origen.estructura instanceof Conector)
             origen.agregarArista(destino);
     }
 

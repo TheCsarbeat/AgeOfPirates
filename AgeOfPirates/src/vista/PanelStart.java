@@ -59,7 +59,7 @@ public class PanelStart extends javax.swing.JPanel {
                     lbStatus.setText("GUEST");
                 
                 
-
+                /*
                 Vertice verticeFuente = new Vertice(new Fuente(player.getNextValidName(0)));
                 player.grafo.agregarVertice(verticeFuente);
 
@@ -74,6 +74,7 @@ public class PanelStart extends javax.swing.JPanel {
 
                 player.grafo.agregarArista(verticeFuente, verticeConector);
                 player.grafo.agregarArista(verticeConector, verticeMercado);
+*/
                 //player.grafo.imprimir();
             }
         }else{

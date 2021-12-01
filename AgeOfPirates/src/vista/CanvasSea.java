@@ -9,24 +9,41 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import modelo.Conector;
+import modelo.Fuente;
+import modelo.Mercado;
+import modelo.Mina;
+import modelo.Templo;
+import modelo.Vertice;
 
 /**
  *
  * @author ytces
  */
 public class CanvasSea extends Canvas{
-    public int id;
-    /*
+    public int id; //miCanvas=0, enemigo=1;
+    
     public CanvasSea(int id){
         this.id = id;
     }
-    */
+    
     public void paint(Graphics g){
         g.setColor(Color.black); 
         Image tile = new ImageIcon("src\\images\\Tile4.png").getImage();
-        Image mine = new ImageIcon("src\\images\\mine.png").getImage();        
-        Image nodo = new ImageIcon("src\\images\\node.png").getImage();
+        Image mina = new ImageIcon("src\\images\\mine.png").getImage();        
+        Image conector = new ImageIcon("src\\images\\node.png").getImage();
+        Image templo = new ImageIcon("src\\images\\temple.png").getImage();
+        Image fuente = new ImageIcon("src\\images\\campfire.png").getImage();
+        Image mercado = new ImageIcon("src\\images\\market.png").getImage();
+        Image armeria = new ImageIcon("src\\images\\armeria.png").getImage();
+        Image fire = new ImageIcon("src\\images\\fire.png").getImage();
+        
         
         for(int row=0;row<20;row++){
             for(int col=0;col<20;col++){
@@ -35,16 +52,54 @@ public class CanvasSea extends Canvas{
         }
         
         
-        //for(Estructura e: MainWindow.player.grafo.vertices)
-        /*
-        g.drawImage(edificio, 320, 320, 64, 32, this);
-        g.drawImage(edificio, 0, 0, 64, 32, this);
-        g.drawImage(nodo, 320, 0, 32, 32, this);
-        
-        
-        drawThickLine(g,64,16,320,16,5,Color.BLACK);
-        drawThickLine(g,320,32,320,320,5,Color.BLACK);
-        */
+        int x=0, y=0;
+        int width=32, height=32;
+        if(id == 0){
+            for(Vertice e: MainWindow.player.grafo.vertices){
+                x = e.estructura.getFirstCoordinate().getX();
+                y = e.estructura.getFirstCoordinate().getY();
+                width = (e.estructura.getEspacio()/10);
+                height = (e.estructura.getEspacio()%10);
+                if(e.estructura instanceof Mina){
+                    g.drawImage(mina, x*32, y*32, width*32, height*32, this);
+                    //g.drawImage(mina, 320, 320, 32, 32, this);
+                }else if(e.estructura instanceof Conector){
+                    //System.out.println(e.estructura.getId());
+                    //System.out.println("X: "+x*32+" y: "+y*32+" width: "+width*32+" height: "+height*32);
+                    g.drawImage(conector, x*32, y*32, width*32, height*32, this);
+                    //g.drawImage(conector, 0, 0, 32, 32, this);
+                }else if(e.estructura instanceof Templo){
+                    g.drawImage(templo, x*32, y*32, width*32, height*32, this);
+                }else if(e.estructura instanceof Fuente){
+                    g.drawImage(fuente, x*32, y*32, width*32, height*32, this);
+                }else if(e.estructura instanceof Mercado){
+                    g.drawImage(mercado, x*32, y*32, width*32, height*32, this);
+                }else{
+                    g.drawImage(armeria, x*32, y*32, width*32, height*32, this);
+                }
+            }
+            for(int row=0;row<20;row++){
+                for(int col=0;col<20;col++){
+                    if(MainWindow.player.positions[row][col] == true){
+                        g.drawImage(fire, row*32, col*32, 32, 32, this);
+                    }
+                }
+            }
+            int x1,  y1,  x2,  y2;
+            
+            for(Vertice e: MainWindow.player.grafo.vertices){
+                x1 = e.estructura.getFirstCoordinate().getX();
+                y1 = e.estructura.getFirstCoordinate().getY();
+                for(Vertice a: e.aristas){
+                    x2 = a.estructura.getFirstCoordinate().getX();
+                    y2 = a.estructura.getFirstCoordinate().getY();
+                    drawThickLine(g,x1*32,y1*32,x2*32,y2*32,5,Color.BLACK);
+                    //System.out.println("x1: "+x1+" y1: "+y1+" x2: "+x2+" y2: "+y2);
+                }
+            }
+        }else{
+            
+        }
     }
     
      public void drawThickLine(Graphics g, int x1, int y1, int x2, int y2, int thickness, Color c) {
@@ -76,18 +131,44 @@ public class CanvasSea extends Canvas{
 
         g.fillPolygon(xPoints, yPoints, 4);
   }
+     
+     /*
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        int x=e.getX();
+        int y=e.getY();
+        System.out.println(x+","+y);//these co-ords are relative to the component
+    }     
     
-    /*
+    
     public static void main(String[] args){
         JFrame jf = new JFrame("Canvas");
-        CanvasSea m = new CanvasSea();
-        JPanel panel = new JPanel();
-        panel.add(m);
+        CanvasSea m = new CanvasSea(0);
         
         jf.setSize(640, 640);
         jf.setVisible(true);
         jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        jf.add(panel);
+        jf.add(m);
+    }
+    
+    @Override
+    public void mousePressed(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     */
 }

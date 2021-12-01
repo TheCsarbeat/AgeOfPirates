@@ -237,31 +237,43 @@ public class PanelEdificios extends javax.swing.JPanel {
     private void itemPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemPanelMouseClicked
         PanelTienda.lastItemSelected = 3;
         Utilities.cargarPanel(MainWindow.contentPanel, PanelTienda.panelColocar);
+        PanelTienda.panelColocar.cboOpcionesEspacio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2x1", "1x2"}));
+        PanelTienda.panelColocar.cargarCboConectores();
     }//GEN-LAST:event_itemPanelMouseClicked
 
     private void itemPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemPanel1MouseClicked
         PanelTienda.lastItemSelected = 4;
         Utilities.cargarPanel(MainWindow.contentPanel, PanelTienda.panelColocar);
+        PanelTienda.panelColocar.cboOpcionesEspacio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2x1", "1x2"}));
+        PanelTienda.panelColocar.cargarCboConectores();
     }//GEN-LAST:event_itemPanel1MouseClicked
 
     private void itemPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemPanel2MouseClicked
         PanelTienda.lastItemSelected = 5;
         Utilities.cargarPanel(MainWindow.contentPanel, PanelTienda.panelColocar);
+        PanelTienda.panelColocar.cboOpcionesEspacio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2x1", "1x2"}));
+        PanelTienda.panelColocar.cargarCboConectores();
     }//GEN-LAST:event_itemPanel2MouseClicked
 
     private void itemPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemPanel3MouseClicked
         PanelTienda.lastItemSelected = 2;
         Utilities.cargarPanel(MainWindow.contentPanel, PanelTienda.panelColocar);
+        PanelTienda.panelColocar.cboOpcionesEspacio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2x1", "1x2"}));
+        PanelTienda.panelColocar.cargarCboConectores();
     }//GEN-LAST:event_itemPanel3MouseClicked
 
     private void itemPanel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemPanel4MouseClicked
         PanelTienda.lastItemSelected = 0;
         Utilities.cargarPanel(MainWindow.contentPanel, PanelTienda.panelColocar);
+        PanelTienda.panelColocar.cboOpcionesEspacio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2x2"}));
+        PanelTienda.panelColocar.cargarCboConectores();
     }//GEN-LAST:event_itemPanel4MouseClicked
 
     private void itemPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemPanel5MouseClicked
         PanelTienda.lastItemSelected = 1;
         Utilities.cargarPanel(MainWindow.contentPanel, PanelTienda.panelColocar);
+        PanelTienda.panelColocar.cboOpcionesEspacio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1x1"}));
+        PanelTienda.panelColocar.cboOpcionesConectores.setEnabled(false);
     }//GEN-LAST:event_itemPanel5MouseClicked
 
 

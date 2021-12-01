@@ -16,7 +16,7 @@ public class Player implements Serializable{
     private int turno;
     private int money;
     private int steel;
-    private boolean[][] positions = new boolean[20][20];
+    public boolean[][] positions = new boolean[20][20];
     public Grafo grafo;
     private ArrayList<Comodin> comodines = new ArrayList();
     private ArrayList<Arma> armas = new ArrayList();
