@@ -28,6 +28,15 @@ public class PanelTiendaMercado extends javax.swing.JPanel {
         imgTienda.setIcon(Utilities.loadResizeIcon("src\\images\\tienda.png", 150));
         
     }
+    
+    public void presionarMercado(){
+        Utilities.cargarPanel(MainWindow.contentPanel, MainWindow.panelMercado);
+    }
+    
+    public void presionarTienda(){
+        Utilities.cargarPanel(MainWindow.contentPanel, MainWindow.panelTienda);
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -271,20 +280,22 @@ public class PanelTiendaMercado extends javax.swing.JPanel {
 
     private void imgIntercambioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgIntercambioMouseClicked
         // TODO add your handling code here:
+        presionarMercado();
     }//GEN-LAST:event_imgIntercambioMouseClicked
 
     private void btnMercadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMercadoMouseClicked
         // TODO add your handling code here:
-        Utilities.cargarPanel(MainWindow.contentPanel, MainWindow.panelMercado);
+        presionarMercado();
     }//GEN-LAST:event_btnMercadoMouseClicked
 
     private void imgTiendaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgTiendaMouseClicked
         // TODO add your handling code here:
+        presionarTienda();
     }//GEN-LAST:event_imgTiendaMouseClicked
 
     private void btnTiendaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTiendaMouseClicked
         // TODO add your handling code here:
-        Utilities.cargarPanel(MainWindow.contentPanel, MainWindow.panelTienda);
+        presionarTienda();
     }//GEN-LAST:event_btnTiendaMouseClicked
 
     private void lbBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbBackMouseClicked
