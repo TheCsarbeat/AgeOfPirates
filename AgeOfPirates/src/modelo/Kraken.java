@@ -13,9 +13,8 @@ import java.util.Random;
  */
 public class Kraken extends Comodin{
     
-    int min_val = 0;
-    int max_val = 3;
-    Random rand = new Random();
-    int idPlayer = min_val + rand.nextInt((max_val - min_val) + 1);
-        
+    public int idPlayer;
+    
+    
+ 
 }
