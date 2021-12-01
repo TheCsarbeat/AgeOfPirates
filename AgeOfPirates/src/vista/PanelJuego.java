@@ -129,6 +129,7 @@ public class PanelJuego extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         panelCoordinates = new javax.swing.JPanel();
 
+        setBackground(new java.awt.Color(120, 120, 120));
         setPreferredSize(new java.awt.Dimension(1900, 1000));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -297,7 +298,7 @@ public class PanelJuego extends javax.swing.JPanel {
         lbCoordenada3.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
         lbCoordenada3.setForeground(new java.awt.Color(0, 0, 0));
         lbCoordenada3.setText("Bitácora");
-        panelBotones.add(lbCoordenada3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, -6, 90, 40));
+        panelBotones.add(lbCoordenada3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 0, 90, 40));
 
         chatPanel.setLayout(new java.awt.CardLayout());
 
@@ -317,19 +318,21 @@ public class PanelJuego extends javax.swing.JPanel {
         });
         activatePanel.add(btnActivateChat, "card3");
 
-        chatPanel.add(activatePanel, "card3");
-
         optionPanel.setName("optionPanel"); // NOI18N
         optionPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtChat.setEditable(false);
+        txtChat.setBackground(new java.awt.Color(18, 30, 49));
         txtChat.setColumns(20);
+        txtChat.setForeground(new java.awt.Color(255, 255, 255));
         txtChat.setRows(5);
         jScrollPane1.setViewportView(txtChat);
 
         optionPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 200));
 
+        txtMsg.setBackground(new java.awt.Color(18, 30, 50));
         txtMsg.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
+        txtMsg.setForeground(new java.awt.Color(255, 255, 255));
         optionPanel.add(txtMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 290, 35));
 
         btnSendMsg.setBackground(new java.awt.Color(86, 73, 64));
@@ -346,36 +349,34 @@ public class PanelJuego extends javax.swing.JPanel {
         });
         optionPanel.add(btnSendMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 130, 35));
 
-        chatPanel.add(optionPanel, "card2");
+        activatePanel.add(optionPanel, "card2");
+
+        chatPanel.add(activatePanel, "card3");
 
         panelBotones.add(chatPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 30, 430, 250));
 
         lbBarco.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lbBarco.setForeground(new java.awt.Color(0, 0, 0));
         lbBarco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/barco.png"))); // NOI18N
-        panelBotones.add(lbBarco, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 170, 130, 120));
+        panelBotones.add(lbBarco, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 150, 130, 120));
 
+        panelBitacora.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtBitacora.setBackground(new java.awt.Color(18, 30, 49));
         txtBitacora.setColumns(20);
+        txtBitacora.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
+        txtBitacora.setForeground(new java.awt.Color(255, 255, 255));
         txtBitacora.setRows(5);
         jScrollPane2.setViewportView(txtBitacora);
 
-        javax.swing.GroupLayout panelBitacoraLayout = new javax.swing.GroupLayout(panelBitacora);
-        panelBitacora.setLayout(panelBitacoraLayout);
-        panelBitacoraLayout.setHorizontalGroup(
-            panelBitacoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
-        );
-        panelBitacoraLayout.setVerticalGroup(
-            panelBitacoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-        );
+        panelBitacora.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 388, 250));
 
-        panelBotones.add(panelBitacora, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 30, 360, 250));
+        panelBotones.add(panelBitacora, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 30, -1, 250));
 
         lbCoordenada5.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
         lbCoordenada5.setForeground(new java.awt.Color(0, 0, 0));
         lbCoordenada5.setText("Opciones");
-        panelBotones.add(lbCoordenada5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, 90, -1));
+        panelBotones.add(lbCoordenada5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 30, 90, -1));
 
         jPanel1.setBackground(new java.awt.Color(120, 120, 120));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -416,7 +417,7 @@ public class PanelJuego extends javax.swing.JPanel {
         lbCoordenada4.setText("Indique las coordenadas");
         jPanel1.add(lbCoordenada4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
 
-        panelBotones.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 270, 250));
+        panelBotones.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 270, 260));
 
         btnMercado.setText("Opciones de Mercado");
         btnMercado.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -429,14 +430,15 @@ public class PanelJuego extends javax.swing.JPanel {
                 btnMercadoActionPerformed(evt);
             }
         });
-        panelBotones.add(btnMercado, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, 150, 50));
+        panelBotones.add(btnMercado, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 60, 150, 50));
 
-        add(panelBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 690, 1630, 300));
+        add(panelBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 700, 1630, 300));
 
         jLabel5.setText("   0         1         2         3        4         5        6         7        8        9       10      11      12      13      14      15      16      17      18      19");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 20, 650, -1));
 
         panelCoordinates.setForeground(new java.awt.Color(0, 0, 0));
+        panelCoordinates.setOpaque(false);
         panelCoordinates.setLayout(new java.awt.GridLayout(20, 0));
         add(panelCoordinates, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 40, 30, 640));
     }// </editor-fold>//GEN-END:initComponents

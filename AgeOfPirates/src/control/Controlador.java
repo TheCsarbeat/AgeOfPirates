@@ -71,7 +71,7 @@ public class Controlador {
     private Player addPlayer(){
         int index = players.size();
         Player p = null;
-        if(index>=4){
+        if(index>=100){
             p = new Player(-1)  ;      
         }else{     
             p =  new Player(index);
