@@ -31,6 +31,7 @@ public class BarcoFantasma {
         public void run(){
             int x2, y2;
             try {
+                int sengudos = 1000;
                 while(running){
                     Thread.sleep(5000);
                     for(Vertice e: MainWindow.enemigo.grafo.vertices){
@@ -40,9 +41,12 @@ public class BarcoFantasma {
                             e.estructura.setDestruida(true);
                         }
                     }
-                    MainWindow.panelJuego.panelMar1.updateCanvas();
-                    System.out.println("Mostrando...");
+                    MainWindow.panelJuego.panelMar2.updateCanvas();
+                    JOptionPane.showMessageDialog(null, "El barco fantasma está Revelando el enemigo!", "Exito", JOptionPane.INFORMATION_MESSAGE);
+                    
+                    
                     Thread.sleep(10000);
+                    
                     for(Vertice e: MainWindow.enemigo.grafo.vertices){
                         x2 = e.estructura.getFirstCoordinate().getX();
                         y2 = e.estructura.getFirstCoordinate().getY();
@@ -50,7 +54,8 @@ public class BarcoFantasma {
                             e.estructura.setDestruida(false);
                         }
                     }
-                    MainWindow.panelJuego.panelMar1.updateCanvas();
+                    MainWindow.panelJuego.panelMar2.updateCanvas();
+                    JOptionPane.showMessageDialog(null, "Se está yendo!", "Exito", JOptionPane.INFORMATION_MESSAGE);
                     System.out.println("Retirando...");
                     running = false;
                 }

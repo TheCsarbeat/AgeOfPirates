@@ -74,6 +74,8 @@ public class PanelJuego extends javax.swing.JPanel {
                 while(true){                    
                     
                     MainWindow.getPlayer();
+                    
+                    
                     if(MainWindow.player.isTurn()){
                         btnFire.setEnabled(true);
                     }else{
