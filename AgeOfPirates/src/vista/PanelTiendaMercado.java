@@ -35,6 +35,7 @@ public class PanelTiendaMercado extends javax.swing.JPanel {
     
     public void presionarTienda(){
         Utilities.cargarPanel(MainWindow.contentPanel, MainWindow.panelTienda);
+        MainWindow.panelTienda.loadDatos();
     }
     
 

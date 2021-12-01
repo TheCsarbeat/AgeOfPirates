@@ -95,11 +95,38 @@ public class MainWindow extends javax.swing.JFrame {
                     {
                         String name = player.getNextValidName(3);
                         Mina unaMina = new Mina(name);
+                       
                         unaMina.setPuntos(point);
                         unaMina.setEspacio(dimensiones);
                         player.grafo.agregarVertice(unaMina);
                         player.grafo.agregarArista(player.grafo.buscarVertice(conectorId), player.grafo.buscarVertice(name));
-                        player.subtractMoney(1000);
+                        player.subtractMoney(1000);                        
+                        Thread th = new Thread(){
+                            @Override
+                            public void run(){
+                                try {
+                                    Mina mina = (Mina)player.grafo.buscarVertice(name).estructura;
+                                    mina.running = true;
+                                    while(mina.running){
+                                        //JOptionPane.showMessageDialog(null, "La mina ha empezado a producir acero creará 100kg en 20s!", "Exito", JOptionPane.INFORMATION_MESSAGE);
+                                        Thread.sleep(10000);
+                                        mina = (Mina)player.grafo.buscarVertice(name).estructura;
+
+
+                                        //JOptionPane.showMessageDialog(null, "Se producido acero!", "Exito", JOptionPane.INFORMATION_MESSAGE);
+                                        MainWindow.player.addSteel(100);
+
+                                        if (mina.isDestruida()) {
+                                            mina.running = false;
+                                        }      
+                                        MainWindow.setPlayer();
+
+                                    }
+                                } catch (Exception e) {
+                                    JOptionPane.showMessageDialog(null, e);
+                                }
+                            }
+                            };th.start();
                         break;
                     }
                 case 4:

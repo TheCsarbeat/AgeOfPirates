@@ -23,8 +23,10 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Random;
 import modelo.Arma;
+import modelo.Player;
 import modelo.Punto;
 import modelo.Vertice;
+import static vista.MainWindow.player;
 
 
 
@@ -40,6 +42,8 @@ public class PanelJuego extends javax.swing.JPanel {
     public int lastEnemy = -1;
     
     private boolean flagCargado = false;
+    
+    private boolean runningMain = true;
     
     /**
      * Creates new form PanelJuego
@@ -75,6 +79,18 @@ public class PanelJuego extends javax.swing.JPanel {
                     
                     MainWindow.getPlayer();
                     
+                    boolean flag = false;
+                    for (Vertice v: MainWindow.player.grafo.vertices) {
+                        if(!v.estructura.isDestruida()){
+                            flag = true;
+                        }
+                    }
+                    if(MainWindow.player.grafo.vertices.isEmpty()){
+                        flag = true;
+                    }
+                    if(!flag){
+                        JOptionPane.showMessageDialog(null, "Ya ha perdido!", "FINAL", JOptionPane.ERROR_MESSAGE);                            
+                    }
                     
                     if(MainWindow.player.isTurn()){
                         btnFire.setEnabled(true);
@@ -87,6 +103,7 @@ public class PanelJuego extends javax.swing.JPanel {
                     lbCantCannonM.setText(String.valueOf(datos.get(1)));
                     lbCantBomba.setText(String.valueOf(datos.get(2)));
                     lbCantCannonB.setText(String.valueOf(datos.get(3)));
+                    lbCantAcero.setText(String.valueOf(MainWindow.player.getSteel()));
                     panelMar1.updateCanvas();
                     Thread.sleep(1000);                    
                 }
@@ -156,7 +173,6 @@ public class PanelJuego extends javax.swing.JPanel {
         txtChat = new javax.swing.JTextArea();
         txtMsg = new javax.swing.JTextField();
         btnSendMsg = new javax.swing.JLabel();
-        lbBarco = new javax.swing.JLabel();
         panelBitacora = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtBitacora = new javax.swing.JTextArea();
@@ -172,6 +188,8 @@ public class PanelJuego extends javax.swing.JPanel {
         btnReady = new javax.swing.JButton();
         btnHost = new javax.swing.JButton();
         lbCoordenada6 = new javax.swing.JLabel();
+        lbCantAcero = new javax.swing.JLabel();
+        lbCoordenada8 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         panelCoordinates = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
@@ -180,6 +198,7 @@ public class PanelJuego extends javax.swing.JPanel {
         lbPlayer1 = new javax.swing.JLabel();
         lbPlayer2 = new javax.swing.JLabel();
         btnLoadSeaEnemy = new javax.swing.JButton();
+        lbBarco = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(120, 120, 120));
         setPreferredSize(new java.awt.Dimension(1900, 1000));
@@ -428,11 +447,6 @@ public class PanelJuego extends javax.swing.JPanel {
 
         panelBotones.add(chatPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 30, 430, 250));
 
-        lbBarco.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lbBarco.setForeground(new java.awt.Color(0, 0, 0));
-        lbBarco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/barco.png"))); // NOI18N
-        panelBotones.add(lbBarco, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 150, 130, 120));
-
         panelBitacora.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtBitacora.setEditable(false);
@@ -529,6 +543,17 @@ public class PanelJuego extends javax.swing.JPanel {
         lbCoordenada6.setText("Bitácora");
         panelBotones.add(lbCoordenada6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 0, 90, 40));
 
+        lbCantAcero.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        lbCantAcero.setForeground(new java.awt.Color(0, 0, 0));
+        lbCantAcero.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbCantAcero.setText("0");
+        panelBotones.add(lbCantAcero, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 170, 140, 30));
+
+        lbCoordenada8.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        lbCoordenada8.setForeground(new java.awt.Color(0, 0, 0));
+        lbCoordenada8.setText("Acero");
+        panelBotones.add(lbCoordenada8, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 130, 110, 30));
+
         add(panelBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 700, 1630, 300));
 
         jLabel5.setText("   0         1         2         3        4         5        6         7        8        9       10      11      12      13      14      15      16      17      18      19");
@@ -605,6 +630,11 @@ public class PanelJuego extends javax.swing.JPanel {
             }
         });
         jPanel6.add(btnLoadSeaEnemy, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 200, 60));
+
+        lbBarco.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbBarco.setForeground(new java.awt.Color(0, 0, 0));
+        lbBarco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/barco.png"))); // NOI18N
+        jPanel6.add(lbBarco, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 520, 130, 120));
 
         add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1670, 20, 220, 660));
     }// </editor-fold>//GEN-END:initComponents
@@ -703,8 +733,14 @@ public class PanelJuego extends javax.swing.JPanel {
         }
         if(lastEnemy == MainWindow.player.getId()){
             JOptionPane.showMessageDialog(null, "Bro usted no se puede disparar a si mismo!", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
         }else if(lastEnemy == -1){
              JOptionPane.showMessageDialog(null, "Debe selecionar un enemigo a disparar!", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        if(!flagCargado){
+            JOptionPane.showMessageDialog(null, "Carge un panel enemigo!", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
         }
           
         if(lastUsed == 0){
@@ -1105,6 +1141,7 @@ public class PanelJuego extends javax.swing.JPanel {
     private javax.swing.JLabel lbBomba;
     private javax.swing.JLabel lbCannonB;
     private javax.swing.JLabel lbCannonM;
+    private javax.swing.JLabel lbCantAcero;
     private javax.swing.JLabel lbCantBomba;
     private javax.swing.JLabel lbCantCannon;
     private javax.swing.JLabel lbCantCannonB;
@@ -1115,6 +1152,7 @@ public class PanelJuego extends javax.swing.JPanel {
     private javax.swing.JLabel lbCoordenada4;
     private javax.swing.JLabel lbCoordenada5;
     private javax.swing.JLabel lbCoordenada6;
+    private javax.swing.JLabel lbCoordenada8;
     private javax.swing.JLabel lbPlayer0;
     private javax.swing.JLabel lbPlayer1;
     private javax.swing.JLabel lbPlayer2;

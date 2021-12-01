@@ -90,6 +90,7 @@ public class CanvasSea extends Canvas{
                     drawThickLine(g,x1*32+16,y1*32+16,x2*32+16,y2*32+16,5,Color.YELLOW);
                 }
             }
+            
         }else{
             boolean dibujeTodo = false;
             for(Vertice e: MainWindow.enemigo.grafo.vertices){

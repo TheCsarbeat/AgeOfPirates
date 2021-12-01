@@ -68,6 +68,11 @@ public class Controlador {
             Player p = getPlayer((int)datos.get(0));
             peticion.setDatosSalida(modifcarTurn(p, (Arma)datos.get(1)));      
             
+        }else if(accion == TipoAccion.PERDER){ 
+            Player p = (Player) peticion.getDatosEntrada();     
+            removePlayer(p);
+            peticion.setDatosSalida(true);      
+            
         }
         
         return peticion;
@@ -85,7 +90,7 @@ public class Controlador {
     private Player addPlayer(){
         int index = players.size();
         Player p = null;
-        if(index>=100){
+        if(index>=3){
             p = new Player(-1)  ;      
         }else{   
             p =  new Player(index);
@@ -94,6 +99,15 @@ public class Controlador {
             players.add(p);
         }                    
         return p;
+    }
+    
+    private void removePlayer(Player player){
+        int id = player.getId();
+        for(Player i: players){
+            if(i.getId() == id){
+                players.remove(i);
+            }
+        }
     }
     
     private Player updatePlayer(Player player){

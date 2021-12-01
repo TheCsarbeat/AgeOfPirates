@@ -15,6 +15,7 @@ import modelo.Fuente;
 import modelo.Mercado;
 import modelo.Peticion;
 import modelo.Player;
+import java.util.Random;
 import modelo.Vertice;
 import static vista.MainWindow.player;
 
@@ -207,13 +208,18 @@ public class PanelStart extends javax.swing.JPanel {
             //MainWindow.setPlayer();
             
             ArrayList<Arma> armas = new ArrayList();
-            for (int i = 0; i < 2; i++) {
-                int random = (int) Math.floor(Math.random()*(1-0+1)+0);
+            Random rand = new Random();
+            for (int i = 0; i < 5; i++) {                
+                int random = rand.nextInt((4 - 1) + 1);
                 Arma a;
-                if(random ==0){
+                if(random == 1){
                     a = new Arma(i, "Cannon");
-                }else{
+                }else if(random == 2){
+                    a = new Arma(i, "Cannon Multiple");
+                }else if(random == 3){
                     a = new Arma(i, "Bomba");
+                }else {
+                    a = new Arma(i, "Cannon Barba Roja");
                 }
                 armas.add(a);
             }

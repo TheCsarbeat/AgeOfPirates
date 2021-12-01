@@ -5,18 +5,22 @@
  */
 package modelo;
 
+import javax.swing.JOptionPane;
+import vista.MainWindow;
+
 /**
  *
  * @author ytces
  */
 public class Mina extends Estructura{
-    
+    public boolean running; 
     public Mina(String id) {
         super.id = id;
     }
 
     @Override
     public void setPuntos(Punto mainP){
+        
         int x = mainP.getX(), y = mainP.getY();
         super.cellsBusy.add(mainP);
         if(super.espacio == 12){
@@ -32,6 +36,33 @@ public class Mina extends Estructura{
                 super.cellsBusy.add(new Punto(x+1,y));
             }
         }
+    }
+    
+    public void producirAcero(){
+        running = true;
+        Thread th = new Thread(){
+        @Override
+        public void run(){
+            try {
+                while(running){
+                    JOptionPane.showMessageDialog(null, "La mina ha empezado a producir acero creará 100kg en 20s!", "Exito", JOptionPane.INFORMATION_MESSAGE);
+                    Thread.sleep(10000);
+                    
+                    
+                    JOptionPane.showMessageDialog(null, "Se producido acero!", "Exito", JOptionPane.INFORMATION_MESSAGE);
+                    MainWindow.player.addSteel(100);
+                    
+                    if (MainWindow.player.grafo.buscarVertice(id).estructura.isDestruida()) {
+                        running = false;
+                    }      
+                    MainWindow.setPlayer();
+                                      
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            }
+        }
+        };th.start();
     }
     
 }

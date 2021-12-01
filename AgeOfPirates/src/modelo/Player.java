@@ -15,6 +15,7 @@ public class Player implements Serializable{
     private String name;
     private int turno;
     private boolean turn;
+    public boolean alive;
     private int money;
     private int steel;
     private boolean ready;
@@ -40,6 +41,7 @@ public class Player implements Serializable{
         ready = false;
         turn  = false;
         starGame = false;
+        alive = true;
         
     }
     
@@ -58,6 +60,7 @@ public class Player implements Serializable{
         ready = false;
         turn  = false;
         starGame = false;
+        alive = true;
         
     }
 
@@ -75,6 +78,7 @@ public class Player implements Serializable{
         ready = false;
         turn  = false;
         starGame = false;
+        alive = true;
     }
 
     public ArrayList<Comodin> getComodines() {
