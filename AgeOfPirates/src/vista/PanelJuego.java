@@ -699,19 +699,11 @@ public class PanelJuego extends javax.swing.JPanel {
     }//GEN-LAST:event_btnCannonBMouseClicked
 
     private void btnFireMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFireMouseClicked
-        // TODO add your handling code here:
-        int x = Integer.parseInt(txtCoordenadaX.getText());
-        int y = Integer.parseInt(txtCoordenadaY.getText());
-        for (Vertice v: MainWindow.enemigo.grafo.vertices) {
-            for(Punto p: v.estructura.getCellsBusy()){
-                if(x == p.getX() && y == p.getY()){
-                    MainWindow.enemigo.positions[x][y] = true;
-                }
-            }
-        }        
+        // TODO add your handling code here:             
+        disparar();   
         MainWindow.setPlayerEnemigo();  
         MainWindow.finishTurn();        
-        disparar();        
+             
     }//GEN-LAST:event_btnFireMouseClicked
 
     private void btnMercadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMercadoMouseClicked
@@ -763,6 +755,8 @@ public class PanelJuego extends javax.swing.JPanel {
            if((boolean)respuesta){
                JOptionPane.showMessageDialog(null, "El juego ha iniciado!", "Error", JOptionPane.INFORMATION_MESSAGE);
                btnHost.setEnabled(false);
+           }else{
+               JOptionPane.showMessageDialog(null, "No Funca esta vara!", "Error", JOptionPane.ERROR);
            }
         }else{
             JOptionPane.showMessageDialog(null, "Los datos no coinciden!", "Error", JOptionPane.ERROR_MESSAGE);
@@ -806,17 +800,27 @@ public class PanelJuego extends javax.swing.JPanel {
         return randY;
     }
     private void disparar(){
+        boolean flagCannonSimple = false;
+        String bitacora = "";
         if (lastUsed == 0){
+            bitacora += "\nArma Usada: Cannon Simple";
             int x = Integer.parseInt(txtCoordenadaX.getText());
             int y = Integer.parseInt(txtCoordenadaY.getText());
+            bitacora += "\nPosiciones:   X = "+x+"    Y = "+y;
             for (Vertice v: MainWindow.enemigo.grafo.vertices) {
                 for(Punto p: v.estructura.getCellsBusy()){
-                    if(x == p.getX() && y == p.getY()){
+                    if(x == p.getX() && y == p.getY()){                        
+                        flagCannonSimple = true;
                         MainWindow.enemigo.positions[x][y] = true;
                     }
                 }
-            }        
-            MainWindow.setPlayerEnemigo(); 
+            }   
+            if(flagCannonSimple){
+                bitacora += "\nDisparo certero";
+            }else{
+                bitacora += "\nDisparo fallido";
+            }
+            
         }else if(lastUsed == 1){
             boolean bandera = false;
             int x = Integer.parseInt(txtCoordenadaX.getText());
@@ -843,9 +847,7 @@ public class PanelJuego extends javax.swing.JPanel {
                     }
                     
                 }
-            }
-            MainWindow.setPlayerEnemigo(); 
-   
+            }   
         }else if (lastUsed == 3){
             boolean bandera = false;
             int x = Integer.parseInt(txtCoordenadaX.getText());
@@ -873,9 +875,7 @@ public class PanelJuego extends javax.swing.JPanel {
                     }
                     
                 }
-            }
-            MainWindow.setPlayerEnemigo(); 
-            
+            }            
         }else if (lastUsed == 2){
             String lasX = txtCoordenadaX.getText();
             String lasY = txtCoordenadaY.getText();
@@ -897,12 +897,15 @@ public class PanelJuego extends javax.swing.JPanel {
                         MainWindow.enemigo.positions[Integer.parseInt(x2)][Integer.parseInt(y2)] = true;
                     }else if(Integer.parseInt(x3) == p.getX() && Integer.parseInt(y3) == p.getY()){
                         MainWindow.enemigo.positions[Integer.parseInt(x3)][Integer.parseInt(y3)] = true;
-            }
+                    }
             
+                }
+            }
         }
-    }
-        }
-        MainWindow.setPlayerEnemigo(); 
+        
+        String textoAnterior = txtBitacora.getText();
+        txtBitacora.setText(textoAnterior+bitacora);
+        
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel activatePanel;
