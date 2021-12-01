@@ -193,7 +193,12 @@ public class Player implements Serializable{
         datos.add(cannonB);
         return datos;
     }
-    
+    public boolean addArma(Arma arma){
+        Arma i = armas.get(armas.size()-1);
+        arma.setId(i.getId()+1);
+        armas.add(arma);
+        return true;
+    }
     public boolean eliminarArma(int idArma){
         for(Arma i: armas){
             //System.out.println("Buscando id... "+i.getId());

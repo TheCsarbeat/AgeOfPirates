@@ -44,7 +44,7 @@ public class Arma  implements Serializable{
     public void setName(String name) {
         this.name = name;
     }
-
+    
     @Override
     public String toString() {
         return "Arma{" + "id=" + id + ", name=" + name + '}';

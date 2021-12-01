@@ -140,10 +140,11 @@ public class Controlador {
             for(Exchange e: walterMercado){
                 if(e.getId() == id){
                     walterMercado.remove(index);
+                    buyyer.addArma(e.getArma());
                     break;
                 }
                 index++;
-            } 
+            }            
             updatePlayer(buyyer);
             updatePlayer(seller);
             return true;
