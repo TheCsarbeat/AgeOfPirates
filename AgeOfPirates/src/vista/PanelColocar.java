@@ -7,6 +7,10 @@ package vista;
 
 import javax.swing.JPanel;
 import control.Utilities;
+import java.util.ArrayList;
+import modelo.Conector;
+import modelo.Punto;
+import modelo.Vertice;
 /**
  *
  * @author ytces
@@ -29,6 +33,20 @@ public class PanelColocar extends javax.swing.JPanel {
         panelMar.revalidate();
     }
     
+    public void cargarCboConectores(){
+        ArrayList<String> conectores = new ArrayList<>();
+        for(Vertice e: MainWindow.player.grafo.vertices){
+            if(e.estructura instanceof Conector){
+                conectores.add(e.estructura.getId());
+            }
+        }
+        String[] conectoresArray = new String[conectores.size()];
+        for(int i=0;i<conectores.size();i++){
+            conectoresArray[i] = conectores.get(i);
+        }
+        cboOpcionesConectores.setModel(new javax.swing.DefaultComboBoxModel<>(conectoresArray));
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -39,11 +57,15 @@ public class PanelColocar extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        txtCoordenadaY = new javax.swing.JTextField();
+        txtCoordenadaX = new javax.swing.JTextField();
         panelMar = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btnColocar = new javax.swing.JButton();
         lbBack = new javax.swing.JLabel();
+        cboOpcionesConectores = new javax.swing.JComboBox<>();
+        lbOpcionesConector = new javax.swing.JLabel();
+        lbDimensiones = new javax.swing.JLabel();
+        cboOpcionesEspacio = new javax.swing.JComboBox<>();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -51,35 +73,35 @@ public class PanelColocar extends javax.swing.JPanel {
         jLabel1.setText("Ingrese las coordenadas donde desea colocar el edificio");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, 940, 70));
 
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jTextField1.setText("Coordenada Y");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtCoordenadaY.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txtCoordenadaY.setText("Coordenada Y");
+        txtCoordenadaY.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtCoordenadaYActionPerformed(evt);
             }
         });
-        add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 790, 190, 40));
+        add(txtCoordenadaY, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 790, 190, 40));
 
-        jTextField2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jTextField2.setText("Coordenada X");
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        txtCoordenadaX.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txtCoordenadaX.setText("Coordenada X");
+        txtCoordenadaX.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                txtCoordenadaXActionPerformed(evt);
             }
         });
-        add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 740, 190, 40));
+        add(txtCoordenadaX, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 740, 190, 40));
 
-        panelMar.setLayout(new java.awt.GridLayout());
+        panelMar.setLayout(new java.awt.GridLayout(1, 0));
         add(panelMar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 80, 640, 640));
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton1.setText("Colocar");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnColocar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnColocar.setText("Colocar");
+        btnColocar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                btnColocarMouseClicked(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 850, -1, -1));
+        add(btnColocar, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 850, -1, -1));
 
         lbBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back.png"))); // NOI18N
         lbBack.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -89,31 +111,75 @@ public class PanelColocar extends javax.swing.JPanel {
             }
         });
         add(lbBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 80, 70));
+
+        cboOpcionesConectores.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cboOpcionesConectores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0" }));
+        add(cboOpcionesConectores, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 800, 80, 30));
+
+        lbOpcionesConector.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbOpcionesConector.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbOpcionesConector.setText("Seleccione el conector donde lo conectará:");
+        add(lbOpcionesConector, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 800, -1, 30));
+
+        lbDimensiones.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbDimensiones.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbDimensiones.setText("Seleccione las dimensiones:");
+        add(lbDimensiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 740, -1, 30));
+
+        cboOpcionesEspacio.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cboOpcionesEspacio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(cboOpcionesEspacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 740, 80, 30));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtCoordenadaYActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCoordenadaYActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtCoordenadaYActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void txtCoordenadaXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCoordenadaXActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_txtCoordenadaXActionPerformed
 
     private void lbBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbBackMouseClicked
         Utilities.cargarPanel(MainWindow.contentPanel, MainWindow.panelTienda);
     }//GEN-LAST:event_lbBackMouseClicked
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        //Working on it
-    }//GEN-LAST:event_jButton1MouseClicked
+    private void btnColocarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnColocarMouseClicked
+        int x=0,y=0;
+        try{
+            x = Integer.parseInt(txtCoordenadaX.getText());
+            y = Integer.parseInt(txtCoordenadaY.getText());
+        }
+        catch(NumberFormatException e){
+            System.out.println("No se pudo convertir");
+        }
+        Punto punto = new Punto(x,y);
+        String dimensionTxt = (String)(cboOpcionesEspacio.getSelectedItem());
+        int dimensionInt = Utilities.convertirDimension(dimensionTxt);
+        String conector = "0";
+        
+        if(cboOpcionesConectores.isEnabled()){
+            conector = (String)(cboOpcionesConectores.getSelectedItem());
+        }else{
+            cboOpcionesConectores.setEnabled(true);
+        }
+        
+        MainWindow.agregarEstructura(dimensionInt, punto, conector);
+        MainWindow.panelJuego.panelMar1.updateCanvas();
+        MainWindow.panelJuego.panelMar2.updateCanvas();
+        Utilities.cargarPanel(MainWindow.contentPanel, MainWindow.panelJuego);
+    }//GEN-LAST:event_btnColocarMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnColocar;
+    public javax.swing.JComboBox<String> cboOpcionesConectores;
+    public javax.swing.JComboBox<String> cboOpcionesEspacio;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel lbBack;
+    private javax.swing.JLabel lbDimensiones;
+    public javax.swing.JLabel lbOpcionesConector;
     private javax.swing.JPanel panelMar;
+    private javax.swing.JTextField txtCoordenadaX;
+    private javax.swing.JTextField txtCoordenadaY;
     // End of variables declaration//GEN-END:variables
 }

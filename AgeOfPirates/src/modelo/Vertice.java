@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class Vertice {
     public Estructura estructura;
     boolean visitado;
-    ArrayList<Vertice> aristas;
+    public ArrayList<Vertice> aristas;
     //int peso;//peso
 
     public Vertice(Estructura estructura)

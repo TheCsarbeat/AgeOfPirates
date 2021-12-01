@@ -50,7 +50,7 @@ public class Controlador {
     
     private int addPlayer(){
         int index = players.size();
-        if(index>=4)
+        if(index>=1000)
             return -1;            
         else
             players.add(new Player(index));        

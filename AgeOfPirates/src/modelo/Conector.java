@@ -14,4 +14,9 @@ public class Conector extends Estructura{
     public Conector(String id) {
         super.id = id;
     }
+
+    @Override
+    public void setPuntos(Punto mainP) {
+        super.cellsBusy.add(mainP);
+    }
 }

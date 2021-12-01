@@ -34,4 +34,16 @@ public class Utilities {
         icon = new ImageIcon(modifiedImage);
         return icon;
     }
+    
+    public static int convertirDimension(String dimension){
+        if(dimension == "2x1"){
+            return 21;
+        }else if(dimension == "1x2"){
+            return 12;
+        }else if(dimension == "1x1"){
+            return 11;
+        }else{
+            return 22;
+        }
+    }
 }

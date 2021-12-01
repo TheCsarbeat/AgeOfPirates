@@ -14,8 +14,31 @@ import java.util.ArrayList;
 public  abstract class  Estructura {
     protected ArrayList<Punto> cellsBusy;
     protected String id; //Estandar: armeria-> "ARM-0", "ARM-1" | mina-> "MIN-0", "MIN-1", es decir tres letras y un numero
+    protected int espacio; //2x2 = 22, 1x2 = 12, 2x1 = 21, 1x1 = 11
 
     public Estructura() {
         this.cellsBusy = new ArrayList();
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public int getEspacio() {
+        return espacio;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setEspacio(int espacio) {
+        this.espacio = espacio;
+    }
+    
+    public Punto getFirstCoordinate(){
+        return cellsBusy.get(0);
+    }
+    
+    public abstract void setPuntos(Punto mainP);
 }

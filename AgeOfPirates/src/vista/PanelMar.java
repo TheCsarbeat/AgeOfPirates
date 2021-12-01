@@ -17,15 +17,15 @@ public class PanelMar extends javax.swing.JPanel {
      */
     public PanelMar(int whoIs) {
         initComponents();
-        canvas = new CanvasSea();        
+        canvas = new CanvasSea(whoIs);        
         this.add(canvas);
         this.whoIs = whoIs;
     }
     
     public void updateCanvas(){
         this.removeAll();
-        
-        canvas = new CanvasSea();
+        canvas = new CanvasSea(whoIs);
+        this.add(canvas);
     }
 
     /**
