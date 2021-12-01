@@ -8,6 +8,8 @@ package vista;
 import javax.swing.JPanel;
 import control.Utilities;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import modelo.Conector;
 import modelo.Punto;
 import modelo.Vertice;
@@ -66,6 +68,8 @@ public class PanelColocar extends javax.swing.JPanel {
         lbOpcionesConector = new javax.swing.JLabel();
         lbDimensiones = new javax.swing.JLabel();
         cboOpcionesEspacio = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -74,7 +78,7 @@ public class PanelColocar extends javax.swing.JPanel {
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, 940, 70));
 
         txtCoordenadaY.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        txtCoordenadaY.setText("Coordenada Y");
+        txtCoordenadaY.setText("6");
         txtCoordenadaY.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCoordenadaYActionPerformed(evt);
@@ -83,7 +87,7 @@ public class PanelColocar extends javax.swing.JPanel {
         add(txtCoordenadaY, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 790, 190, 40));
 
         txtCoordenadaX.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        txtCoordenadaX.setText("Coordenada X");
+        txtCoordenadaX.setText("5");
         txtCoordenadaX.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCoordenadaXActionPerformed(evt);
@@ -129,6 +133,12 @@ public class PanelColocar extends javax.swing.JPanel {
         cboOpcionesEspacio.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         cboOpcionesEspacio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         add(cboOpcionesEspacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 740, 80, 30));
+
+        jLabel2.setText("Coordenada Y");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 790, 110, 30));
+
+        jLabel3.setText("Coordenada X");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 750, 110, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtCoordenadaYActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCoordenadaYActionPerformed
@@ -163,9 +173,11 @@ public class PanelColocar extends javax.swing.JPanel {
             cboOpcionesConectores.setEnabled(true);
         }
         
-        MainWindow.agregarEstructura(dimensionInt, punto, conector);
-        MainWindow.panelJuego.panelMar1.updateCanvas();
-        MainWindow.panelJuego.panelMar2.updateCanvas();
+        
+         MainWindow.agregarEstructura(dimensionInt, punto, conector);
+
+        //MainWindow.panelJuego.panelMar1.updateCanvas();
+        //MainWindow.panelJuego.panelMar2.updateCanvas();
         Utilities.cargarPanel(MainWindow.contentPanel, MainWindow.panelJuego);
     }//GEN-LAST:event_btnColocarMouseClicked
 
@@ -175,6 +187,8 @@ public class PanelColocar extends javax.swing.JPanel {
     public javax.swing.JComboBox<String> cboOpcionesConectores;
     public javax.swing.JComboBox<String> cboOpcionesEspacio;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel lbBack;
     private javax.swing.JLabel lbDimensiones;
     public javax.swing.JLabel lbOpcionesConector;

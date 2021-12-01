@@ -5,11 +5,13 @@
  */
 package modelo;
 
+import java.io.Serializable;
+
 /**
  *
  * @author ytces
  */
-public class Punto {
+public class Punto implements Serializable{
     private int x,y;
 
     public Punto(int x, int y) {

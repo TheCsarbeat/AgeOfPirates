@@ -36,6 +36,8 @@ public class Grafo  implements Serializable{
     // agrega las aristas
     public void agregarArista(Vertice origen, Vertice destino)
     {
+        //System.out.println(origen.toString()+"     |     "+destino.toString());
+        
         if (origen != null && destino != null && origen.estructura instanceof Conector)
             origen.agregarArista(destino);
     }
@@ -49,9 +51,8 @@ public class Grafo  implements Serializable{
 
     // busca un vertice en la lista
     public Vertice buscarVertice (String valor){
-
-        for (int i = 0; i < vertices.size(); i++) {
-            if (vertices.get(i).estructura.id == valor)
+        for (int i = 0; i < vertices.size(); i++) {            
+            if (vertices.get(i).estructura.id.equals(valor))
                 return vertices.get(i);
         }
 
@@ -197,6 +198,24 @@ public class Grafo  implements Serializable{
             }
         }
         return false;
+    }
+
+    @Override
+    public String toString() {
+        String datos = "\n\n";
+        for (int i = 0; i < vertices.size(); i++)
+        {
+            datos += "\nVertice "+vertices.get(i).estructura.id+":  ";
+            //System.out.print("Vertice "+vertices.get(i).estructura.id+":  ");
+            for (int j = 0; j < vertices.get(i).aristas.size(); j++) {
+                 datos += "\n"+vertices.get(i).aristas.get(j).estructura.id +"  ";
+                        //System.out.print(vertices.get(i).aristas.get(j).estructura.id +"  ");
+            }
+             datos += "\n";
+            System.out.println("");
+        }
+        
+        return "Grafo{" + "vertices=" + vertices + '}';
     }
 
 }

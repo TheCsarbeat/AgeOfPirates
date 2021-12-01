@@ -128,7 +128,16 @@ public class PanelTienda extends javax.swing.JPanel {
     }//GEN-LAST:event_btnArmasActionPerformed
 
     private void btnComprarMercadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnComprarMercadoMouseClicked
-        JOptionPane.showMessageDialog(null, "Se ha comprado el mercado!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+        
+        if(MainWindow.player.grafo.hayConector() && MainWindow.player.getMoney() >= 2000){
+            PanelTienda.lastItemSelected = 2;
+            Utilities.cargarPanel(MainWindow.contentPanel, PanelTienda.panelColocar);
+            PanelTienda.panelColocar.cboOpcionesEspacio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2x1", "1x2"}));
+            PanelTienda.panelColocar.cargarCboConectores();
+            JOptionPane.showMessageDialog(null, "Se ha comprado el mercado!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            JOptionPane.showMessageDialog(null, "No existen conectores", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnComprarMercadoMouseClicked
 
     private void btnArmasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnArmasMouseClicked

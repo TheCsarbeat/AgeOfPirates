@@ -47,4 +47,11 @@ public class Vertice  implements Serializable{
         }
         return -1;
     }
+
+    @Override
+    public String toString() {
+        return "Vertice{" + "estructura=" + estructura + ", visitado=" + visitado + '}';
+    }
+    
+    
 }

@@ -42,4 +42,20 @@ public  abstract class  Estructura  implements Serializable{
     }
     
     public abstract void setPuntos(Punto mainP);
+
+    public ArrayList<Punto> getCellsBusy() {
+        return cellsBusy;
+    }
+
+    public void setCellsBusy(ArrayList<Punto> cellsBusy) {
+        this.cellsBusy = cellsBusy;
+    }
+    
+    
+    @Override
+    public String toString() {
+        return "Estructura{" + "cellsBusy=" + cellsBusy + ", id=" + id + ", espacio=" + espacio + '}';
+    }
+    
+    
 }
