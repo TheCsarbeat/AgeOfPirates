@@ -51,9 +51,13 @@ public class Controlador {
             boolean answer = addExchange((int)datos.get(0), (int)datos.get(1), (Arma)datos.get(2));
             peticion.setDatosSalida(answer);       
             
-        }else if(accion == TipoAccion.LOAD_EXCHANGES){      
+        }else if(accion == TipoAccion.LOAD_EXCHANGES){  
+            peticion.setDatosSalida(walterMercado);  
             
-            peticion.setDatosSalida(walterMercado);            
+        }else if(accion == TipoAccion.BUY_EXCHANGE){      
+            ArrayList datos = (ArrayList)peticion.getDatosEntrada();            
+            boolean answer = buyExchange((int)datos.get(0), (int)datos.get(1), (int)datos.get(2));
+            peticion.setDatosSalida(answer);            
         }
         
         return peticion;
@@ -98,7 +102,6 @@ public class Controlador {
             if(i.getId() == id){
                 return i;
             }
-
         }
         return null;
     }
@@ -117,6 +120,36 @@ public class Controlador {
         }
         
         return false;
+       
+    }
+    
+    private boolean buyExchange(int id, int idBuyer, int idSeller){
+        Player buyyer = getPlayer(idBuyer);
+        Player seller = getPlayer(idSeller);
+        int precio = 0;
+        int index = 0;
+        for(Exchange e: walterMercado){
+            if(e.getId() == id){
+                precio = e.getPrecio();
+            }
+        }        
+        if(precio<= buyyer.getMoney()){
+            buyyer.setMoneyLess(precio);
+            seller.setMoneyMore(precio);
+            
+            for(Exchange e: walterMercado){
+                if(e.getId() == id){
+                    walterMercado.remove(index);
+                    break;
+                }
+                index++;
+            } 
+            updatePlayer(buyyer);
+            updatePlayer(seller);
+            return true;
+        }else{
+            return false;
+        }
        
     }
 }

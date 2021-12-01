@@ -5,7 +5,12 @@
  */
 package vista;
 
+import control.TipoAccion;
 import control.Utilities;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import modelo.Exchange;
+import modelo.Peticion;
 
 /**
  *
@@ -16,15 +21,31 @@ public class PanelPublicaciones extends javax.swing.JPanel {
     /**
      * Creates new form PanelPublicaciones
      */
-    public PanelPublicaciones(String nombre, double precio, String imagen, String namePlayer) {
+    public Exchange exchange; 
+    public PanelPublicaciones(Exchange e) {
         initComponents();
+        exchange  = e;
+        lbNombre.setText(e.getArma().getName());
+        lbPrecio.setText((String.valueOf(e.getPrecio())));
         
-        lbNombre.setText(nombre);
-        lbPrecio.setText((String.valueOf(precio)));
-        lbImagen.setIcon(Utilities.loadResizeIcon(imagen, 130));
-        lbNamePlayer.setText(namePlayer);
+        lbImagen.setIcon(Utilities.loadResizeIcon(getStringImg(e.getArma().getName()), 130));
+        lbNamePlayer.setText(e.getNamePlayer());
     }
-
+    private String getStringImg(String nombre){
+        String imagen = "";
+        if (nombre.equals("Cannon")){
+            imagen = "src\\images\\canon.png"; 
+        }else if (nombre.equals("Cannon Multiple")){
+            imagen = "src\\images\\canonMultiple.png";
+        }else if(nombre.equals("Bomba")){
+            imagen = "src\\images\\bomba.png";
+        }else if(nombre.equals("Cannon Barba Roja")){
+            imagen = "src\\images\\cañonBarbaRoja.png";
+        }else if(nombre.equals("Acero")){
+            imagen = "src\\images\\acero.png";
+        }
+        return imagen;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -37,8 +58,9 @@ public class PanelPublicaciones extends javax.swing.JPanel {
         lbPrecio = new javax.swing.JLabel();
         lbNombre = new javax.swing.JLabel();
         lbNamePlayer = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        panelBackground = new javax.swing.JPanel();
         lbImagen = new javax.swing.JLabel();
+        btnComprar = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(120, 120, 120));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -59,22 +81,54 @@ public class PanelPublicaciones extends javax.swing.JPanel {
         lbNamePlayer.setText("FERKS");
         add(lbNamePlayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 159, 33));
 
-        jPanel1.setBackground(new java.awt.Color(212, 212, 212));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelBackground.setBackground(new java.awt.Color(212, 212, 212));
+        panelBackground.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbImagen.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lbImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/63877819.jpg"))); // NOI18N
-        jPanel1.add(lbImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 130, 130));
+        panelBackground.add(lbImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 130, 130));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 200, 150));
+        add(panelBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 200, 150));
+
+        btnComprar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnComprarMouseClicked(evt);
+            }
+        });
+        add(btnComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 300));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnComprarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnComprarMouseClicked
+        // TODO add your handling code here:
+        ArrayList datos = new ArrayList();
+        datos.add(exchange.getId());
+        datos.add(MainWindow.player.getId());
+        datos.add(exchange.getIdPlyaer());
+        Peticion peticion = new Peticion(TipoAccion.BUY_EXCHANGE, datos);        
+        Client conexion = new Client(peticion);
+        Object respuesta = conexion.getRespuestaServer();
+        if(respuesta!= null){
+            if((boolean)respuesta){                
+                JOptionPane.showMessageDialog(null, "Se ha registrado su exchange!", "Completo", JOptionPane.INFORMATION_MESSAGE);
+                MainWindow.panelComprar.cleanExchange();
+                MainWindow.panelComprar.loadDatos();
+                
+            }else{
+                System.out.println("No s[e por que, pero algo no est[a bien");
+            }
+        }else{
+            System.out.println("El server se empalido");
+        }
+        
+    }//GEN-LAST:event_btnComprarMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel btnComprar;
     private javax.swing.JLabel lbImagen;
     private javax.swing.JLabel lbNamePlayer;
     private javax.swing.JLabel lbNombre;
     private javax.swing.JLabel lbPrecio;
+    private javax.swing.JPanel panelBackground;
     // End of variables declaration//GEN-END:variables
 }

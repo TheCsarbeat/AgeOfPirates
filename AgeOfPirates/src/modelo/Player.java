@@ -114,6 +114,14 @@ public class Player implements Serializable{
     public void setMoney(int money) {
         this.money = money;
     }
+    
+    public void setMoneyMore(int money) {
+        this.money += money;
+    }
+    
+    public void setMoneyLess(int money) {
+        this.money -= money;
+    }
 
     public void setSteel(int steel) {
         this.steel = steel;

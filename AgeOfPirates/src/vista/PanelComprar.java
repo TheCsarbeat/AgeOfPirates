@@ -63,7 +63,7 @@ public class PanelComprar extends javax.swing.JPanel {
                 gbc.gridheight = 1;
                 gbc.weightx = GridBagConstraints.REMAINDER;
                 gbc.fill = GridBagConstraints.HORIZONTAL;
-                mainList.add(new PanelPublicaciones(i.getArma().getName(),i.getPrecio(),getStringImg(i.getArma().getName()), i.getNamePlayer()), gbc, 0);                
+                mainList.add(new PanelPublicaciones(i), gbc, 0);               
                 
             }
             MainWindow.panelComprar.panelPublicaciones.validate();

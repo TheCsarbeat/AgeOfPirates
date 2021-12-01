@@ -13,7 +13,7 @@ import java.io.Serializable;
  */
 public class Exchange  implements Serializable{
     private int id;
-    private double precio;
+    private int precio;
     private int idPlyaer;
     private String namePlayer;
     private Arma arma;
@@ -22,7 +22,7 @@ public class Exchange  implements Serializable{
     }
 
         
-    public Exchange(int id, double precio, int idPlyaer, Arma arma) {
+    public Exchange(int id, int precio, int idPlyaer, Arma arma) {
         this.id = id;
         this.precio = precio;
         this.idPlyaer = idPlyaer;
@@ -38,11 +38,11 @@ public class Exchange  implements Serializable{
         this.id = id;
     }
 
-    public double getPrecio() {
+    public int getPrecio() {
         return precio;
     }
 
-    public void setPrecio(double precio) {
+    public void setPrecio(int precio) {
         this.precio = precio;
     }
 

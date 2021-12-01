@@ -54,12 +54,28 @@ public class PanelJuego extends javax.swing.JPanel {
     }
     
     public void loadDatos(){
-        ArrayList datos = MainWindow.player.cantidadArmas();
-        lbPlayerName.setText(MainWindow.player.getName());
-        lbCantCannon.setText(String.valueOf(datos.get(0)));
-        lbCantCannonM.setText(String.valueOf(datos.get(1)));
-        lbCantBomba.setText(String.valueOf(datos.get(2)));
-        lbCantCannonB.setText(String.valueOf(datos.get(3)));
+        Thread th = new Thread(){
+        @Override
+        public void run(){
+            try {
+                int i = 0;
+                while(true){
+                    Thread.sleep(800);
+                    i++;
+                    MainWindow.getPlayer();
+                    ArrayList datos = MainWindow.player.cantidadArmas();
+                    lbPlayerName.setText(MainWindow.player.getName());
+                    lbCantCannon.setText(String.valueOf(datos.get(0)));
+                    lbCantCannonM.setText(String.valueOf(datos.get(1)));
+                    lbCantBomba.setText(String.valueOf(datos.get(2)));
+                    lbCantCannonB.setText(String.valueOf(datos.get(3)));
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            }
+        }
+        };th.start();
+        
         
         
         
