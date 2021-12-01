@@ -5,6 +5,7 @@
  */
 package vista;
 
+import control.TipoAccion;
 import control.Utilities;
 import modelo.Armeria;
 import modelo.Conector;
