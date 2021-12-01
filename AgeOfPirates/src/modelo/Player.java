@@ -153,7 +153,7 @@ public class Player implements Serializable{
 
     @Override
     public String toString() {
-        return "Player{" + "id=" + id + ", name=" + name + ", turno=" + turno + ", money=" + money + ", steel=" + steel + ", positions=" + positions + ", grafo=" + grafo + ", comodines=" + comodines + ", armas=" + armas + '}';
+        return "Player: " + "id: " + id + ", name: " + name + ", turno: " + turno + ", money: " + money + ", steel: " + steel + ", positions: " + positions + ", grafo: " + grafo + ", comodines:" + comodines + ", armas: " + armas;
     }
     
     public Arma buscarArma(String name){
