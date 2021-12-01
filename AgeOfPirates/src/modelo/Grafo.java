@@ -181,7 +181,22 @@ public class Grafo  implements Serializable{
         limpiarVisitados();
     }
 
+    public boolean hayConector(){
+        for (int i = 0; i < vertices.size(); i++){
+            if(vertices.get(i).estructura instanceof Conector){
+                return true;
+            }
+        }
+        return false;
+    }
 
-
+    public boolean hayFuente(){
+        for (int i = 0; i < vertices.size(); i++){
+            if(vertices.get(i).estructura instanceof Fuente){
+                return true;
+            }
+        }
+        return false;
+    }
 
 }

@@ -33,9 +33,8 @@ public class CanvasSea extends Canvas{
         this.id = id;
     }
     
-    public void paint(Graphics g){
-        g.setColor(Color.black); 
-        Image tile = new ImageIcon("src\\images\\Tile4.png").getImage();
+    public void paint(Graphics g){ 
+        Image tile = new ImageIcon("src\\images\\water2.png").getImage();
         Image mina = new ImageIcon("src\\images\\mine.png").getImage();        
         Image conector = new ImageIcon("src\\images\\node.png").getImage();
         Image templo = new ImageIcon("src\\images\\temple.png").getImage();
@@ -62,12 +61,8 @@ public class CanvasSea extends Canvas{
                 height = (e.estructura.getEspacio()%10);
                 if(e.estructura instanceof Mina){
                     g.drawImage(mina, x*32, y*32, width*32, height*32, this);
-                    //g.drawImage(mina, 320, 320, 32, 32, this);
                 }else if(e.estructura instanceof Conector){
-                    //System.out.println(e.estructura.getId());
-                    //System.out.println("X: "+x*32+" y: "+y*32+" width: "+width*32+" height: "+height*32);
                     g.drawImage(conector, x*32, y*32, width*32, height*32, this);
-                    //g.drawImage(conector, 0, 0, 32, 32, this);
                 }else if(e.estructura instanceof Templo){
                     g.drawImage(templo, x*32, y*32, width*32, height*32, this);
                 }else if(e.estructura instanceof Fuente){
@@ -86,19 +81,17 @@ public class CanvasSea extends Canvas{
                 }
             }
             int x1,  y1,  x2,  y2;
-            
             for(Vertice e: MainWindow.player.grafo.vertices){
                 x1 = e.estructura.getFirstCoordinate().getX();
                 y1 = e.estructura.getFirstCoordinate().getY();
                 for(Vertice a: e.aristas){
                     x2 = a.estructura.getFirstCoordinate().getX();
                     y2 = a.estructura.getFirstCoordinate().getY();
-                    drawThickLine(g,x1*32,y1*32,x2*32,y2*32,5,Color.BLACK);
-                    //System.out.println("x1: "+x1+" y1: "+y1+" x2: "+x2+" y2: "+y2);
+                    drawThickLine(g,x1*32+16,y1*32+16,x2*32+16,y2*32+16,5,Color.YELLOW);
                 }
             }
         }else{
-            
+             
         }
     }
     

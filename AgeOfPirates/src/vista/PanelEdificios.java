@@ -6,6 +6,7 @@
 package vista;
 
 import control.Utilities;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -235,45 +236,71 @@ public class PanelEdificios extends javax.swing.JPanel {
 
     //fuente=0, conector=1, mercado=2, mina=3, templo=4, armeria=5
     private void itemPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemPanelMouseClicked
-        PanelTienda.lastItemSelected = 3;
-        Utilities.cargarPanel(MainWindow.contentPanel, PanelTienda.panelColocar);
-        PanelTienda.panelColocar.cboOpcionesEspacio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2x1", "1x2"}));
-        PanelTienda.panelColocar.cargarCboConectores();
+        if(MainWindow.player.grafo.hayConector() && MainWindow.player.getMoney() >= 1000){
+            PanelTienda.lastItemSelected = 3;
+            Utilities.cargarPanel(MainWindow.contentPanel, PanelTienda.panelColocar);
+            PanelTienda.panelColocar.cboOpcionesEspacio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2x1", "1x2"}));
+            PanelTienda.panelColocar.cargarCboConectores();
+        }else{
+            JOptionPane.showMessageDialog(null, "No existen conectores", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        
     }//GEN-LAST:event_itemPanelMouseClicked
 
     private void itemPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemPanel1MouseClicked
-        PanelTienda.lastItemSelected = 4;
-        Utilities.cargarPanel(MainWindow.contentPanel, PanelTienda.panelColocar);
-        PanelTienda.panelColocar.cboOpcionesEspacio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2x1", "1x2"}));
-        PanelTienda.panelColocar.cargarCboConectores();
+        if(MainWindow.player.grafo.hayConector() && MainWindow.player.getMoney() >= 2500){
+            PanelTienda.lastItemSelected = 4;
+            Utilities.cargarPanel(MainWindow.contentPanel, PanelTienda.panelColocar);
+            PanelTienda.panelColocar.cboOpcionesEspacio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2x1", "1x2"}));
+            PanelTienda.panelColocar.cargarCboConectores();
+        }else{
+            JOptionPane.showMessageDialog(null, "No existen conectores", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_itemPanel1MouseClicked
 
     private void itemPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemPanel2MouseClicked
-        PanelTienda.lastItemSelected = 5;
-        Utilities.cargarPanel(MainWindow.contentPanel, PanelTienda.panelColocar);
-        PanelTienda.panelColocar.cboOpcionesEspacio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2x1", "1x2"}));
-        PanelTienda.panelColocar.cargarCboConectores();
+        if(MainWindow.player.grafo.hayConector() && MainWindow.player.getMoney() >= 1500){
+            PanelTienda.lastItemSelected = 5;
+            Utilities.cargarPanel(MainWindow.contentPanel, PanelTienda.panelColocar);
+            PanelTienda.panelColocar.cboOpcionesEspacio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2x1", "1x2"}));
+            PanelTienda.panelColocar.cargarCboConectores();
+        }else{
+            JOptionPane.showMessageDialog(null, "No existen conectores", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        
     }//GEN-LAST:event_itemPanel2MouseClicked
 
     private void itemPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemPanel3MouseClicked
-        PanelTienda.lastItemSelected = 2;
-        Utilities.cargarPanel(MainWindow.contentPanel, PanelTienda.panelColocar);
-        PanelTienda.panelColocar.cboOpcionesEspacio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2x1", "1x2"}));
-        PanelTienda.panelColocar.cargarCboConectores();
+        if(MainWindow.player.grafo.hayConector() && MainWindow.player.getMoney() >= 2000){
+            PanelTienda.lastItemSelected = 2;
+            Utilities.cargarPanel(MainWindow.contentPanel, PanelTienda.panelColocar);
+            PanelTienda.panelColocar.cboOpcionesEspacio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2x1", "1x2"}));
+            PanelTienda.panelColocar.cargarCboConectores();
+        }else{
+            JOptionPane.showMessageDialog(null, "No existen conectores", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_itemPanel3MouseClicked
 
     private void itemPanel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemPanel4MouseClicked
-        PanelTienda.lastItemSelected = 0;
-        Utilities.cargarPanel(MainWindow.contentPanel, PanelTienda.panelColocar);
-        PanelTienda.panelColocar.cboOpcionesEspacio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2x2"}));
-        PanelTienda.panelColocar.cargarCboConectores();
+        if(MainWindow.player.getMoney() >= 0){
+            PanelTienda.lastItemSelected = 0;
+            Utilities.cargarPanel(MainWindow.contentPanel, PanelTienda.panelColocar);
+            PanelTienda.panelColocar.cboOpcionesEspacio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2x2"}));
+            PanelTienda.panelColocar.cargarCboConectores();
+        }else{
+            JOptionPane.showMessageDialog(null, "No tiene suficiente dinero", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_itemPanel4MouseClicked
 
     private void itemPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemPanel5MouseClicked
-        PanelTienda.lastItemSelected = 1;
-        Utilities.cargarPanel(MainWindow.contentPanel, PanelTienda.panelColocar);
-        PanelTienda.panelColocar.cboOpcionesEspacio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1x1"}));
-        PanelTienda.panelColocar.cboOpcionesConectores.setEnabled(false);
+        if(MainWindow.player.grafo.hayFuente() && MainWindow.player.getMoney() >= 100){
+            PanelTienda.lastItemSelected = 1;
+            Utilities.cargarPanel(MainWindow.contentPanel, PanelTienda.panelColocar);
+            PanelTienda.panelColocar.cboOpcionesEspacio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1x1"}));
+            PanelTienda.panelColocar.cboOpcionesConectores.setEnabled(false);
+        }else{
+            JOptionPane.showMessageDialog(null, "No existe una fuente", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_itemPanel5MouseClicked
 
 

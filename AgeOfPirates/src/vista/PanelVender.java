@@ -159,7 +159,7 @@ public class PanelVender extends javax.swing.JPanel {
                     System.out.println("\n\n");
                     MainWindow.getPlayer(); 
                     
-                    JOptionPane.showMessageDialog(null, "Se ha registrado su exchange!", "Error", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Se ha registrado su exchange!", "Exito", JOptionPane.INFORMATION_MESSAGE);
                 }else{
                     System.out.println("No s[e porquie pero algo no esta bien");
                 }

@@ -25,7 +25,7 @@ public class Player implements Serializable{
         this.id = id;
         name = "";
         turno = 0;
-        money = 4000;
+        money = 400000;
         steel = 0;
         grafo = new Grafo();
         for(int row=0;row<20;row++){
