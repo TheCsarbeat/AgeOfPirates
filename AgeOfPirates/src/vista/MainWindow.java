@@ -38,6 +38,8 @@ public class MainWindow extends javax.swing.JFrame {
     
     public static Player player;
     
+    public static Player  enemigo= new Player();
+    
     public MainWindow() {
         initComponents();
         panelJuego = new PanelJuego();
@@ -127,11 +129,23 @@ public class MainWindow extends javax.swing.JFrame {
             }
             //player.subtractMoney(100);
         }
-        MainWindow.player.grafo.imprimir();
+        setPlayer();
+        
     }
     
     public static void setPlayer(){       
         Peticion peticion = new Peticion(TipoAccion.ACTUALIZAR_PLAYER, MainWindow.player);        
+        Client conexion = new Client(peticion);
+        Object respuesta = conexion.getRespuestaServer();
+        if(respuesta != null){
+            System.out.println(((Player)respuesta).toString());
+        }else{
+            System.out.println("The answer is null");
+        }
+    }
+    
+    public static void setPlayerEnemigo(){       
+        Peticion peticion = new Peticion(TipoAccion.ACTUALIZAR_PLAYER, MainWindow.enemigo);        
         Client conexion = new Client(peticion);
         Object respuesta = conexion.getRespuestaServer();
         if(respuesta != null){
@@ -152,6 +166,18 @@ public class MainWindow extends javax.swing.JFrame {
             System.out.println("The answer is null");
         }
     }
+    public static void getPlayerEnemigo(int id){       
+        Peticion peticion = new Peticion(TipoAccion.GET_PLAYER,id);        
+        Client conexion = new Client(peticion);
+        Object respuesta = conexion.getRespuestaServer();
+        if(respuesta != null){
+            enemigo = (Player)respuesta;
+            System.out.println(((Player)respuesta).toString());
+        }else{
+            System.out.println("The answer is null");
+        }
+    }
+    
     
     
 

@@ -91,7 +91,42 @@ public class CanvasSea extends Canvas{
                 }
             }
         }else{
-             
+             for(Vertice e: MainWindow.enemigo.grafo.vertices){
+                x = e.estructura.getFirstCoordinate().getX();
+                y = e.estructura.getFirstCoordinate().getY();
+                width = (e.estructura.getEspacio()/10);
+                height = (e.estructura.getEspacio()%10);
+                if(e.estructura instanceof Mina){
+                    g.drawImage(mina, x*32, y*32, width*32, height*32, this);
+                }else if(e.estructura instanceof Conector){
+                    g.drawImage(conector, x*32, y*32, width*32, height*32, this);
+                }else if(e.estructura instanceof Templo){
+                    g.drawImage(templo, x*32, y*32, width*32, height*32, this);
+                }else if(e.estructura instanceof Fuente){
+                    g.drawImage(fuente, x*32, y*32, width*32, height*32, this);
+                }else if(e.estructura instanceof Mercado){
+                    g.drawImage(mercado, x*32, y*32, width*32, height*32, this);
+                }else{
+                    g.drawImage(armeria, x*32, y*32, width*32, height*32, this);
+                }
+            }
+            for(int row=0;row<20;row++){
+                for(int col=0;col<20;col++){
+                    if(MainWindow.enemigo.positions[row][col] == true){
+                        g.drawImage(fire, row*32, col*32, 32, 32, this);
+                    }
+                }
+            }
+            int x1,  y1,  x2,  y2;
+            for(Vertice e: MainWindow.enemigo.grafo.vertices){
+                x1 = e.estructura.getFirstCoordinate().getX();
+                y1 = e.estructura.getFirstCoordinate().getY();
+                for(Vertice a: e.aristas){
+                    x2 = a.estructura.getFirstCoordinate().getX();
+                    y2 = a.estructura.getFirstCoordinate().getY();
+                    drawThickLine(g,x1*32+16,y1*32+16,x2*32+16,y2*32+16,5,Color.YELLOW);
+                }
+            }
         }
     }
     
