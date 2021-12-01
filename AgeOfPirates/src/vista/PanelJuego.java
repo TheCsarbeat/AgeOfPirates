@@ -732,7 +732,8 @@ public class PanelJuego extends javax.swing.JPanel {
             lbPlayer2.setBackground(new Color(120,120,120));
             lbPlayer3.setBackground(new Color(120,120,120));
             flagCargado = false;
-            MainWindow.setPlayerEnemigo();  
+            MainWindow.enemigo.updateEstructuras();
+            MainWindow.setPlayerEnemigo();              
             MainWindow.finishTurn();
         }
                

@@ -73,7 +73,11 @@ public class MainWindow extends javax.swing.JFrame {
                         unaFuente.setEspacio(dimensiones);
                         player.grafo.agregarVertice(unaFuente);
                         player.grafo.agregarArista(player.grafo.buscarVertice(conectorId), player.grafo.buscarVertice(name));
-                        //player.subtractMoney(12000);
+                        if(panelTienda.firstTime == false){
+                            player.subtractMoney(12000);
+                        }else{
+                            panelTienda.firstTime = false;
+                        }
                         break;
                     }
                 case 2:
@@ -84,7 +88,7 @@ public class MainWindow extends javax.swing.JFrame {
                         unMercado.setEspacio(dimensiones);
                         player.grafo.agregarVertice(unMercado);
                         player.grafo.agregarArista(player.grafo.buscarVertice(conectorId), player.grafo.buscarVertice(name));
-                        //player.subtractMoney(2000);
+                        player.subtractMoney(2000);
                         break;
                     }
                 case 3:
@@ -95,7 +99,7 @@ public class MainWindow extends javax.swing.JFrame {
                         unaMina.setEspacio(dimensiones);
                         player.grafo.agregarVertice(unaMina);
                         player.grafo.agregarArista(player.grafo.buscarVertice(conectorId), player.grafo.buscarVertice(name));
-                        //player.subtractMoney(1000);
+                        player.subtractMoney(1000);
                         break;
                     }
                 case 4:
@@ -106,7 +110,7 @@ public class MainWindow extends javax.swing.JFrame {
                         unTemplo.setEspacio(dimensiones);
                         player.grafo.agregarVertice(unTemplo);
                         player.grafo.agregarArista(player.grafo.buscarVertice(conectorId), player.grafo.buscarVertice(name));
-                        //player.subtractMoney(2500);
+                        player.subtractMoney(2500);
                         break;
                     }
                 default:
@@ -117,7 +121,7 @@ public class MainWindow extends javax.swing.JFrame {
                         unaArmeria.setEspacio(dimensiones);
                         player.grafo.agregarVertice(unaArmeria);
                         player.grafo.agregarArista(player.grafo.buscarVertice(conectorId), player.grafo.buscarVertice(name));
-                        //player.subtractMoney(1500);
+                        player.subtractMoney(1500);
                         break;
                     }
             }
@@ -132,7 +136,7 @@ public class MainWindow extends javax.swing.JFrame {
                     player.grafo.agregarArista(player.grafo.buscarVertice(name), v);
                 }
             }
-            //player.subtractMoney(100);
+            player.subtractMoney(100);
         }
         setPlayer();
         

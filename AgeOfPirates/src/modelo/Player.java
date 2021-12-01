@@ -298,4 +298,28 @@ public class Player implements Serializable{
         cont++;
         return prefijo + cont;
     }
+    
+    public void updateEstructuras(){
+        int x,y;
+        boolean flag = false;
+        for(Vertice v: grafo.vertices){
+            flag = false;
+            for(Punto p : v.estructura.getCellsBusy()){
+                x = p.getX();
+                y = p.getY();
+                if(positions[x][y] != true){
+                    flag = true;
+                }
+            }
+            if(!flag){
+                v.estructura.setDestruida(true);
+            }
+        }
+        
+        for(Vertice v: grafo.vertices){
+            if(v.estructura.isDestruida()){
+                v.aristas.clear();
+            }
+        }
+    }
 }

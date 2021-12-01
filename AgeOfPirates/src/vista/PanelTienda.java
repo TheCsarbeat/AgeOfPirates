@@ -18,14 +18,18 @@ public class PanelTienda extends javax.swing.JPanel {
     public PanelArmas panelArmas;
     public static PanelColocar panelColocar;
     public static int lastItemSelected; //fuente=0, conector=1, mercado=2, mina=3, templo=4, armeria=5
+    public boolean firstTime;
+    public PanelEnviarBarco panelBarco;
     /**
      * Creates new form PanelTienda
      */
     public PanelTienda() {
         initComponents();
+        firstTime = true;
         panelEdificios = new PanelEdificios();
         panelArmas = new PanelArmas();
         panelColocar = new PanelColocar();
+        panelBarco = new PanelEnviarBarco();
         cargarPanel(panelEdificios);
     }
     

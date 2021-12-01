@@ -199,6 +199,17 @@ public class Grafo  implements Serializable{
         }
         return false;
     }
+    
+    public boolean esArista(String id){
+        for(Vertice v: vertices){
+            for(Vertice v2: v.aristas){
+                if(v2.estructura.getId().equals(id)){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
     @Override
     public String toString() {
