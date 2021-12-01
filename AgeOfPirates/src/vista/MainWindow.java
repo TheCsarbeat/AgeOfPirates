@@ -8,12 +8,14 @@ package vista;
 import control.Utilities;
 import modelo.Armeria;
 import modelo.Conector;
-import modelo.Fuente;
-import modelo.Mercado;
 import modelo.Mina;
-import modelo.Player;
 import modelo.Punto;
 import modelo.Templo;
+import modelo.Fuente;
+import modelo.Mercado;
+import modelo.Peticion;
+import modelo.Player;
+import modelo.Vertice;
 
 
 
@@ -26,11 +28,14 @@ public class MainWindow extends javax.swing.JFrame {
     public static PanelMenu panelMenu;
     public static PanelJuego panelJuego;
     public static PanelTienda panelTienda;
-    public static Player player;
+    
     public static PanelVender panelVender;
     public static PanelComprar panelComprar;
     public static PanelMercado panelMercado;
     public static PanelStart panelStar;
+    public static PanelTiendaMercado panelTiendaMercado;
+    
+    public static Player player;
     
     public MainWindow() {
         initComponents();
@@ -40,8 +45,10 @@ public class MainWindow extends javax.swing.JFrame {
         panelVender = new PanelVender();
         panelComprar = new PanelComprar();
         panelMercado = new PanelMercado();
+        panelTiendaMercado = new PanelTiendaMercado();
         
         panelStar = new PanelStart();
+        //player = new Player();
         Utilities.cargarPanel(contentPanel, panelMenu);
     }
     //fuente=0, conector=1, mercado=2, mina=3, templo=4, armeria=5
@@ -94,6 +101,30 @@ public class MainWindow extends javax.swing.JFrame {
         }
         MainWindow.player.grafo.imprimir();
     }
+    
+    public static void setPlayer(){       
+        Peticion peticion = new Peticion(TipoAccion.ACTUALIZAR_PLAYER, MainWindow.player);        
+        Client conexion = new Client(peticion);
+        Object respuesta = conexion.getRespuestaServer();
+        if(respuesta != null){
+            System.out.println(((Player)respuesta).toString());
+        }else{
+            System.out.println("The answer is null");
+        }
+    }
+    
+    public static void getPlayer(){       
+        Peticion peticion = new Peticion(TipoAccion.GET_PLAYER,player.getId());        
+        Client conexion = new Client(peticion);
+        Object respuesta = conexion.getRespuestaServer();
+        if(respuesta != null){
+            player = (Player)respuesta;
+            System.out.println(((Player)respuesta).toString());
+        }else{
+            System.out.println("The answer is null");
+        }
+    }
+    
     
 
     /**

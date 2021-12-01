@@ -5,8 +5,14 @@
  */
 package vista;
 
+import control.TipoAccion;
 import control.Utilities;
 import java.awt.GridBagConstraints;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import modelo.Arma;
+import modelo.Exchange;
+import modelo.Peticion;
 
 /**
  *
@@ -32,11 +38,11 @@ public class PanelVender extends javax.swing.JPanel {
 
         panelBotones = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        btnAgregar = new javax.swing.JButton();
         txtPrecio = new javax.swing.JTextField();
         lbCoordenada4 = new javax.swing.JLabel();
         lbCoordenada6 = new javax.swing.JLabel();
         cboProductos = new javax.swing.JComboBox<>();
+        btnActivateChat = new javax.swing.JLabel();
         lbSombrero = new javax.swing.JLabel();
         lbBandera = new javax.swing.JLabel();
         lbCoordenada5 = new javax.swing.JLabel();
@@ -49,20 +55,6 @@ public class PanelVender extends javax.swing.JPanel {
         panelBotones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnAgregar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnAgregar.setText("Agregar");
-        btnAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnAgregarMouseClicked(evt);
-            }
-        });
-        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, 160, 30));
 
         txtPrecio.setBackground(new java.awt.Color(255, 255, 255));
         txtPrecio.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
@@ -85,8 +77,22 @@ public class PanelVender extends javax.swing.JPanel {
         lbCoordenada6.setText("Indique el nombre del producto que desea vender");
         jPanel1.add(lbCoordenada6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        cboProductos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cannon", "Cannon multiples", "Bomba", "Cannon barba roja", "Acero" }));
+        cboProductos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cannon", "Cannon Multiple", "Bomba", "Cannon Barba Roja", "Acero" }));
         jPanel1.add(cboProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 170, -1));
+
+        btnActivateChat.setBackground(new java.awt.Color(86, 73, 64));
+        btnActivateChat.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        btnActivateChat.setForeground(new java.awt.Color(255, 255, 255));
+        btnActivateChat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnActivateChat.setText("Agregar");
+        btnActivateChat.setIconTextGap(20);
+        btnActivateChat.setOpaque(true);
+        btnActivateChat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnActivateChatMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnActivateChat, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, 190, 40));
 
         panelBotones.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 30, 460, 250));
 
@@ -122,39 +128,6 @@ public class PanelVender extends javax.swing.JPanel {
         add(lbCalavera, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 580, 270, 260));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
-        // TODO add your handling code here:
-        String nombre = "";
-        String imagen = "";
-        double precio = 0.0;
-        precio = Double.parseDouble(txtPrecio.getText());
-        nombre = (String)cboProductos.getSelectedItem();
-        
-        if (nombre.equals("Cannon")){
-            imagen = "src\\images\\canon.png"; 
-        }else if (nombre.equals("Cannon multiples")){
-            imagen = "src\\images\\canonMultiple.png";
-        }else if(nombre.equals("Bomba")){
-            imagen = "src\\images\\bomba.png";
-        }else if(nombre.equals("Cannon barba roja")){
-            imagen = "src\\images\\cañonBarbaRoja.png";
-        }else if(nombre.equals("Acero")){
-            imagen = "src\\images\\acero.png";
-        }
-        GridBagConstraints gbc = new GridBagConstraints();
-                gbc.gridheight = GridBagConstraints.REMAINDER;
-                gbc.weightx = 1;
-                gbc.fill = GridBagConstraints.HORIZONTAL;
-                MainWindow.panelComprar.mainList.add(new PanelPublicaciones(nombre,precio,imagen), gbc, 0);                
-                MainWindow.panelComprar.panelPublicaciones.validate();
-                MainWindow.panelComprar.panelPublicaciones.repaint();
-        
-    }//GEN-LAST:event_btnAgregarMouseClicked
-
-    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAgregarActionPerformed
-
     private void lbBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbBackMouseClicked
         Utilities.cargarPanel(MainWindow.contentPanel, MainWindow.panelMercado);
     }//GEN-LAST:event_lbBackMouseClicked
@@ -163,9 +136,45 @@ public class PanelVender extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPrecioActionPerformed
 
+    private void btnActivateChatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActivateChatMouseClicked
+        String nombre = "";
+        String imagen = "";
+        int precio = 0;        
+        precio = Integer.parseInt(txtPrecio.getText());
+        nombre = (String)cboProductos.getSelectedItem();
+        
+        Arma armaVender = MainWindow.player.buscarArma(nombre);
+        
+        if(armaVender != null){
+            ArrayList datos = new ArrayList();
+            datos.add(precio);
+            datos.add(MainWindow.player.getId());
+            datos.add(armaVender);
+            Peticion peticion = new Peticion(TipoAccion.ADD_EXCHANGE, datos);        
+            Client conexion = new Client(peticion);
+            Object respuesta = conexion.getRespuestaServer();
+            
+            if(respuesta != null){
+                if((boolean)respuesta){
+                    System.out.println("\n\n");
+                    MainWindow.getPlayer(); 
+                    
+                    JOptionPane.showMessageDialog(null, "Se ha registrado su exchange!", "Error", JOptionPane.INFORMATION_MESSAGE);
+                }else{
+                    System.out.println("No s[e porquie pero algo no esta bien");
+                }
+            }else{
+                System.out.println("El server se empalido");
+            }
+            
+        }else{
+            JOptionPane.showMessageDialog(null, "No tiene ninguna arma de este tipo!", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnActivateChatMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAgregar;
+    private javax.swing.JLabel btnActivateChat;
     public static javax.swing.JComboBox<String> cboProductos;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbBack;

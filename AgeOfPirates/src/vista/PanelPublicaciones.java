@@ -16,12 +16,13 @@ public class PanelPublicaciones extends javax.swing.JPanel {
     /**
      * Creates new form PanelPublicaciones
      */
-    public PanelPublicaciones(String nombre, double precio, String imagen) {
+    public PanelPublicaciones(String nombre, double precio, String imagen, String namePlayer) {
         initComponents();
         
         lbNombre.setText(nombre);
         lbPrecio.setText((String.valueOf(precio)));
-        lbImagen.setIcon(Utilities.loadResizeIcon(imagen, 110));
+        lbImagen.setIcon(Utilities.loadResizeIcon(imagen, 130));
+        lbNamePlayer.setText(namePlayer);
     }
 
     /**
@@ -33,49 +34,46 @@ public class PanelPublicaciones extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lbImagen = new javax.swing.JLabel();
         lbPrecio = new javax.swing.JLabel();
         lbNombre = new javax.swing.JLabel();
+        lbNamePlayer = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        lbImagen = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(120, 120, 120));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        setMaximumSize(new java.awt.Dimension(300, 300));
+        setPreferredSize(new java.awt.Dimension(300, 300));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lbPrecio.setFont(new java.awt.Font("Roboto Light", 0, 24)); // NOI18N
+        lbPrecio.setText("Precio");
+        add(lbPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, 126, 33));
+
+        lbNombre.setFont(new java.awt.Font("Roboto Light", 0, 24)); // NOI18N
+        lbNombre.setText("Nombre");
+        add(lbNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 159, 33));
+
+        lbNamePlayer.setFont(new java.awt.Font("Roboto Light", 1, 24)); // NOI18N
+        lbNamePlayer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbNamePlayer.setText("FERKS");
+        add(lbNamePlayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 159, 33));
+
+        jPanel1.setBackground(new java.awt.Color(212, 212, 212));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbImagen.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/63877819.jpg"))); // NOI18N
+        jPanel1.add(lbImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 130, 130));
 
-        lbPrecio.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lbPrecio.setText("Precio");
-
-        lbNombre.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lbNombre.setText("Nombre");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(125, 125, 125)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(lbImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lbPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)))
-                .addContainerGap(114, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(lbNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lbImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lbPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(43, Short.MAX_VALUE))
-        );
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 200, 150));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbImagen;
+    private javax.swing.JLabel lbNamePlayer;
     private javax.swing.JLabel lbNombre;
     private javax.swing.JLabel lbPrecio;
     // End of variables declaration//GEN-END:variables

@@ -35,6 +35,9 @@ public class PanelTienda extends javax.swing.JPanel {
         otroPanel.revalidate();
     }
     
+    public void loadDatos(){
+        lbDineroActual.setText(String.valueOf(MainWindow.player.getMoney()));
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -87,7 +90,7 @@ public class PanelTienda extends javax.swing.JPanel {
 
         lbDineroActual.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lbDineroActual.setText("4000");
-        add(lbDineroActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 140, 40));
+        add(lbDineroActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 170, 40));
 
         lbBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back.png"))); // NOI18N
         lbBack.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -112,7 +115,7 @@ public class PanelTienda extends javax.swing.JPanel {
     }//GEN-LAST:event_btnArmasMouseClicked
 
     private void lbBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbBackMouseClicked
-        Utilities.cargarPanel(MainWindow.contentPanel, MainWindow.panelJuego);
+        Utilities.cargarPanel(MainWindow.contentPanel, MainWindow.panelTiendaMercado);
     }//GEN-LAST:event_lbBackMouseClicked
 
 

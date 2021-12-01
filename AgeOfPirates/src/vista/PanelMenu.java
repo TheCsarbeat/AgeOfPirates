@@ -32,7 +32,6 @@ public class PanelMenu extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         lbPlay = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(120, 120, 120));
         setPreferredSize(new java.awt.Dimension(1900, 1000));
@@ -65,15 +64,7 @@ public class PanelMenu extends javax.swing.JPanel {
         add(lbPlay, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 200, 250, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/barcoInicio.png"))); // NOI18N
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 590, 330, 290));
-
-        jLabel3.setText("jLabel3");
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
-            }
-        });
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 550, 340, 230));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 470, 500, 510));
     }// </editor-fold>//GEN-END:initComponents
 
     private void lbPlayMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbPlayMouseClicked
@@ -82,17 +73,10 @@ public class PanelMenu extends javax.swing.JPanel {
         
     }//GEN-LAST:event_lbPlayMouseClicked
 
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        // TODO add your handling code here:
-        Templo templo = new Templo(0, false, false);
-        templo.generarComodin();
-    }//GEN-LAST:event_jLabel3MouseClicked
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel lbPlay;
     // End of variables declaration//GEN-END:variables

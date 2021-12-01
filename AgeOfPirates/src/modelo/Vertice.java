@@ -5,13 +5,14 @@
 
 package modelo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author dmora
  */
-public class Vertice {
+public class Vertice  implements Serializable{
     public Estructura estructura;
     boolean visitado;
     public ArrayList<Vertice> aristas;

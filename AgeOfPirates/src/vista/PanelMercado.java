@@ -27,7 +27,18 @@ public class PanelMercado extends javax.swing.JPanel {
         imgComprar.setIcon(Utilities.loadResizeIcon("src\\images\\comprar.png", 110));
         imgVender.setIcon(Utilities.loadResizeIcon("src\\images\\vender.png", 110));
     }
-
+    
+    public void presionarComprar(){
+        Utilities.cargarPanel(MainWindow.contentPanel, MainWindow.panelComprar);
+        MainWindow.panelComprar.cleanExchange();
+        MainWindow.panelComprar.loadDatos();
+    }
+    
+    public void presionarVender(){
+        Utilities.cargarPanel(MainWindow.contentPanel, MainWindow.panelVender);
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -63,11 +74,11 @@ public class PanelMercado extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         lbCañon5 = new javax.swing.JLabel();
-        btnCannon5 = new javax.swing.JPanel();
+        btnVender = new javax.swing.JPanel();
         imgVender = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         lbCañon6 = new javax.swing.JLabel();
-        btnCannon6 = new javax.swing.JPanel();
+        btnComprar = new javax.swing.JPanel();
         imgComprar = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -344,16 +355,21 @@ public class PanelMercado extends javax.swing.JPanel {
         lbCañon5.setText("Vender");
         lbCañon5.setToolTipText("");
 
-        btnCannon5.setBackground(new java.awt.Color(212, 212, 212));
-        btnCannon5.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnVender.setBackground(new java.awt.Color(212, 212, 212));
+        btnVender.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCannon5MouseClicked(evt);
+                btnVenderMouseClicked(evt);
             }
         });
-        btnCannon5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        btnVender.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         imgVender.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/canon.png"))); // NOI18N
-        btnCannon5.add(imgVender, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 110, 110));
+        imgVender.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imgVenderMouseClicked(evt);
+            }
+        });
+        btnVender.add(imgVender, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 110, 110));
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -362,7 +378,7 @@ public class PanelMercado extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                 .addGap(0, 30, Short.MAX_VALUE)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnCannon5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVender, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGap(43, 43, 43)
                         .addComponent(lbCañon5)
@@ -374,7 +390,7 @@ public class PanelMercado extends javax.swing.JPanel {
                 .addContainerGap(8, Short.MAX_VALUE)
                 .addComponent(lbCañon5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCannon5, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnVender, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -388,13 +404,13 @@ public class PanelMercado extends javax.swing.JPanel {
         lbCañon6.setText("Comprar");
         lbCañon6.setToolTipText("");
 
-        btnCannon6.setBackground(new java.awt.Color(212, 212, 212));
-        btnCannon6.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnComprar.setBackground(new java.awt.Color(212, 212, 212));
+        btnComprar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCannon6MouseClicked(evt);
+                btnComprarMouseClicked(evt);
             }
         });
-        btnCannon6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        btnComprar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         imgComprar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/canon.png"))); // NOI18N
         imgComprar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -402,7 +418,7 @@ public class PanelMercado extends javax.swing.JPanel {
                 imgComprarMouseClicked(evt);
             }
         });
-        btnCannon6.add(imgComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 110, 110));
+        btnComprar.add(imgComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 110, 110));
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -410,7 +426,7 @@ public class PanelMercado extends javax.swing.JPanel {
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnCannon6, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnComprar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31))
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addGap(49, 49, 49)
@@ -423,7 +439,7 @@ public class PanelMercado extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(lbCañon6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCannon6, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnComprar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(8, Short.MAX_VALUE))
         );
 
@@ -477,22 +493,28 @@ public class PanelMercado extends javax.swing.JPanel {
     }//GEN-LAST:event_btnCannon4MouseClicked
 
     private void lbBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbBackMouseClicked
-        Utilities.cargarPanel(MainWindow.contentPanel, MainWindow.panelJuego);
+        Utilities.cargarPanel(MainWindow.contentPanel, MainWindow.panelTiendaMercado);
     }//GEN-LAST:event_lbBackMouseClicked
 
-    private void btnCannon5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCannon5MouseClicked
+    private void btnVenderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVenderMouseClicked
         // TODO add your handling code here:
-        Utilities.cargarPanel(MainWindow.contentPanel, MainWindow.panelVender);
-    }//GEN-LAST:event_btnCannon5MouseClicked
+        presionarVender();
+    }//GEN-LAST:event_btnVenderMouseClicked
 
-    private void btnCannon6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCannon6MouseClicked
+    private void btnComprarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnComprarMouseClicked
         // TODO add your handling code here:
-        Utilities.cargarPanel(MainWindow.contentPanel, MainWindow.panelComprar);
-    }//GEN-LAST:event_btnCannon6MouseClicked
+        presionarComprar();
+    }//GEN-LAST:event_btnComprarMouseClicked
 
     private void imgComprarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgComprarMouseClicked
         // TODO add your handling code here:
+        presionarComprar();
     }//GEN-LAST:event_imgComprarMouseClicked
+
+    private void imgVenderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgVenderMouseClicked
+        // TODO add your handling code here:
+        presionarVender();
+    }//GEN-LAST:event_imgVenderMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -501,8 +523,8 @@ public class PanelMercado extends javax.swing.JPanel {
     private javax.swing.JPanel btnCannon2;
     private javax.swing.JPanel btnCannon3;
     private javax.swing.JPanel btnCannon4;
-    private javax.swing.JPanel btnCannon5;
-    private javax.swing.JPanel btnCannon6;
+    private javax.swing.JPanel btnComprar;
+    private javax.swing.JPanel btnVender;
     private javax.swing.JLabel imgAcero;
     private javax.swing.JLabel imgBarbaRoja;
     private javax.swing.JLabel imgBomba1;

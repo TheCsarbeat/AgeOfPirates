@@ -65,7 +65,6 @@ public class Templo extends Estructura{
                         flagAviable = true;
                         this.stop();
                     }
-                    System.out.println("El tiempo de esta verga es: "+tiempo);
                 }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
