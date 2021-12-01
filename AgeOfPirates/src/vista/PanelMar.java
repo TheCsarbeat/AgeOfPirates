@@ -26,7 +26,7 @@ public class PanelMar extends javax.swing.JPanel {
 //        this.removeAll();
 //        canvas = new CanvasSea(whoIs);
 //        this.add(canvas);
-        //canvas.repaint();
+        canvas.repaint();
     }
 
     /**

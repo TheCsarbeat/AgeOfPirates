@@ -34,4 +34,11 @@ public class Punto implements Serializable{
     public void setY(int y) {
         this.y = y;
     }
+
+    @Override
+    public String toString() {
+        return "Punto{" + "x=" + x + ", y=" + y + '}';
+    }
+    
+    
 }

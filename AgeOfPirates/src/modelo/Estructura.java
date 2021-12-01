@@ -16,9 +16,11 @@ public  abstract class  Estructura  implements Serializable{
     protected ArrayList<Punto> cellsBusy;
     protected String id; //Estandar: armeria-> "ARM-0", "ARM-1" | mina-> "MIN-0", "MIN-1", es decir tres letras y un numero
     protected int espacio; //2x2 = 22, 1x2 = 12, 2x1 = 21, 1x1 = 11
+    protected boolean destruida;
 
     public Estructura() {
         this.cellsBusy = new ArrayList();
+        this.destruida = false;
     }
 
     public String getId() {
@@ -50,8 +52,15 @@ public  abstract class  Estructura  implements Serializable{
     public void setCellsBusy(ArrayList<Punto> cellsBusy) {
         this.cellsBusy = cellsBusy;
     }
-    
-    
+
+    public boolean isDestruida() {
+        return destruida;
+    }
+
+    public void setDestruida(boolean destruida) {
+        this.destruida = destruida;
+    }
+            
     @Override
     public String toString() {
         return "Estructura{" + "cellsBusy=" + cellsBusy + ", id=" + id + ", espacio=" + espacio + '}';

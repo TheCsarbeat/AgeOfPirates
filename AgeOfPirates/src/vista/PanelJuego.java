@@ -641,14 +641,16 @@ public class PanelJuego extends javax.swing.JPanel {
         // TODO add your handling code here:
         int x = Integer.parseInt(txtCoordenadaX.getText());
         int y = Integer.parseInt(txtCoordenadaY.getText());
+        MainWindow.enemigo.grafo.imprimir();
         for (Vertice v: MainWindow.enemigo.grafo.vertices) {
             for(Punto p: v.estructura.getCellsBusy()){
                 if(x == p.getX() && y == p.getY()){
                     MainWindow.enemigo.positions[x][y] = true;
                 }
             }
-        }        
-        MainWindow.setPlayerEnemigo();        
+        }
+        MainWindow.enemigo.updateEstructuras();
+        MainWindow.setPlayerEnemigo();
     }//GEN-LAST:event_btnFireMouseClicked
 
     private void btnMercadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMercadoMouseClicked
