@@ -817,66 +817,116 @@ public class PanelJuego extends javax.swing.JPanel {
             }   
             if(flagCannonSimple){
                 bitacora += "\nDisparo certero";
+                bitacora += "\n---------------------------------------"; 
             }else{
                 bitacora += "\nDisparo fallido";
+                bitacora += "\n---------------------------------------"; 
             }
             
         }else if(lastUsed == 1){
+            boolean flagCannonMultiple = false;
+            boolean flagCannonMultiple2 = false;
+            bitacora += "\nArma Usada: Cannon multiple";
             boolean bandera = false;
             int x = Integer.parseInt(txtCoordenadaX.getText());
             int y = Integer.parseInt(txtCoordenadaY.getText());
+            bitacora += "\nPosiciones:   X = "+x+"    Y = "+y;
             for (Vertice v: MainWindow.enemigo.grafo.vertices) {
                 for(Punto p: v.estructura.getCellsBusy()){
                     if(x == p.getX() && y == p.getY()){
                         bandera = true;
+                        flagCannonMultiple2 = true;
                         MainWindow.enemigo.positions[x][y] = true;
                     }
                 }
+            }
+            if(flagCannonMultiple2){
+                bitacora += "\nDisparo certero";
+                
+            }else{
+                bitacora += "\nDisparo fallido";
+               
             }
             if (bandera){
                 
                 for (int i = 0; i < 4; i++) {
                     int newX = randomX();
                     int newY = randomY();
+                    bitacora += "\n\tPosiciones:   X = "+newX+"    Y = "+newY;
                     for (Vertice v: MainWindow.enemigo.grafo.vertices) {
                         for(Punto p: v.estructura.getCellsBusy()){
                             if(newX == p.getX() && newY == p.getY()){
+                                flagCannonMultiple = true;
                                 MainWindow.enemigo.positions[newX][newY] = true;
                             }
                         }
                     }
+                    if(flagCannonMultiple){
+                        bitacora += "\n\tDisparo certero";
+                        
+                    }else{
+                        bitacora += "\n\tDisparo fallido";
+                        
+            }
                     
                 }
-            }   
+            }  bitacora += "\n-----------------------------------------------"; 
         }else if (lastUsed == 3){
+            bitacora += "\nArma Usada: Cannon barba roja";
+            boolean banderaCannonB = false;
+            boolean banderaCannonB2 = false;
             boolean bandera = false;
             int x = Integer.parseInt(txtCoordenadaX.getText());
             int y = Integer.parseInt(txtCoordenadaY.getText());
+            bitacora += "\nPosiciones:   X = "+x+"    Y = "+y;
             for (Vertice v: MainWindow.enemigo.grafo.vertices) {
                 for(Punto p: v.estructura.getCellsBusy()){
                     if(x == p.getX() && y == p.getY()){
                         bandera = true;
+                        banderaCannonB = true;
                         MainWindow.enemigo.positions[x][y] = true;
 
                     }
                 }
             }
+            if(banderaCannonB){
+                bitacora += "\nDisparo certero";
+                
+                
+            }else{
+                bitacora += "\nDisparo fallido";
+               
+               
+            }
             if (bandera){
                 
-                for (int i = 0; i < 11; i++) {
+                for (int i = 0; i < 10; i++) {
                     int newX = randomX();
                     int newY = randomY();
+                    bitacora += "\n\tPosiciones:   X = "+newX+"    Y = "+newY;
                     for (Vertice v: MainWindow.enemigo.grafo.vertices) {
                         for(Punto p: v.estructura.getCellsBusy()){
                             if(newX == p.getX() && newY == p.getY()){
+                                banderaCannonB2 = true;
                                 MainWindow.enemigo.positions[newX][newY] = true;
                             }
                         }
                     }
+                    if(banderaCannonB2){
+                        bitacora += "\n\tDisparo certero";
+                        
+                    }else{
+                        bitacora += "\n\tDisparo fallido";
+                        
+            }
                     
                 }
-            }            
+            }  bitacora += "\n-----------------------------------------------";            
         }else if (lastUsed == 2){
+            boolean banderaBomba = false;
+            boolean banderaBomba2 = false;
+            boolean banderaBomba3 = false;
+            bitacora += "\nArma Usada: Bomba";
             String lasX = txtCoordenadaX.getText();
             String lasY = txtCoordenadaY.getText();
             
@@ -889,14 +939,51 @@ public class PanelJuego extends javax.swing.JPanel {
             String y1 = partsY[0]; 
             String y2 = partsY[1]; 
             String y3 = partsY[2];
+            
+            
             for (Vertice v: MainWindow.enemigo.grafo.vertices) {
                 for(Punto p: v.estructura.getCellsBusy()){
                     if(Integer.parseInt(x1) == p.getX() && Integer.parseInt(y1) == p.getY()){
+                        bitacora += "\nPosiciones:   X = "+x1+"    Y = "+y1;
+                        banderaBomba = true;
                         MainWindow.enemigo.positions[Integer.parseInt(x1)][Integer.parseInt(y1)] = true;
+                        if(banderaBomba){
+                            bitacora += "\nDisparo certero";
+                            
+
+                        }else{
+                            bitacora += "\nDisparo fallido";
+                    
+
+                        }
                     }else if(Integer.parseInt(x2) == p.getX() && Integer.parseInt(y2) == p.getY()){
+                        bitacora += "\nPosiciones:   X = "+x2+"    Y = "+y2;
+                        banderaBomba2 = true;
                         MainWindow.enemigo.positions[Integer.parseInt(x2)][Integer.parseInt(y2)] = true;
+                        
+                        if(banderaBomba2){
+                            bitacora += "\nDisparo certero";
+                        
+
+                        }else{
+                            bitacora += "\nDisparo fallido";
+                           
+
+                        }
                     }else if(Integer.parseInt(x3) == p.getX() && Integer.parseInt(y3) == p.getY()){
+                        bitacora += "\nPosiciones:   X = "+x3+"    Y = "+y3;
+                        banderaBomba3 = true;
                         MainWindow.enemigo.positions[Integer.parseInt(x3)][Integer.parseInt(y3)] = true;
+                        
+                        if(banderaBomba3){
+                            bitacora += "\nDisparo certero";
+                            bitacora += "\n---------------------------------------"; 
+
+                        }else{
+                            bitacora += "\nDisparo fallido";
+                            bitacora += "\n---------------------------------------"; 
+
+                        }
                     }
             
                 }
