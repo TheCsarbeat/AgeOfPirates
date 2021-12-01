@@ -52,7 +52,7 @@ public class PanelStart extends javax.swing.JPanel {
             }else{
                 MainWindow.player.setTurno(id);
                 MainWindow.player.setMoney(4000);
-                System.out.println(MainWindow.player.toString());
+
                 if(id ==0)
                     lbStatus.setText("HOST");
                 else
@@ -216,11 +216,10 @@ public class PanelStart extends javax.swing.JPanel {
                 }
                 armas.add(a);
             }
-            MainWindow.player.setArmas(armas);
-            
-            MainWindow.setPlayer();
-            
-            Utilities.cargarPanel(MainWindow.contentPanel, MainWindow.panelJuego);                
+            MainWindow.player.setArmas(armas);            
+            MainWindow.setPlayer();            
+            Utilities.cargarPanel(MainWindow.contentPanel, MainWindow.panelJuego);     
+            MainWindow.panelJuego.loadDatos();
             
         }else{
             JOptionPane.showMessageDialog(null, "Debe ingresar un nombre", "Error", JOptionPane.ERROR_MESSAGE);

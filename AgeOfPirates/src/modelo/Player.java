@@ -165,6 +165,27 @@ public class Player implements Serializable{
         return null;
     }
     
+    public ArrayList cantidadArmas(){
+        ArrayList datos = new ArrayList();
+        int cannon = 0, cannonM = 0, bomba =0, cannonB = 0;
+        for (Arma i: armas) {
+            if(i.getName().equals("Cannon")){
+                cannon++;
+            }else if(i.getName().equals("Cannon Multiple")){
+                cannonM++;
+            }else if(i.getName().equals("Bomba")){
+                bomba++;
+            }else if(i.getName().equals("Cannon Barba Roja")){
+                cannonB++;
+            }
+        }
+        datos.add(cannon);
+        datos.add(cannonM);
+        datos.add(bomba);
+        datos.add(cannonB);
+        return datos;
+    }
+    
     public boolean eliminarArma(int idArma){
         for(Arma i: armas){
             //System.out.println("Buscando id... "+i.getId());

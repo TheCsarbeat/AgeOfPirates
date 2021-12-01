@@ -14,7 +14,15 @@ import java.io.Serializable;
 public class Arma  implements Serializable{
     private int id;
     private String name; 
-
+    
+    //String para comparar los nombres exactos
+    /*
+    Cannon
+    Cannon Multiple
+    Bomba
+    Cannon Barba Roja
+    Acero
+    */
     public Arma(int id, String name) {
         this.id = id;
         this.name = name;
