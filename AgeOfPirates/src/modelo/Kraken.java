@@ -5,10 +5,17 @@
  */
 package modelo;
 
+import java.util.Random;
+
 /**
  *
  * @author erksm
  */
 public class Kraken extends Comodin{
-    private int random;
+    
+    int min_val = 0;
+    int max_val = 3;
+    Random rand = new Random();
+    int idPlayer = min_val + rand.nextInt((max_val - min_val) + 1);
+        
 }
