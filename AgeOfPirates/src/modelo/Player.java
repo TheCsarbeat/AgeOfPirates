@@ -14,10 +14,14 @@ public class Player implements Serializable{
     private int id;
     private String name;
     private int turno;
+    private boolean turn;
     private int money;
     private int steel;
+    private boolean ready;
+    private boolean starGame;
     public boolean[][] positions = new boolean[20][20];
     public Grafo grafo;
+    
     private ArrayList<Comodin> comodines = new ArrayList();
     private ArrayList<Arma> armas = new ArrayList();
     
@@ -33,6 +37,10 @@ public class Player implements Serializable{
                 positions[row][col] = false;
             }
         }       
+        ready = false;
+        turn  = false;
+        starGame = false;
+        
     }
     
     public Player(){
@@ -47,6 +55,9 @@ public class Player implements Serializable{
                 positions[row][col] = false;
             }
         }
+        ready = false;
+        turn  = false;
+        starGame = false;
         
     }
 
@@ -61,12 +72,23 @@ public class Player implements Serializable{
                 positions[row][col] = false;
             }
         }
+        ready = false;
+        turn  = false;
+        starGame = false;
     }
 
     public ArrayList<Comodin> getComodines() {
         return comodines;
     }
+    
+    public boolean isTurn() {
+        return turn;
+    }
 
+    public void setTurn(boolean turn) {
+        this.turn = turn;
+    }
+    
     public void setComodines(ArrayList<Comodin> comodines) {
         this.comodines = comodines;
     }
@@ -93,6 +115,14 @@ public class Player implements Serializable{
 
     public void setPositions(boolean[][] positions) {
         this.positions = positions;
+    }
+
+    public boolean isReady() {
+        return ready;
+    }
+
+    public void setReady(boolean ready) {
+        this.ready = ready;
     }
 
     public Grafo getGrafo() {
@@ -158,7 +188,7 @@ public class Player implements Serializable{
     public void subtractSteel(){
         this.steel = this.steel - steel; 
     }
-
+    
     @Override
     public String toString() {
         return "Player: " + "id: " + id + ", name: " + name + ", turno: " + turno + ", money: " + money + ", steel: " + steel + ", positions: " + positions + ", grafo: " + grafo + ", comodines:" + comodines + ", armas: " + armas;

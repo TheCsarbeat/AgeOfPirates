@@ -20,6 +20,7 @@ import modelo.Player;
 public class Controlador {
     
     private ArrayList<Message> chat = new ArrayList();
+    
     private ArrayList<Player> players = new ArrayList();
     private ArrayList<Exchange> walterMercado = new ArrayList();
     public Controlador() {
@@ -57,7 +58,16 @@ public class Controlador {
         }else if(accion == TipoAccion.BUY_EXCHANGE){      
             ArrayList datos = (ArrayList)peticion.getDatosEntrada();            
             boolean answer = buyExchange((int)datos.get(0), (int)datos.get(1), (int)datos.get(2));
-            peticion.setDatosSalida(answer);            
+            peticion.setDatosSalida(answer);     
+            
+        }else if(accion == TipoAccion.CHECK_PLAYER_READY){ 
+            peticion.setDatosSalida(cheackPlayersReady());      
+            
+        }else if(accion == TipoAccion.FINISH_TURN){ 
+            int id = (int) peticion.getDatosEntrada();     
+            Player p = getPlayer(id);
+            peticion.setDatosSalida(modifcarTurn(p));      
+            
         }
         
         return peticion;
@@ -77,8 +87,10 @@ public class Controlador {
         Player p = null;
         if(index>=100){
             p = new Player(-1)  ;      
-        }else{     
+        }else{   
             p =  new Player(index);
+            if(index== 0)
+                p.setTurn(true);
             players.add(p);
         }                    
         return p;
@@ -150,7 +162,38 @@ public class Controlador {
             return true;
         }else{
             return false;
+        }       
+    }
+    
+    public boolean cheackPlayersReady(){
+        for(Player i: players){
+            if(!i.isReady()){
+               return false;
+            }
         }
-       
+        return true;
+    }
+    
+    public boolean modifcarTurn(Player p){
+        Player next; 
+        p.setTurn(false);
+        int index = 0;
+        for(Player i: players){
+            if(p.getId() == i.getId()){
+                break;
+            }
+            index++;
+        }
+        
+        if(p.getId() == players.size()-1){
+            next = players.get(0);
+            next.setTurn(true);
+            players.set(0, next);
+        }else{
+            next = players.get(index+1);
+            next.setTurn(true);
+            players.set(index+1, next);
+        }
+        return true;
     }
 }

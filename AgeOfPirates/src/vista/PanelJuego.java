@@ -64,7 +64,12 @@ public class PanelJuego extends javax.swing.JPanel {
             try {
                 while(true){                    
                     
-                    MainWindow.getPlayer();                    
+                    MainWindow.getPlayer();
+                    if(MainWindow.player.isTurn()){
+                        btnFire.setEnabled(true);
+                    }else{
+                         btnFire.setEnabled(false);
+                    }                    
                     ArrayList datos = MainWindow.player.cantidadArmas();
                     lbPlayerName.setText(MainWindow.player.getName());
                     lbCantCannon.setText(String.valueOf(datos.get(0)));
@@ -80,14 +85,19 @@ public class PanelJuego extends javax.swing.JPanel {
             }
         }
         };th.start();
+        cargarHost();
         
         
-        
-        
-        
-        
-        
-        
+    }
+    
+    public void cargarHost(){
+        if(MainWindow.player.getId() == 0){
+            lbState.setText("HOST");
+            btnHost.setVisible(true);
+        }else{
+            lbState.setText("GUEST");
+            btnHost.setVisible(false);
+        }
     }
     
     /**
@@ -126,7 +136,7 @@ public class PanelJuego extends javax.swing.JPanel {
         lbCantCannonB = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         panelBotones = new javax.swing.JPanel();
-        lbCoordenada3 = new javax.swing.JLabel();
+        lbState = new javax.swing.JLabel();
         chatPanel = new javax.swing.JPanel();
         activatePanel = new javax.swing.JPanel();
         btnActivateChat = new javax.swing.JLabel();
@@ -148,6 +158,9 @@ public class PanelJuego extends javax.swing.JPanel {
         lbCoordenada = new javax.swing.JLabel();
         lbCoordenada4 = new javax.swing.JLabel();
         btnMercado = new javax.swing.JButton();
+        btnReady = new javax.swing.JButton();
+        btnHost = new javax.swing.JButton();
+        lbCoordenada6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         panelCoordinates = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
@@ -328,10 +341,11 @@ public class PanelJuego extends javax.swing.JPanel {
         panelBotones.setBackground(new java.awt.Color(165, 173, 167));
         panelBotones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lbCoordenada3.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
-        lbCoordenada3.setForeground(new java.awt.Color(0, 0, 0));
-        lbCoordenada3.setText("Bitácora");
-        panelBotones.add(lbCoordenada3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 0, 90, 40));
+        lbState.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
+        lbState.setForeground(new java.awt.Color(0, 0, 0));
+        lbState.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbState.setText("Bitácora");
+        panelBotones.add(lbState, new org.netbeans.lib.awtextra.AbsoluteConstraints(1370, 20, 200, 40));
 
         chatPanel.setLayout(new java.awt.CardLayout());
 
@@ -395,6 +409,7 @@ public class PanelJuego extends javax.swing.JPanel {
 
         panelBitacora.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        txtBitacora.setEditable(false);
         txtBitacora.setBackground(new java.awt.Color(18, 30, 49));
         txtBitacora.setColumns(20);
         txtBitacora.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
@@ -464,6 +479,29 @@ public class PanelJuego extends javax.swing.JPanel {
             }
         });
         panelBotones.add(btnMercado, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 60, 150, 50));
+
+        btnReady.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
+        btnReady.setText("I'm Ready");
+        btnReady.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnReadyMouseClicked(evt);
+            }
+        });
+        panelBotones.add(btnReady, new org.netbeans.lib.awtextra.AbsoluteConstraints(1370, 80, 210, 70));
+
+        btnHost.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
+        btnHost.setText("Start Game");
+        btnHost.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnHostMouseClicked(evt);
+            }
+        });
+        panelBotones.add(btnHost, new org.netbeans.lib.awtextra.AbsoluteConstraints(1370, 170, 210, 70));
+
+        lbCoordenada6.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
+        lbCoordenada6.setForeground(new java.awt.Color(0, 0, 0));
+        lbCoordenada6.setText("Bitácora");
+        panelBotones.add(lbCoordenada6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 0, 90, 40));
 
         add(panelBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 700, 1630, 300));
 
@@ -648,7 +686,9 @@ public class PanelJuego extends javax.swing.JPanel {
                 }
             }
         }        
-        MainWindow.setPlayerEnemigo();        
+        MainWindow.setPlayerEnemigo();  
+        MainWindow.finishTurn();
+        
     }//GEN-LAST:event_btnFireMouseClicked
 
     private void btnMercadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMercadoMouseClicked
@@ -681,6 +721,34 @@ public class PanelJuego extends javax.swing.JPanel {
         
     }//GEN-LAST:event_lbCantCannon1MouseClicked
 
+    private void btnReadyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReadyMouseClicked
+        // TODO add your handling code here:
+        if(MainWindow.player.grafo.hayFuente()){
+            MainWindow.player.setReady(true);
+            MainWindow.setPlayer();
+            btnReady.setText("YOU ARE READY");
+            btnReady.setEnabled(false);
+        }else{
+             JOptionPane.showMessageDialog(null, "No hay fuente de poder!", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnReadyMouseClicked
+
+    private void btnHostMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHostMouseClicked
+        // TODO add your handling code here:
+        
+        Peticion peticionIngresar = new Peticion(TipoAccion.CHECK_PLAYER_READY, "");        
+        Client conexion = new Client(peticionIngresar);
+        Object respuesta = conexion.getRespuestaServer();
+        if(respuesta != null){
+           if((boolean)respuesta){
+               JOptionPane.showMessageDialog(null, "El juego ha iniciado!", "Error", JOptionPane.INFORMATION_MESSAGE);
+               btnHost.setEnabled(false);
+           }
+        }else{
+            JOptionPane.showMessageDialog(null, "Los datos no coinciden!", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnHostMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel activatePanel;
@@ -692,7 +760,9 @@ public class PanelJuego extends javax.swing.JPanel {
     private javax.swing.JPanel btnCannonB;
     private javax.swing.JPanel btnCannonM;
     private javax.swing.JButton btnFire;
+    private javax.swing.JButton btnHost;
     private javax.swing.JButton btnMercado;
+    private javax.swing.JButton btnReady;
     private javax.swing.JLabel btnSendMsg;
     private javax.swing.JPanel chatPanel;
     private javax.swing.JPanel enemyPanel;
@@ -730,10 +800,11 @@ public class PanelJuego extends javax.swing.JPanel {
     private javax.swing.JLabel lbCañon2;
     private javax.swing.JLabel lbCoordenada;
     private javax.swing.JLabel lbCoordenada2;
-    private javax.swing.JLabel lbCoordenada3;
     private javax.swing.JLabel lbCoordenada4;
     private javax.swing.JLabel lbCoordenada5;
+    private javax.swing.JLabel lbCoordenada6;
     private javax.swing.JLabel lbPlayerName;
+    private javax.swing.JLabel lbState;
     private javax.swing.JPanel myPanel;
     private javax.swing.JPanel optionPanel;
     private javax.swing.JPanel panelArmas;
