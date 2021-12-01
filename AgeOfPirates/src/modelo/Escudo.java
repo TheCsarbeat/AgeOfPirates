@@ -13,10 +13,17 @@ import java.util.Random;
  */
 public class Escudo extends Comodin{
     
-    int min_val = 2;
-    int max_val = 5;
-    Random rand = new Random();
-    int disparos = min_val + rand.nextInt((max_val - min_val) + 1);
+    int disparos = 0;
+    
+    public int obtenerDisparos(){
+        int min_val = 2;
+        int max_val = 5;
+        Random rand = new Random();
+        disparos = min_val + rand.nextInt((max_val - min_val) + 1);
+        return disparos;
+    }
+    
+    boolean activado = false;
     
     public int getDisparos() {
         return disparos;
@@ -29,8 +36,6 @@ public class Escudo extends Comodin{
     @Override
     public String toString() {
         return "Escudo: " + "disparos: " + disparos;
-    }
-    
-    
+    } 
     
 }
