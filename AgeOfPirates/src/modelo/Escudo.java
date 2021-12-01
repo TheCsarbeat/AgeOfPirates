@@ -25,17 +25,7 @@ public class Escudo extends Comodin{
     
     boolean activado = false;
     
-    public int getDisparos() {
-        return disparos;
-    }
-
-    public void setDisparos(int disparos) {
-        this.disparos = disparos;
-    }
-
-    @Override
-    public String toString() {
-        return "Escudo: " + "disparos: " + disparos;
+    
     } 
     
-}
+
